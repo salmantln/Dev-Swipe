@@ -6,11 +6,11 @@ function Illustration({ className }: { className?: string }) {
   const scrollRevealOneRef = useRef<HTMLDivElement[]>([])
   const scrollRevealTwoRef = useRef<HTMLDivElement[]>([])
 
-  const addToScrollRevealOneRef = (el) => {
+  const addToScrollRevealOneRef = (el:any) => {
     scrollRevealOneRef.current.push(el)
   }
 
-  const addToScrollRevealTwoRef = (el) => {
+  const addToScrollRevealTwoRef = (el:any) => {
     scrollRevealTwoRef.current.push(el)
   }
 
