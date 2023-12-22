@@ -16,13 +16,13 @@ export const metadata: Metadata = {
   // manifest: '/manifest.webmanifest',
   openGraph: {
     url: "https://dev-swipe.com/",
-    images: [
-      {
-        width: 1200,
-        height: 630,
-        url: "https://raw.githubusercontent.com/Blazity/next-enterprise/main/project-logo.png",
-      },
-    ],
+    // images: [
+    //   {
+    //     width: 1200,
+    //     height: 630,
+    //     url: "https://raw.githubusercontent.com/Blazity/next-enterprise/main/project-logo.png",
+    //   },
+    // ],
   },
 }
 
