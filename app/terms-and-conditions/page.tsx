@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-export const Page = () => {
+const TOCPage = () => {
   return (
     <div>TOC</div>
-  )
-}
+  );
+};
+
+export default TOCPage;
