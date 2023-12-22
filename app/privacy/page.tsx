@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Privacy = () => {
+export const Page = () => {
   return (
     <div>Privacy</div>
   )

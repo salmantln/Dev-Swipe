@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TOC = () => {
+export const Page = () => {
   return (
     <div>TOC</div>
   )
