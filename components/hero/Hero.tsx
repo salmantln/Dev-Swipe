@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { NewsletterForm } from "../newsletter-form";
@@ -10,38 +12,38 @@ type ScrollRevealRefElement =
   | HTMLParagraphElement;
 
 const Hero = () => {
-  const [ScrollReveal, setScrollReveal] = useState<any>(null);
-  const scrollRevealRef = useRef<ScrollRevealRefElement[]>([]);
+  // const [ScrollReveal, setScrollReveal] = useState<any>(null);
+  // const scrollRevealRef = useRef<ScrollRevealRefElement[]>([]);
 
-  useEffect(() => {
-    import("scrollreveal").then((ScrollRevealModule) => {
-      setScrollReveal(ScrollRevealModule.default);
+  // useEffect(() => {
+  //   import("scrollreveal").then((ScrollRevealModule) => {
+  //     setScrollReveal(ScrollRevealModule.default);
 
-      if (scrollRevealRef.current.length > 0) {
-        scrollRevealRef.current.forEach((ref) =>
-          ScrollRevealModule.default().reveal(ref, {
-            duration: 1000,
-            distance: "40px",
-            easing: "cubic-bezier(0.5, -0.01, 0, 1.005)",
-            origin: "top",
-            interval: 150,
-          })
-        );
-      }
-    });
+  //     if (scrollRevealRef.current.length > 0) {
+  //       scrollRevealRef.current.forEach((ref) =>
+  //         ScrollRevealModule.default().reveal(ref, {
+  //           duration: 1000,
+  //           distance: "40px",
+  //           easing: "cubic-bezier(0.5, -0.01, 0, 1.005)",
+  //           origin: "top",
+  //           interval: 150,
+  //         })
+  //       );
+  //     }
+  //   });
 
-    return () => {
-      if (ScrollReveal) {
-        ScrollReveal.destroy();
-      }
-    };
-  }, []);
+  //   return () => {
+  //     if (ScrollReveal) {
+  //       ScrollReveal.destroy();
+  //     }
+  //   };
+  // }, []);
 
-  const addToScrollRevealRef = (el: ScrollRevealRefElement) => {
-    if (el && !scrollRevealRef.current.includes(el)) {
-      scrollRevealRef.current.push(el);
-    }
-  };
+  // const addToScrollRevealRef = (el: ScrollRevealRefElement) => {
+  //   if (el && !scrollRevealRef.current.includes(el)) {
+  //     scrollRevealRef.current.push(el);
+  //   }
+  // };
 
   async function onNewsletterSubmit(values: any) {
     return new Promise((resolve) => {
@@ -66,7 +68,9 @@ const Hero = () => {
             </p>
 
             <div className="max-w-6xl mx-auto ">
-              <div ref={addToScrollRevealRef}>
+              <div
+              //  ref={addToScrollRevealRef}
+               >
                 <NewsletterForm
                   className="mx-auto mt-8 max-w-md lg:mx-0"
                   submitText="Get early access"
@@ -92,7 +96,7 @@ const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="text-xl text-center text-gray-700 dark:text-white">
-            Trusted by <span className="text-indigo-600">2000+</span> customers
+            Trusted by <span className="text-indigo-600">2000+</span> users
             worldwide
           </div>
         </div>
