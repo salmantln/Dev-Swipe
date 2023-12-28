@@ -1,13 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { Faq } from "@/components/faq";
+import { Faq, FaqCompany } from "@/components/faq";
 import { CTA } from "@/components/call-to-action";
-import AOS from 'aos';
-// import 'aos/dist/aos.css'
-
-// import PageIllustration from '@/components/page-illustration'
-// import Footer from '@/components/ui/footer'
+import AOS from "aos";
+import HeroCompany from "@/components/hero/hero_company";
 
 export default function DefaultLayout({
   children,
@@ -17,28 +14,24 @@ export default function DefaultLayout({
   useEffect(() => {
     AOS.init({
       once: true,
-      disable: 'phone',
+      disable: "phone",
       duration: 600,
-      easing: 'ease-out-sine',
-    })
+      easing: "ease-out-sine",
+    });
   });
 
   return (
     <>
       <main className="grow">
         {/* <PageIllustration /> */}
-
         {children}
-
-        <div className="flex flex-col justify-between min-h-screen p-4">
+        <div className="flex flex-col justify-between p-4">
           <div className="w-full">
-          <Faq />
+            <FaqCompany />
           </div>
-          <CTA />
+          {/* <CTA /> */}
         </div>
       </main>
-
-      {/* <Footer /> */}
     </>
   );
 }

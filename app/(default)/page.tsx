@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "DevSwipe: Discover Top Tech and Dev Jobs with an Easy Swipe ",
   description:
     "✓ Discover your ideal job role ✓ 1000+ job opportunities ✓ Simple, anonymous application ✓ Get the DevSwipe-App ✓ PlayStore & AppStore ✓ Dev Swipe",
-  applicationName: "Dev ",
+  applicationName: "DevSwipe",
   authors: [{ name: "Salman Lartey", url: "https://dev-swipe.com" }],
   keywords: ["swipe", "swipe your dream job, dev swipe"],
   twitter: {

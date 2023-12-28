@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "@/components/footer";
 import Navbar from "@/components/nav/Navbar";
 import { Inter, Architects_Daughter } from "next/font/google";
+import PrelineScript from "@/components/PrelineScript";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Analytics />
+        <PrelineScript />
       </body>
     </html>
   );

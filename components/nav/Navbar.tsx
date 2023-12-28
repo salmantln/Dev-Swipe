@@ -59,8 +59,8 @@ const Navbar = () => {
                           {item}
                       </Link>
                     ))}
-                    <Link href="/" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5">         
-                        Get Started
+                    <Link href="/company" className="w-full px-6 py-2 mt-3 text-center text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-md lg:ml-5">         
+                      Add Company
                     </Link>
                   </>
                 </Disclosure.Panel>
