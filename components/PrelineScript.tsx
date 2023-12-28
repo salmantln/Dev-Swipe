@@ -3,6 +3,11 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
+
+declare var HSStaticMethods: {
+  autoInit(collection?: string | string[]): void;
+};
+
 export default function PrelineScript() {
   const path = usePathname();
 
