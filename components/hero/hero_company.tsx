@@ -1,4 +1,3 @@
-
 import CompanyInfoModal from "../modal/Modal";
 
 const navigation = [
@@ -28,7 +27,7 @@ const HeroCompany = () => {
             />
           </div>
           <div className="mx-auto max-w-2xl py-15 sm:py-11 lg:py-30">
-            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+            {/* <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-white ring-1 ring-gray-200/10 hover:ring-gray-400/20">
                 Announcing our next round of funding.{" "}
                 <a href="#" className="font-semibold text-indigo-200">
@@ -36,18 +35,18 @@ const HeroCompany = () => {
                   Read more <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
-            </div>
+            </div> */}
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-400 sm:text-6xl">
                 Your new hire within reach!
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-300">
-                Laat zien hoe het is om bij jullie te werken, bekijk per
-                vacature je matches, plan gesprekken en neem de beste mensen
-                aan.
+                Showcase your unique workplace culture, effortlessly review
+                matches for each job opening, schedule interviews seamlessly,
+                and hire top talent efficiently.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <CompanyInfoModal/>
+                <CompanyInfoModal />
                 <a
                   href="#"
                   className="text-sm font-semibold leading-6 text-white"
@@ -70,8 +69,6 @@ const HeroCompany = () => {
             />
           </div>
         </div>
-
-        
       </div>
     </>
   );

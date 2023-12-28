@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 
-declare var HSStaticMethods: {
+declare let HSStaticMethods: {
   autoInit(collection?: string | string[]): void;
 };
 
