@@ -41,11 +41,12 @@ const CompanyInfoModal = () => {
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="w-full max-w-md rounded bg-gray-400">
             <Dialog.Title className="text-lg text-center font-medium p-4 border-b">
-              Jouw vacature plaatsen
+            Post your job offer
             </Dialog.Title>
             <p className="mb-8 text-center">
-              Laat hieronder jouw gegevens achter, dan zorgen wij dat je zo snel
-              mogelijk aan de slag kunt
+              {/* Laat hieronder jouw gegevens achter, dan zorgen wij dat je zo snel
+              mogelijk aan de slag kunt */}
+              Drop down your details and we will contact you as soon as possible
             </p>
             <form onSubmit={handleSubmit} className="space-y-4 p-4">
               {/* <input
