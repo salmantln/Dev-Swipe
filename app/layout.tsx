@@ -51,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en p-16">
-      <body className={`${inter.variable} ${architects_daughter.variable}`}>
+    <html lang="en">
+      <body className={`${inter.variable} ${architects_daughter.variable} p-16`} >
         <Navbar />
         {children}
         <Footer />
