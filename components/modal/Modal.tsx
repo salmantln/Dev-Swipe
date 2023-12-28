@@ -53,7 +53,7 @@ const CompanyInfoModal = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="px-4 py-2 text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-md focus:outline-none"
+        className="px-4 py-2 text-white bg-secondary rounded-md focus:outline-none"
       >
         Post your job offer
       </button>
@@ -62,18 +62,18 @@ const CompanyInfoModal = () => {
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
         <div className="fixed inset-0 flex items-center justify-center p-4">
-          <Dialog.Panel className="w-full max-w-md rounded bg-gray-400">
-            <Dialog.Title className="text-lg text-center font-medium p-4 border-b">
+          <Dialog.Panel className="w-full max-w-md rounded bg-primary">
+            <Dialog.Title className="text-lg text-center text-secondary font-medium p-4 border-b">
               Post your job offer
             </Dialog.Title>
-            <p className="mb-8 text-center">
+            <p className="mb-8 text-center text-secondary">
               {/* Laat hieronder jouw gegevens achter, dan zorgen wij dat je zo snel
               mogelijk aan de slag kunt */}
               Drop down your details and we will contact you as soon as possible
             </p>
             {isSubmitted ? (
               <div className="text-center p-4">
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold text-secondary">
                   The form has been successfully sent.
                 </h2>
               </div>
@@ -96,7 +96,7 @@ const CompanyInfoModal = () => {
                     value={formData.name}
                     onChange={handleChange}
                     // placeholder="Name*"
-                    className="input-class block px-2.5 pb-2.5 pt-4 w-full rounded-md shadow-xl appearance-none focus:outline-none focus:ring-0 peer"
+                    className="input-class text-secondary block px-2.5 pb-2.5 pt-4 w-full rounded-md shadow-xl appearance-none focus:outline-none focus:ring-0 peer"
                     tabIndex={0}
                     // type="text"
                     // id="name"
@@ -106,7 +106,7 @@ const CompanyInfoModal = () => {
                     // value={formData.name}
                     // onChange={handleChange}
                   />
-                  <label className="text-neutral-500 absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
+                  <label className="text-secondary absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">
                     Name
                     <span aria-label="required">*</span>
                   </label>
@@ -127,12 +127,12 @@ const CompanyInfoModal = () => {
                     value={formData.email}
                     onChange={handleChange}
                     // placeholder="E-mail*"
-                    className="input-class block px-2.5 pb-2.5 pt-4 w-full rounded-md shadow-xl appearance-none focus:outline-none focus:ring-0 peer"
+                    className="input-class  text-secondary block px-2.5 pb-2.5 pt-4 w-full rounded-md shadow-xl appearance-none focus:outline-none focus:ring-0 peer"
                     required
                   />
                   <label
                     // for="email"
-                    className="text-neutral-500 absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+                    className="text-secondary absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
                   >
                     {" "}
                     E-mail
@@ -155,11 +155,11 @@ const CompanyInfoModal = () => {
                     onChange={handleChange}
                     required
                     // placeholder="Company*"
-                    className="input-class block px-2.5 pb-2.5 pt-4 w-full rounded-md shadow-xl appearance-none focus:outline-none focus:ring-0 peer"
+                    className="input-class  text-secondary block px-2.5 pb-2.5 pt-4 w-full rounded-md shadow-xl appearance-none focus:outline-none focus:ring-0 peer"
                   />
                   <label
                     // for="companyName"
-                    className="text-neutral-500 absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+                    className="text-secondary absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
                   >
                     Company
                     <span aria-label="required">*</span>
@@ -181,11 +181,11 @@ const CompanyInfoModal = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     // placeholder="Phone"
-                    className="input-class block px-2.5 pb-2.5 pt-4 w-full rounded-md shadow-xl appearance-none focus:outline-none focus:ring-0 peer"
+                    className="input-class text-secondary block px-2.5 pb-2.5 pt-4 w-full rounded-md shadow-xl appearance-none focus:outline-none focus:ring-0 peer"
                   />
                   <label
                     // for="phoneNumber"
-                    className="text-neutral-500 absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+                    className="text-secondary absolute duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
                   >
                     {" "}
                     Phone
@@ -195,7 +195,7 @@ const CompanyInfoModal = () => {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="px-4 py-2 text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-md focus:outline-none"
+                    className="px-4 py-2 text-white bg-secondary rounded-md focus:outline-none"
                   >
                     Submit
                   </button>

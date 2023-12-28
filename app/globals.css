@@ -28,8 +28,8 @@
 }
 
 body {
-  background: rgb(var(--foreground-rgb));
-  color: rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
   /* background: linear-gradient(
       to bottom,
       transparent,

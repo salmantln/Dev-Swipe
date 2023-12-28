@@ -10,7 +10,7 @@ const CTACompany = () => {
         <div className="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
           <div className="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
             <h2 className="text-2xl text-gray-800 font-bold sm:text-3xl dark:text-gray-200">
-              Getting a new colleague is easy!
+              Getting a new colleague is <span className="text-accent">easy! </span>
             </h2>
             {/* <!-- Tab Navs --> */}
             <nav
@@ -20,7 +20,7 @@ const CTACompany = () => {
             >
               <button
                 type="button"
-                className="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 p-4 md:p-5 rounded-xl dark:hs-tab-active:bg-slate-900 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 active"
+                className="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-secondary p-4 md:p-5 rounded-xl dark:hs-tab-active:bg-secondary dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 active"
                 id="tabs-with-card-item-1"
                 data-hs-tab="#tabs-with-card-1"
                 aria-controls="tabs-with-card-1"
@@ -28,7 +28,7 @@ const CTACompany = () => {
               >
                 <span className="flex">
                   <svg
-                    className="flex-shrink-0 mt-2 h-6 w-6 md:w-7 md:h-7 hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200"
+                    className="flex-shrink-0 mt-2 h-6 w-6 md:w-7 md:h-7 hs-tab-active:text-accent text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -59,7 +59,7 @@ const CTACompany = () => {
 
               <button
                 type="button"
-                className="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 p-4 md:p-5 rounded-xl dark:hs-tab-active:bg-slate-900 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-tab-active:bg-secondary hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-secondary p-4 md:p-5 rounded-xl dark:hs-tab-active:bg-slate-900 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 id="tabs-with-card-item-2"
                 data-hs-tab="#tabs-with-card-2"
                 aria-controls="tabs-with-card-2"
@@ -67,7 +67,7 @@ const CTACompany = () => {
               >
                 <span className="flex">
                   <svg
-                    className="flex-shrink-0 mt-2 h-6 w-6 md:w-7 md:h-7 hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200"
+                    className="flex-shrink-0 mt-2 h-6 w-6 md:w-7 md:h-7 hs-tab-active:text-accent text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
@@ -95,7 +95,7 @@ const CTACompany = () => {
 
               <button
                 type="button"
-                className="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 p-4 md:p-5 rounded-xl dark:hs-tab-active:bg-slate-900 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-tab-active:bg-secondary hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-bg-secondary p-4 md:p-5 rounded-xl dark:hs-tab-active:bg-slate-900 dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 id="tabs-with-card-item-3"
                 data-hs-tab="#tabs-with-card-3"
                 aria-controls="tabs-with-card-3"
@@ -103,7 +103,7 @@ const CTACompany = () => {
               >
                 <span className="flex">
                   <svg
-                    className="flex-shrink-0 mt-2 h-6 w-6 md:w-7 md:h-7 hs-tab-active:text-blue-600 text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200"
+                    className="flex-shrink-0 mt-2 h-6 w-6 md:w-7 md:h-7 hs-tab-active:text-accent text-gray-800 dark:hs-tab-active:text-blue-500 dark:text-gray-200"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
                     height="24"
