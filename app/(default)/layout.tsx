@@ -25,7 +25,7 @@ export default function DefaultLayout({
 
   return (
     <>
-      <main className="grow">
+      <main className="grow p-16">
         {/* <PageIllustration /> */}
 
         {children}
