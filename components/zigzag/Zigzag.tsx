@@ -41,10 +41,7 @@ const Zigzag = () => {
                 className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6"
                 data-aos="fade-right"
               >
-                {/* <h3 className="h3 mb-3 text-gray-400">
-                  Step 1: Create a Profile
-                </h3> */}
-                <div className="font-architects-daughter text-2xl text-blue-400 mb-2">
+                <div className="font-architects-daughter text-2xl text-primary mb-2">
                   Step 1: Create a Profile
                 </div>
                 <p className="text-xl text-gray-400 mb-4">
@@ -75,7 +72,7 @@ const Zigzag = () => {
                 data-aos="fade-left"
               >
                 {/* <h3 className="h3 mb-3 text-gray-400">Step 2: Swipe on Jobs</h3> */}
-                <div className="font-architects-daughter text-2xl text-blue-400 mb-2">
+                <div className="font-architects-daughter text-2xl   text-primary mb-2">
                   Step 2: Swipe on Jobs
                 </div>
                 <p className="text-xl text-gray-400 mb-4">
@@ -108,7 +105,7 @@ const Zigzag = () => {
                 {/* <h3 className="h3 mb-3 text-gray-400">
                   Step 3: Connect with Employers
                 </h3> */}
-                <div className="font-architects-daughter text-xl text-blue-400 mb-2">
+                <div className="font-architects-daughter text-2xl  text-primary mb-2">
                   Step 3: Connect with Employers
                 </div>
                 <p className="text-xl text-gray-400 mb-4">

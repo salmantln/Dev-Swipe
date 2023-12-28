@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { NewsletterForm } from "../newsletter-form";
 import Container from "./container";
 
-
 type ScrollRevealRefElement =
   | HTMLDivElement
   | HTMLHeadingElement
@@ -59,7 +58,10 @@ const Hero = () => {
         <div className="flex items-center w-full lg:w-1/2 ">
           <div className="max-w-2xl mb-8 text-center lg:w-full lg:py-20 lg:text-left">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-              Swipe Your Dream Dev Job
+              Swipe Your Dream
+            </h1>
+            <h1 className="text-4xl font-bold leading-snug tracking-tight text-secondary lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+              Dev Job
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
               Discover how our revolutionary job-swiping app can transform your
@@ -70,7 +72,7 @@ const Hero = () => {
             <div className="max-w-6xl mx-auto ">
               <div
               //  ref={addToScrollRevealRef}
-               >
+              >
                 <NewsletterForm
                   className="mx-auto mt-8 max-w-md lg:mx-0"
                   submitText="Get early access"
@@ -81,7 +83,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-right justify-center w-full lg:w-1/2">
+        <div className="flex items-center justify-center w-full lg:w-1/2">
           <div className="">
             <Image
               src="/img/Swipe screen-portrait.png"
@@ -96,7 +98,7 @@ const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="text-xl text-center text-gray-700 dark:text-white">
-            Trusted by <span className="text-indigo-600">2000+</span> users
+            Trusted by <span className="text-accent font-bold">2000+</span> users
             worldwide
           </div>
         </div>

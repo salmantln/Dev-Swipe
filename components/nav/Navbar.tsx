@@ -59,7 +59,8 @@ const Navbar = () => {
                           {item}
                       </Link>
                     ))}
-                    <Link href="/company" className="w-full px-6 py-2 mt-3 text-center text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-md lg:ml-5">         
+                    <Link href="/company" className="w-full px-6 py-2 mt-3 text-center text-[#ffffff] bg-secondary  rounded-md lg:ml-5">         
+                    {/* <Link href="/company" className="w-full px-6 py-2 mt-3 text-center text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-md lg:ml-5">          */}
                       Add Company
                     </Link>
                   </>
@@ -88,7 +89,8 @@ const Navbar = () => {
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
           <Link
             href="/company"
-            className="px-6 py-2 text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-md md:ml-5"
+            className="px-6 py-2 text-[#ffffff] bg-secondary font-semibold rounded-md md:ml-5"
+            // className="px-6 py-2 text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-md md:ml-5"
           >
             Add Company
           </Link>
