@@ -81,7 +81,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center w-full lg:w-1/2">
+        <div className="flex items-right justify-center w-full lg:w-1/2">
           <div className="">
             <Image
               src="/img/Swipe screen-portrait.png"
