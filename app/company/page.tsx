@@ -24,8 +24,8 @@ const CompanyPage = () => {
   return (
     <main className="flex flex-col justify-between min-h-screen p-4">
       <HeroCompany />
-      <CTACompany/>
-      <FeaturesCompany/>
+      <CTACompany />
+      <FeaturesCompany />
       {/* <Pricing/> */}
     </main>
   );

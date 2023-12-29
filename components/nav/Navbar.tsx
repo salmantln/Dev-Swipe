@@ -1,10 +1,19 @@
+"use client"
+
 import Link from "next/link";
 // import ThemeChanger from "./DarkSwitch";
 import Image from "next/image";
 import { Disclosure } from "@headlessui/react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const navigation = ["Product", "Features", "Pricing", "Company", "Blog"];
+  const pathname = usePathname()
+  // Define navigation items for different routes
+  const defaultNavigation = ["Features", "FAQ", "Blog"];
+  const companyNavigation = ["Features", "FAQ", "Blog", "Pricing"];
+
+  // Determine which navigation items to display based on the current route
+  const navigation = pathname.startsWith("/company") ? companyNavigation : defaultNavigation;
 
   return (
     <div className="w-full">
@@ -60,8 +69,7 @@ const Navbar = () => {
                       </Link>
                     ))}
                     <Link href="/company" className="w-full px-6 py-2 mt-3 text-center text-[#ffffff] bg-secondary  rounded-md lg:ml-5">         
-                    {/* <Link href="/company" className="w-full px-6 py-2 mt-3 text-center text-white bg-gradient-to-r from-green-400 to-blue-500 rounded-md lg:ml-5">          */}
-                      Add Company
+                         Add Company
                     </Link>
                   </>
                 </Disclosure.Panel>
@@ -100,6 +108,16 @@ const Navbar = () => {
       </nav>
     </div>
   );
+};
+
+
+Navbar.getInitialProps = async () => {
+  // Fetch data from an API
+  const response = await fetch('https://api.example.com/posts');
+  const posts = await response.json();
+
+  // Return the data as props
+  return { posts };
 };
 
 export default Navbar;
