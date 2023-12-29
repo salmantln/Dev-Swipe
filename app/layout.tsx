@@ -8,6 +8,9 @@ import { Footer } from "@/components/footer";
 import Navbar from "@/components/nav/Navbar";
 import { Inter, Architects_Daughter } from "next/font/google";
 import PrelineScript from "@/components/PrelineScript";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import { useEffect } from "react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,9 +53,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${architects_daughter.variable} pr-16 pl-16`} >
+      <body
+        className={`${inter.variable} ${architects_daughter.variable} pr-16 pl-16`}
+      >
         <Navbar />
         {children}
         <Footer />

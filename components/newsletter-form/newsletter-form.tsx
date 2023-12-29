@@ -86,6 +86,7 @@ function NewsletterForm({
           onChange={handleChange}
           autoComplete="off"
           className="w-full rounded-sm border border-gray-300 bg-white px-4 py-3 text-sm text-gray-500 shadow-none"
+          data-aos="fade-right"
         />
         {success && (
           <div className="mt-2 text-xs italic text-gray-500">
@@ -96,6 +97,7 @@ function NewsletterForm({
 
       <div className="control">
         <button
+          data-aos="fade-down"
           className="-mt-px inline-flex cursor-pointer justify-center whitespace-nowrap  rounded-md md:ml-5 border-0 bg-secondary  px-7 py-4 text-center font-medium leading-4 text-[#ffffff] no-underline shadow-lg"
           // className="-mt-px inline-flex cursor-pointer justify-center whitespace-nowrap rounded-sm border-0 bg-gradient-to-r from-green-400 to-blue-500 px-7 py-4 text-center font-medium leading-4 text-white no-underline shadow-lg"
           type="submit"

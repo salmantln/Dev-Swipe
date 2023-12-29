@@ -3,7 +3,7 @@ import React from "react";
 
 const FeaturesCompany = () => {
   return (
-    <section className="mt-24 md:mt-40 text-center">
+    <section className="mt-24 md:mt-40 text-center"           data-aos="fade-in">
       <h2 className="text-center text-3xl text-white">
         Why choosing DevSwipe for your Company?
       </h2>

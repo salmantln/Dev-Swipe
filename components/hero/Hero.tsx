@@ -90,6 +90,7 @@ const Hero = () => {
               alt="screenshot of Swipe Function."
               width="300"
               height="300"
+              data-aos="fade-left"
               // className="w-8"
             />
           </div>

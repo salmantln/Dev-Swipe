@@ -54,6 +54,7 @@ const CompanyInfoModal = () => {
       <button
         onClick={() => setIsOpen(true)}
         className="px-4 py-2 text-white bg-secondary rounded-md focus:outline-none"
+        data-aos="fade-right"
       >
         Post your job offer
       </button>

@@ -34,7 +34,7 @@ const FaqCompany = () => {
 
   return (
     <Container className="!p-0">
-      <div className="w-full  p-2 mx-auto rounded-2xl">
+      <div className="w-full  p-2 mx-auto rounded-2xl"           data-aos="fade-bottom">
         {faqData.map((item, index) => (
           <div key={item.question} className="mb-5">
             <Disclosure>
