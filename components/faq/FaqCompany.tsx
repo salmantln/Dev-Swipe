@@ -11,19 +11,19 @@ const FaqCompany = () => {
         "DevSwipe is a mobile application designed to simplify the job search process in the tech and development sectors. It uses a swipe-based interface to connect job seekers with relevant job opportunities efficiently.",
     },
     {
-      question: "How does the swipe feature work?",
+      question: "How can DevSwipe improve our recruitment process?",
       answer:
-        "Job seekers can swipe right on job listings they are interested in and swipe left on those they are not. This intuitive interface makes job searching faster and more user-friendly.",
+        "Our app simplifies sourcing by offering a pool of pre-screened candidates with tech and design expertise, reducing the time and resources spent on finding suitable talent.",
     },
     {
-      question: "Is DevSwipe free to use?",
+      question: "What features does DevSwipe offer for companies?",
       answer:
-        " Yes, DevSwipe is free for job seekers. There may be premium features available for enhanced functionality, which recruiters can subscribe to.",
+        "We offer detailed candidate profiles, skills assessments, integration with Linkedin and the ability to directly contact potential hires. Our platform also provides analytics to track the success of your listings.",
     },
     {
-      question: "What kind of jobs can I find on DevSwipe?",
+      question: "Is there a cost associated with using DevSwipe?",
       answer:
-        "DevSwipe specializes in tech and development roles, ranging from entry-level positions to senior roles as well as internships in various tech industries like UI UX, Software engineering and development and much more",
+        "DevSwipe is currently free to use!",
     },
   ];
 
