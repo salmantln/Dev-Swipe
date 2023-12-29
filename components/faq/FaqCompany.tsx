@@ -16,14 +16,19 @@ const FaqCompany = () => {
         "Our app simplifies sourcing by offering a pool of pre-screened candidates with tech and design expertise, reducing the time and resources spent on finding suitable talent.",
     },
     {
+      question:
+        "Can I integrate the app with my linkedin of my HR and other departments?",
+      answer:
+        "Yes. We want it easy to and efficient as possible for everybody. So You can connect your Linkedin with the app and get notified.",
+    },
+    {
       question: "What features does DevSwipe offer for companies?",
       answer:
         "We offer detailed candidate profiles, skills assessments, integration with Linkedin and the ability to directly contact potential hires. Our platform also provides analytics to track the success of your listings.",
     },
     {
       question: "Is there a cost associated with using DevSwipe?",
-      answer:
-        "DevSwipe is currently free to use!",
+      answer: "DevSwipe is currently free to use!",
     },
   ];
 
