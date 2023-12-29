@@ -116,7 +116,7 @@ const Pricing = () => {
             </ul>
             <a
               href="#"
-              className="text-white bg-gradient-to-r from-green-400 to-blue-500 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
+              className="text-white bg-secondary hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
             >
               Request Demo
             </a>
@@ -224,7 +224,7 @@ const Pricing = () => {
             </ul>
             <a
               href="#"
-              className="text-white  bg-gradient-to-r from-green-400 to-blue-500 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
+              className="text-white bg-secondary hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
             >
               Request Demo
             </a>
@@ -332,7 +332,7 @@ const Pricing = () => {
             </ul>
             <a
               href="#"
-              className="text-white  bg-gradient-to-r from-green-400 to-blue-500 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
+              className="text-white  bg-secondary hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900"
             >
               Request Demo
             </a>
@@ -340,176 +340,6 @@ const Pricing = () => {
         </div>
       </div>
     </section>
-    // <div classNameName="xl:container m-auto px-6 py-20 md:px-12 lg:px-20">
-    //   <div classNameName="m-auto text-center lg:w-7/12">
-    //     <h2 classNameName="text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
-    //       A Tailus Blocks subscription gives you access to our components and
-    //       more.
-    //     </h2>
-    //   </div>
-    //   <div classNameName="mt-12 grid items-center gap-6 md:grid-cols-2 lg:flex lg:space-x-8">
-    //     <div classNameName="group relative md:col-span-1 lg:w-[32%]">
-    //       <div
-    //         aria-hidden="true"
-    //         classNameName="absolute top-0 h-full w-full rounded-3xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none transition duration-500 group-hover:scale-105 lg:group-hover:scale-110"
-    //       ></div>
-    //       <div classNameName="relative space-y-8 p-8">
-    //         <h3 classNameName="text-center text-3xl font-semibold text-gray-700 dark:text-white">
-    //           Monthly
-    //         </h3>
-    //         <div classNameName="relative flex justify-around">
-    //           <div classNameName="flex">
-    //             <span classNameName="-ml-6 mt-2 text-3xl font-bold text-primary">
-    //               $
-    //             </span>
-    //             <span classNameName="leading-0 text-8xl font-bold text-gray-800 dark:text-white">
-    //               19
-    //             </span>
-    //           </div>
-    //           <span classNameName="absolute right-9 bottom-2 text-xl font-bold text-primary">
-    //             / Month
-    //           </span>
-    //         </div>
-    //         <ul
-    //           role="list"
-    //           classNameName="m-auto w-max space-y-4 pb-6 text-gray-600 dark:text-gray-300"
-    //         >
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>First premium advantage</span>
-    //           </li>
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>Second premium advantage</span>
-    //           </li>
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>Third advantage</span>
-    //           </li>
-    //         </ul>
-    //         <button classNameName="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
-    //           <span classNameName="relative text-base font-semibold text-white dark:text-dark">
-    //             Start plan
-    //           </span>
-    //         </button>
-    //       </div>
-    //     </div>
-
-    //     <div classNameName="group relative row-start-1 md:col-span-2 lg:w-[36%]">
-    //       <div
-    //         aria-hidden="true"
-    //         classNameName="absolute top-0 h-full w-full rounded-3xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none transition duration-500 group-hover:scale-105 lg:group-hover:scale-110"
-    //       ></div>
-    //       <div classNameName="relative space-y-8 p-8">
-    //         <h3 classNameName="text-center text-3xl font-semibold text-gray-700 dark:text-white">
-    //           Annual
-    //         </h3>
-    //         <div classNameName="overflow-hidden">
-    //           <div classNameName="-mr-20 flex items-end justify-center">
-    //             <div classNameName="flex">
-    //               <span classNameName="-ml-6 mt-2 text-3xl font-bold text-primary">
-    //                 $
-    //               </span>
-    //               <span classNameName="leading-0 text-8xl font-bold text-gray-800 dark:text-white">
-    //                 15
-    //               </span>
-    //             </div>
-    //             <div classNameName="mb-2">
-    //               <span classNameName="block text-xl font-bold text-gray-500 dark:text-gray-400">
-    //                 .56
-    //               </span>
-    //               <span classNameName="block text-xl font-bold text-primary">
-    //                 / Month
-    //               </span>
-    //             </div>
-    //           </div>
-    //           <div classNameName="text-center text-2xl font-medium">
-    //             <span classNameName="text-gray-400 line-through">$234</span>
-    //             <span classNameName="font-semibold text-gray-700 dark:text-white">
-    //               $190
-    //             </span>
-    //           </div>
-    //           <span classNameName="block text-center text-xs uppercase text-primary">
-    //             BILLED YEARLY
-    //           </span>
-    //           <span classNameName="m-auto mt-4 block w-max rounded-full bg-gradient-to-r from-yellow-300 to-pink-300 px-4 py-1 text-sm font-medium text-yellow-900">
-    //             1 Discount applied
-    //           </span>
-    //         </div>
-    //         <ul
-    //           role="list"
-    //           classNameName="m-auto w-max space-y-4 pb-6 text-gray-600 dark:text-gray-300"
-    //         >
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>First premium advantage</span>
-    //           </li>
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>Second premium advantage</span>
-    //           </li>
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>Third advantage</span>
-    //           </li>
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>Fourth organizations advantage</span>
-    //           </li>
-    //         </ul>
-    //         <button classNameName="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
-    //           <span classNameName="relative text-base font-semibold text-white dark:text-dark">
-    //             Start plan
-    //           </span>
-    //         </button>
-    //       </div>
-    //     </div>
-
-    //     <div classNameName="group relative md:col-span-1 lg:w-[32%]">
-    //       <div
-    //         aria-hidden="true"
-    //         classNameName="absolute top-0 h-full w-full rounded-3xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none transition duration-500 group-hover:scale-105 lg:group-hover:scale-110"
-    //       ></div>
-    //       <div classNameName="relative space-y-8 p-8">
-    //         <h3 classNameName="text-center text-3xl font-semibold text-gray-700 dark:text-white">
-    //           Free
-    //         </h3>
-    //         <div classNameName="relative flex justify-around">
-    //           <div classNameName="flex">
-    //             <span classNameName="-ml-2 mt-2 text-3xl font-bold text-primary">
-    //               $
-    //             </span>
-    //             <span classNameName="leading-0 text-8xl font-bold text-gray-800 dark:text-white">
-    //               0
-    //             </span>
-    //           </div>
-    //         </div>
-    //         <ul
-    //           role="list"
-    //           classNameName="m-auto w-max space-y-4 pb-6 text-gray-600 dark:text-gray-300"
-    //         >
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>First premium advantage</span>
-    //           </li>
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>Second premium advantage</span>
-    //           </li>
-    //           <li classNameName="space-x-2">
-    //             <span classNameName="font-semibold text-primary">&check;</span>
-    //             <span>Third advantage</span>
-    //           </li>
-    //         </ul>
-    //         <button classNameName="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-sky-50 before:border before:border-sky-500 dark:before:border-gray-600 dark:before:bg-gray-700 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
-    //           <span classNameName="relative text-base font-semibold text-sky-600 dark:text-white">
-    //             Request Demo
-    //           </span>
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
