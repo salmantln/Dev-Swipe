@@ -52,8 +52,9 @@ const CTA = () => {
           </div>
           <div className="relative mt-16 h-80 lg:mt-8">
             <Image
-              className="absolute left-0 top-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-              src="/img/tailwind_screen.png"
+              className="absolute left-0 top-0 w-[40rem] max-w-none rounded-md bg-white/5"
+              src="/img/CTA screenshot.png"
+              // src="/img/tailwind_screen.png"
               alt="App screenshot"
               width="1824"
               height="1080"
