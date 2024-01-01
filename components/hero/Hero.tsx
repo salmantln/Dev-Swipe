@@ -86,7 +86,8 @@ const Hero = () => {
         <div className="flex items-center justify-center w-full lg:w-1/2">
           <div className="">
             <Image
-              src="/img/Swipe screen-portrait.png"
+              src="/img/Screen  - Swipe-portrait.png"
+              // src="/img/Swipe screen-portrait.png"
               alt="screenshot of Swipe Function."
               width="300"
               height="300"

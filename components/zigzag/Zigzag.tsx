@@ -1,8 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import FeatImage01 from "@/public/img/features-03-image-01.png";
-import FeatImage02 from "@/public/img/features-03-image-02.png";
-import FeatImage03 from "@/public/img/features-03-image-03.png";
+import FeatImage01 from "@/public/img/Screen - Characters-portrait.png";
+import FeatImage02 from "@/public/img/Screen  - Swipe-portrait.png";
+import FeatImage03 from "@/public/img/Screen - Chat-portrait.png";
+// import FeatImage01 from "@/public/img/features-03-image-01.png";
+// import FeatImage02 from "@/public/img/features-03-image-02.png";
+// import FeatImage03 from "@/public/img/features-03-image-03.png";
 
 const Zigzag = () => {
   return (
@@ -31,7 +34,7 @@ const Zigzag = () => {
               >
                 <Image
                   src={FeatImage01}
-                  width={540}
+                  width={350}
                   height={405}
                   alt="Create Profile"
                 />
@@ -61,7 +64,7 @@ const Zigzag = () => {
               >
                 <Image
                   src={FeatImage02}
-                  width={540}
+                  width={350}
                   height={405}
                   alt="Swipe on Jobs"
                 />
@@ -92,7 +95,7 @@ const Zigzag = () => {
               >
                 <Image
                   src={FeatImage03}
-                  width={540}
+                  width={350}
                   height={405}
                   alt="Connect with Employers"
                 />
