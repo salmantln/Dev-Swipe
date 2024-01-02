@@ -9,8 +9,10 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
   const pathname = usePathname()
   // Define navigation items for different routes
-  const defaultNavigation = ["Features", "FAQ", "Blog"];
-  const companyNavigation = ["Features", "FAQ", "Blog", "Pricing"];
+  const defaultNavigation = ["Features", "", ""];
+  const companyNavigation = ["Features", "", "", ""];
+  // const defaultNavigation = ["Features", "FAQ", "Blog"];
+  // const companyNavigation = ["Features", "FAQ", "Blog", "Pricing"];
 
   // Determine which navigation items to display based on the current route
   const navigation = pathname.startsWith("/company") ? companyNavigation : defaultNavigation;
