@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 const CompanyPage = () => {
   return (
-    <main className="flex flex-col justify-between min-h-screen p-4">
+    <main className="flex flex-col justify-between min-h-screen p-1">
       <HeroCompany />
       <CTACompany />
       <FeaturesCompany />
