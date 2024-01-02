@@ -30,7 +30,7 @@ export default function DefaultLayout({
 
         {children}
 
-        <div className="flex flex-col justify-between min-h-screen p-16">
+        <div className="flex flex-col justify-between min-h-screen">
           <div className="w-full">
           <Faq />
           </div>
