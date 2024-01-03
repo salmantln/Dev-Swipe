@@ -1,4 +1,28 @@
 import React from 'react';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms Of Service | DevSwipe",
+  description:
+    "Terms Of Service page of DevSwipe",
+  applicationName: "DevSwipe",
+  authors: [{ name: "Salman Lartey", url: "https://dev-swipe.com" }],
+  keywords: ["swipe", "swipe your dream job, dev swipe"],
+  twitter: {
+    card: "summary_large_image",
+  },
+  // manifest: '/manifest.webmanifest',
+  openGraph: {
+    url: "https://dev-swipe.com/",
+    // images: [
+    //   {
+    //     width: 1200,
+    //     height: 630,
+    //     url: "https://raw.githubusercontent.com/Blazity/next-enterprise/main/project-logo.png",
+    //   },
+    // ],
+  },
+};
 
 const TOCPage = () => {
   return (
