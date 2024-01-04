@@ -62,7 +62,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${architects_daughter.variable} pr-8 pl-8`}
       >
-        <Navbar />
+        <Navbar  />
         {children}
         <Footer />
         <Analytics />
