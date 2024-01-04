@@ -13,7 +13,7 @@ const HeroCompany = () => {
     <>
       <div className="">
         <div className="relative  px-6 pt-14 lg:px-8">
-          {/* <div className="relative isolate px-6 pt-14 lg:px-8"> */}
+          {/* <div classNameName="relative isolate px-6 pt-14 lg:px-8"> */}
           <div
             className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true"
@@ -27,11 +27,11 @@ const HeroCompany = () => {
             />
           </div>
           <div className="mx-auto max-w-2xl py-15 sm:py-11 lg:py-30">
-            {/* <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-white ring-1 ring-gray-200/10 hover:ring-gray-400/20">
+            {/* <div classNameName="hidden sm:mb-8 sm:flex sm:justify-center">
+              <div classNameName="relative rounded-full px-3 py-1 text-sm leading-6 text-white ring-1 ring-gray-200/10 hover:ring-gray-400/20">
                 Announcing our next round of funding.{" "}
-                <a href="#" className="font-semibold text-indigo-200">
-                  <span className="absolute inset-0" aria-hidden="true" />
+                <a href="#" classNameName="font-semibold text-indigo-200">
+                  <span classNameName="absolute inset-0" aria-hidden="true" />
                   Read more <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
@@ -54,6 +54,59 @@ const HeroCompany = () => {
                   Learn more <span aria-hidden="true">→</span>
                 </a>
               </div>
+
+              {/* <div data-v-a8421f13="" className="flex  items-start">
+                <div data-v-a8421f13="" className="flex-1 ">
+                  <div data-v-a8421f13="" className="title">
+                    Find Global Talent
+                  </div>
+                  <div data-v-a8421f13="" className="msg">
+                    Post your jobs on our job board to immediately reach
+                    highly-skilled engineers, designers, PMs and more.
+                    <br />
+                    <br />
+                    We&apos;ll connect you with experienced candidates (3+ years
+                    on average) who are eagerly seeking roles in Japan.
+                  </div>
+                </div>
+                <div data-v-a8421f13="" className="flex flex-row">
+                  <ul data-v-a8421f13="" className="flex items-start pl-4">
+                    <li data-v-a8421f13="" className="item">
+                      <div data-v-a8421f13="" className="label">
+                        Software Engineers
+                      </div>
+                      <img
+                        data-v-a8421f13=""
+                        className="img"
+                        src="https://japan-dev.com/cdn/company_landing_page/person_engineer.jpg"
+                        alt="person-engineer"
+                      />
+                    </li>
+                    <li data-v-a8421f13="" className="item">
+                      <div data-v-a8421f13="" className="label">
+                        Designers
+                      </div>
+                      <img
+                        data-v-a8421f13=""
+                        className="img"
+                        src="https://japan-dev.com/cdn/company_landing_page/person_designer.jpg"
+                        alt="person-designer"
+                      />
+                    </li>
+                    <li data-v-a8421f13="" className="item">
+                      <div data-v-a8421f13="" className="label">
+                        Product Managers
+                      </div>
+                      <img
+                        data-v-a8421f13=""
+                        className="img"
+                        src="https://japan-dev.com/cdn/company_landing_page/person_product_manager.jpg"
+                        alt="person-manager"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div> */}
             </div>
           </div>
           <div

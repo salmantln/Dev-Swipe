@@ -61,12 +61,12 @@ const Hero = () => {
               Swipe Your Dream
             </h1>
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-primary lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
-              Dev & UI/UX Jobs
+              Tech Jobs
             </h1>
             <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
-              Discover how our revolutionary job-swiping app can transform your
-              career path. Say goodbye to the dread of Monday mornings and hello
-              to a job that ignites your passion.
+              Hand-picked jobs reachable in with a single swipe. Anonyms till
+              the match. No resume&apos;s and motivation letters. Top companies
+              only.
             </p>
 
             <div className="max-w-6xl mx-auto ">
@@ -100,8 +100,8 @@ const Hero = () => {
       <Container>
         <div className="flex flex-col justify-center">
           <div className="text-xl text-center text-gray-700 dark:text-white">
-            Trusted by <span className="text-accent font-bold">2000+</span> users
-            worldwide
+            Trusted by <span className="text-accent font-bold">2000+</span>{" "}
+            users worldwide
           </div>
         </div>
       </Container>

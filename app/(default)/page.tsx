@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-between min-h-screen ">
+    <main className="flex flex-col justify-between min-h-screen lg:pl-15 lg:pr-15 xl:pl-32 xl:pr-32">
     {/* <main className="flex flex-col justify-between min-h-screen "> */}
       {/* <Navbar /> */}
       <div>
