@@ -15,11 +15,11 @@ const Zigzag = () => {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h2 mb-4  text-gray-400">
-              Discover JobSwipe: Your Path to a Dream Tech Job
+              Discover DevSwipe: Your Path to a Dream Tech Job
             </h1>
             <p className="text-2xl text-gray-400">
               Embark on a seamless job hunting journey in three easy steps with
-              JobSwipe.
+              DevSwipe.
             </p>
           </div>
 
