@@ -11,38 +11,6 @@ type ScrollRevealRefElement =
   | HTMLParagraphElement;
 
 const Hero = () => {
-  // const [ScrollReveal, setScrollReveal] = useState<any>(null);
-  // const scrollRevealRef = useRef<ScrollRevealRefElement[]>([]);
-
-  // useEffect(() => {
-  //   import("scrollreveal").then((ScrollRevealModule) => {
-  //     setScrollReveal(ScrollRevealModule.default);
-
-  //     if (scrollRevealRef.current.length > 0) {
-  //       scrollRevealRef.current.forEach((ref) =>
-  //         ScrollRevealModule.default().reveal(ref, {
-  //           duration: 1000,
-  //           distance: "40px",
-  //           easing: "cubic-bezier(0.5, -0.01, 0, 1.005)",
-  //           origin: "top",
-  //           interval: 150,
-  //         })
-  //       );
-  //     }
-  //   });
-
-  //   return () => {
-  //     if (ScrollReveal) {
-  //       ScrollReveal.destroy();
-  //     }
-  //   };
-  // }, []);
-
-  // const addToScrollRevealRef = (el: ScrollRevealRefElement) => {
-  //   if (el && !scrollRevealRef.current.includes(el)) {
-  //     scrollRevealRef.current.push(el);
-  //   }
-  // };
 
   async function onNewsletterSubmit(values: any) {
     return new Promise((resolve) => {
