@@ -8,11 +8,11 @@ const config: Config = {
     "node_modules/preline/dist/*.js",
   ],
   theme: {
-    colors: { 
-      'primary': '#9AD1FE',
-      'secondary': '#4E598C',
-      'accent': '#F9C784',
-     },
+    colors: {
+      primary: "#9AD1FE",
+      secondary: "#4E598C",
+      accent: "#F9C784",
+    },
     extend: {
       fontFamily: {
         body: [
@@ -62,6 +62,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("preline/plugin")],
+  plugins: [require("preline/plugin"), require("@tailwindcss/typography")],
 };
 export default config;

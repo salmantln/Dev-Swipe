@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 // import ThemeChanger from "./DarkSwitch";
@@ -7,15 +7,17 @@ import { Disclosure } from "@headlessui/react";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
   // Define navigation items for different routes
-  const defaultNavigation = ["Features", ];
-  const companyNavigation = ["Features", ];
+  const defaultNavigation = ["Features", "Blog"];
+  const companyNavigation = ["Features", "Blog", "FAQ"];
   // const defaultNavigation = ["Features", "FAQ", "Blog"];
   // const companyNavigation = ["Features", "FAQ", "Blog", "Pricing"];
 
   // Determine which navigation items to display based on the current route
-  const navigation = pathname.startsWith("/company") ? companyNavigation : defaultNavigation;
+  const navigation = pathname.startsWith("/company")
+    ? companyNavigation
+    : defaultNavigation;
 
   return (
     <div className="w-full">
@@ -42,11 +44,13 @@ const Navbar = () => {
 
                 <Disclosure.Button
                   aria-label="Toggle Menu"
-                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700">
+                  className="px-2 py-1 ml-auto text-gray-500 rounded-md lg:hidden hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:text-gray-300 dark:focus:bg-trueGray-700"
+                >
                   <svg
                     className="w-6 h-6 fill-primary"
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24">
+                    viewBox="0 0 24 24"
+                  >
                     {open && (
                       <path
                         fillRule="evenodd"
@@ -65,13 +69,28 @@ const Navbar = () => {
 
                 <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
                   <>
-                    {navigation.map((item, index) => (
-                      <Link key={index} href="/" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
+                    {/* {navigation.map((item, index) => (
+                      <Link key={index} href="/{item}" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
                           {item}
                       </Link>
+                    ))} */}
+                    {navigation.map((item, index) => (
+                      <Link
+                        key={index}
+                        href={
+                          item === "Blog" ? "/blog" : `/${item.toLowerCase()}`
+                        }
+                        className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none"
+                      >
+                        {item}
+                      </Link>
                     ))}
-                    <Link href="/company" className="w-full px-6 py-2 mt-3 text-center text-[#ffffff] bg-secondary  rounded-md lg:ml-5">         
-                         Add Company
+
+                    <Link
+                      href="/company"
+                      className="w-full px-6 py-2 mt-3 text-center text-[#ffffff] bg-secondary  rounded-md lg:ml-5"
+                    >
+                      Add Company
                     </Link>
                   </>
                 </Disclosure.Panel>
@@ -112,10 +131,9 @@ const Navbar = () => {
   );
 };
 
-
 Navbar.getInitialProps = async () => {
   // Fetch data from an API
-  const response = await fetch('https://api.example.com/posts');
+  const response = await fetch("https://api.example.com/posts");
   const posts = await response.json();
 
   // Return the data as props
