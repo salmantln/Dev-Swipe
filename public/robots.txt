@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://dev-swipe.com
+
+# Sitemaps
+Sitemap: https://dev-swipe.com/sitemap.xml

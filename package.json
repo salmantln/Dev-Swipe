@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,6 +19,7 @@
     "gray-matter": "^4.0.3",
     "next": "^14.0.4",
     "next-seo": "^6.4.0",
+    "next-sitemap": "^4.2.3",
     "nodemailer": "^6.9.7",
     "preline": "^2.0.2",
     "react": "^18.2.0",
