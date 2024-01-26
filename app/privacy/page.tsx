@@ -30,11 +30,11 @@ const PrivacyPage = () => {
   
   return (
     <div className="relative -mt-[5.75rem] overflow-hidden pt-[5.75rem]">
-      <img
+      {/* <img
         src="/img/beams-basic.png"
         alt=""
         className="absolute left-1/2 top-0 -ml-[39rem] w-[113.125rem] max-w-none"
-      />
+      /> */}
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="relative mx-auto max-w-[37.5rem] pt-20 text-center pb-24">
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
