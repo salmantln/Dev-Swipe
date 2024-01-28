@@ -44,6 +44,16 @@ const Footer = () => {
                 </a>
               </Link>
             </li>
+            <li>
+              <Link href="/terms-and-conditions" legacyBehavior>
+                <a
+                  href="/terms-and-conditions"
+                  className="text-md text-white transition-colors duration-300 hover:text-deep-purple-accent-400 font-semibold"
+                >
+                  Terms of Service
+                </a>
+              </Link>
+            </li>
 
             <li>
               <a
