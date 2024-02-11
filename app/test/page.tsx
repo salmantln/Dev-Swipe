@@ -3,7 +3,7 @@
 import DashboardNavbarV2 from "@/dashboard_components/navbar/dashboardNavbar";
 import GptSidebar from "@/dashboard_components/sidebar/gptSidebar";
 import { useState } from "react";
-import DashboardPage from "./dashboard/page";
+import DashboardPage from "./(dashboard)/page";
 import JobPostsPage from "./job-post/page"
 
 export default function Page() {
