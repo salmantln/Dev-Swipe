@@ -1,5 +1,5 @@
 import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/20/solid";
+import { ChevronUpIcon } from "@heroicons/react/solid";
 
 import Container from "../hero/container";
 
