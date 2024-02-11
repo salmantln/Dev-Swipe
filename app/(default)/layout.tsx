@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { Faq } from "@/components/faq";
 import { CTA } from "@/components/call-to-action";
 import AOS from 'aos';
+import Navbar from "@/components/nav/Navbar";
+import Footer from "@/components/footer/Footer";
 // import 'aos/dist/aos.css'
 
 // import PageIllustration from '@/components/page-illustration'
@@ -26,6 +28,7 @@ export default function DefaultLayout({
   return (
     <>
       <main className="grow ">
+      <Navbar/>
         {/* <PageIllustration /> */}
 
         {children}
@@ -36,6 +39,7 @@ export default function DefaultLayout({
           </div>
           <CTA />
         </div>
+        <Footer />
       </main>
 
       {/* <Footer /> */}

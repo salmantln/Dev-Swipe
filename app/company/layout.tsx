@@ -5,6 +5,8 @@ import { Faq, FaqCompany } from "@/components/faq";
 import { CTA } from "@/components/call-to-action";
 import AOS from "aos";
 import HeroCompany from "@/components/hero/hero_company";
+import Navbar from "@/components/nav/Navbar";
+import { Footer } from "@/components/footer";
 
 export default function DefaultLayout({
   children,
@@ -23,6 +25,7 @@ export default function DefaultLayout({
   return (
     <>
       <main className="grow">
+        <Navbar />
         {/* <PageIllustration /> */}
         {children}
         <div className="flex flex-col justify-between p-4">
@@ -31,6 +34,7 @@ export default function DefaultLayout({
           </div>
           {/* <CTA /> */}
         </div>
+        <Footer />
       </main>
     </>
   );

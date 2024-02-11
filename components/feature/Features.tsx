@@ -3,8 +3,10 @@ import {
   LightBulbIcon,
   FingerPrintIcon,
   BellIcon,
-  ChatBubbleOvalLeftIcon,
-} from "@heroicons/react/24/outline";
+  ChatIcon,
+  // ChatBubbleOvalLeftIcon,
+  
+} from "@heroicons/react/outline";
 
 const Features = () => {
   const features = [
@@ -30,7 +32,7 @@ const Features = () => {
       name: "In-App Messaging and Networking",
       description:
         "Connect directly with employers and network seamlessly within the app through our user-friendly messaging feature.",
-      icon: ChatBubbleOvalLeftIcon,
+      icon: ChatIcon,
     },
   ];
 
