@@ -6,7 +6,6 @@ import { useState } from "react";
 import DashboardPage from "./dashboard/page";
 import { JobPostsPage } from "./job-post/page";
 
-
 export default function Page() {
   const [selectedSection, setSelectedSection] = useState("");
 
@@ -44,13 +43,12 @@ export default function Page() {
     // </>
 
     <>
-        <body className="bg-gray-50 dark:bg-slate-900">
-	
-<DashboardNavbarV2/>
+      <body className="bg-gray-50 dark:bg-slate-900">
+        <DashboardNavbarV2 />
 
-<GptSidebar onSectionSelect={handleSectionChange} />
-{/* <Sidebar/> */}
-{/* <div className="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden dark:bg-gray-800 dark:border-gray-700">
+        <GptSidebar onSectionSelect={handleSectionChange} />
+        {/* <Sidebar/> */}
+        {/* <div className="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 md:px-8 lg:hidden dark:bg-gray-800 dark:border-gray-700">
   <div className="flex items-center py-4">
     <button type="button" className="text-gray-500 hover:text-gray-600" data-hs-overlay="#application-sidebar" aria-controls="application-sidebar" aria-label="Toggle navigation">
       <span className="sr-only">Toggle Navigation</span>
@@ -71,11 +69,9 @@ export default function Page() {
   </div>
 </div> */}
 
-
-
-<div className="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
-{renderSection()}
-  {/* <header>
+        <div className="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
+          {renderSection()}
+          {/* <header>
     <p className="mb-2 text-sm font-semibold text-blue-600">Starter Pages & Examples</p>
     <h1 className="block text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white">Application Layout: Sidebar & Header using Tailwind CSS</h1>
     <p className="mt-2 text-lg text-gray-800 dark:text-gray-400">This is a simple application layout with sidebar and header examples using Tailwind CSS.</p>
@@ -92,10 +88,8 @@ export default function Page() {
       </a>
     </div>
   </header> */}
-</div>
-
-</body>
+        </div>
+      </body>
     </>
-
   );
 }

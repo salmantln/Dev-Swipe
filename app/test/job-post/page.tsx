@@ -1,15 +1,13 @@
 import React from "react";
 
-export const JobPostsPage = () => {
+export default function JobPostsPage() {
   return (
     <>
       <div className="">
         <p className="mb-2 text-sm font-semibold text-blue-600">Job Posts</p>
         <div className="bg-white rounded-xl shadow p-4 sm:p-7">
           <div className="mb-8">
-            <h2 className="text-xl font-bold text-gray-800 ">
-              Job post
-            </h2>
+            <h2 className="text-xl font-bold text-gray-800 ">Job post</h2>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Manage your name, password and account settings.
             </p>
@@ -301,4 +299,4 @@ export const JobPostsPage = () => {
       </div>
     </>
   );
-};
+}
