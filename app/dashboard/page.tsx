@@ -4,12 +4,11 @@
 import { useSession } from "next-auth/react";
 import { redirect, usePathname } from "next/navigation";
 // import Sidebar from "@/dashboard_components/sidebar";
-import { Component, useState } from "react";
+import { useState } from "react";
 // import Navbar from "/dashboard_components/SidebarV2";
 // import Navbar from "@/dashboard_components/navbar";
-import UserCard from "@/components/UserCard/UserCard";
 
-const Dashboard = ({ children }: { children: React.ReactNode }) => {
+export default function Dashboard({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
@@ -35,6 +34,4 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
       <div>Dashboard</div>
     </>
   );
-};
-
-export default Dashboard;
+}
