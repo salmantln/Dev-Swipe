@@ -18,8 +18,8 @@ const Navbar = () => {
     : defaultNavigation;
 
   return (
-    <div className="w-full">
-      <nav className="container relative flex flex-wrap items-center justify-between pt-4 mx-auto lg:justify-between xl:px-0">
+    <div className="w-full bg-white">
+      <nav className="container relative flex flex-wrap items-center justify-between pt-4 mx-auto lg:justify-between xl:px-0  ">
         {/* Logo  */}
         <Disclosure>
           {({ open }) => (

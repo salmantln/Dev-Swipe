@@ -21,16 +21,16 @@ const Hero = () => {
 
   return (
     <>
-      <Container className="flex flex-wrap ">
-        <div className="flex items-center w-full lg:w-1/2 ">
+      <Container className="flex flex-wrap  ">
+        <div className="flex items-center w-full lg:w-1/2 "  >
           <div className="max-w-2xl mb-8 text-center lg:w-full lg:py-20 lg:text-left">
-            <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+            <h1 className="text-4xl font-bold leading-snug tracking-tight text-[#50d71e] lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight ">
               Swipe Your Dream
             </h1>
-            <h1 className="text-4xl font-bold leading-snug tracking-tight text-primary lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
+            <h1 className="text-4xl font-bold leading-snug tracking-tight text-[#50d71e] lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight ">
               Tech Jobs
             </h1>
-            <p className="py-5 text-xl leading-normal text-gray-500 lg:text-xl xl:text-2xl dark:text-gray-300">
+            <p className="py-5 text-xl leading-normal text-[#50d71e] lg:text-xl xl:text-2xl ">
               Hand-picked jobs reachable in with a single swipe. Anonyms till
               the match. No resume&apos;s and motivation letters. Top companies
               only.
@@ -41,7 +41,7 @@ const Hero = () => {
               //  ref={addToScrollRevealRef}
               >
                 <NewsletterForm
-                  className="mx-auto mt-8 max-w-md lg:mx-0"
+                  className="mx-auto mt-8 max-w-md lg:mx-0 "
                   submitText="Get early access"
                   // onSubmit={subscribeUser}
                   onSubmit={onNewsletterSubmit}
