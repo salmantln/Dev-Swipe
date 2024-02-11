@@ -55,58 +55,7 @@ const HeroCompany = () => {
                 </a>
               </div>
 
-              {/* <div data-v-a8421f13="" className="flex  items-start">
-                <div data-v-a8421f13="" className="flex-1 ">
-                  <div data-v-a8421f13="" className="title">
-                    Find Global Talent
-                  </div>
-                  <div data-v-a8421f13="" className="msg">
-                    Post your jobs on our job board to immediately reach
-                    highly-skilled engineers, designers, PMs and more.
-                    <br />
-                    <br />
-                    We&apos;ll connect you with experienced candidates (3+ years
-                    on average) who are eagerly seeking roles in Japan.
-                  </div>
-                </div>
-                <div data-v-a8421f13="" className="flex flex-row">
-                  <ul data-v-a8421f13="" className="flex items-start pl-4">
-                    <li data-v-a8421f13="" className="item">
-                      <div data-v-a8421f13="" className="label">
-                        Software Engineers
-                      </div>
-                      <img
-                        data-v-a8421f13=""
-                        className="img"
-                        src="https://japan-dev.com/cdn/company_landing_page/person_engineer.jpg"
-                        alt="person-engineer"
-                      />
-                    </li>
-                    <li data-v-a8421f13="" className="item">
-                      <div data-v-a8421f13="" className="label">
-                        Designers
-                      </div>
-                      <img
-                        data-v-a8421f13=""
-                        className="img"
-                        src="https://japan-dev.com/cdn/company_landing_page/person_designer.jpg"
-                        alt="person-designer"
-                      />
-                    </li>
-                    <li data-v-a8421f13="" className="item">
-                      <div data-v-a8421f13="" className="label">
-                        Product Managers
-                      </div>
-                      <img
-                        data-v-a8421f13=""
-                        className="img"
-                        src="https://japan-dev.com/cdn/company_landing_page/person_product_manager.jpg"
-                        alt="person-manager"
-                      />
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
+          
             </div>
           </div>
           <div

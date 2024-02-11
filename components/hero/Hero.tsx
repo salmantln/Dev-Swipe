@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 import { NewsletterForm } from "../newsletter-form";
 import Container from "./container";
 
