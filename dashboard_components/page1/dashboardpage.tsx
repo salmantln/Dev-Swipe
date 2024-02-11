@@ -1,4 +1,3 @@
-"use client";
 import KpiCardGrid from "@/dashboard_components/cards/KpiCard";
 import { TableUsageExample } from "@/dashboard_components/table/table";
 

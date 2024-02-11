@@ -3,8 +3,9 @@
 import DashboardNavbarV2 from "@/dashboard_components/navbar/dashboardNavbar";
 import GptSidebar from "@/dashboard_components/sidebar/gptSidebar";
 import { useState } from "react";
-import DashboardPage from "./(dashboard)/page";
+
 import JobPostsPage from "./job-post/page"
+import DashboardPage from "@/dashboard_components/page1/dashboardpage";
 
 export default function Page() {
   const [selectedSection, setSelectedSection] = useState("");
