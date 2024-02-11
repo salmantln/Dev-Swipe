@@ -9,13 +9,7 @@ import { Component, useState } from "react";
 // import Navbar from "@/dashboard_components/navbar";
 import UserCard from "@/components/UserCard/UserCard";
 
-const Dashboard = ({
-  pageTitle,
-  children,
-}: {
-  pageTitle: Component;
-  children: React.ReactNode;
-}) => {
+const Dashboard = ({ children }: { children: React.ReactNode }) => {
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
@@ -38,7 +32,7 @@ const Dashboard = ({
       {/* <section className="flex flex-col gap-6">
         <UserCard user={session?.user} pagetype={"Client"} />
       </section> */}
-
+      <div>Dashboard</div>
     </>
   );
 };
