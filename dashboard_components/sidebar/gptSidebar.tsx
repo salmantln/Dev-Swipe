@@ -47,7 +47,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -71,7 +71,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -89,7 +89,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="m18 15-6-6-6 6" />
@@ -103,7 +103,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="m6 9 6 6 6-6" />
@@ -133,7 +133,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                   >
                     <path d="m18 15-6-6-6 6" />
@@ -147,7 +147,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                   >
                     <path d="m6 9 6 6 6-6" />
@@ -201,7 +201,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                   >
                     <path d="m18 15-6-6-6 6" />
@@ -215,7 +215,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
                   >
                     <path d="m6 9 6 6 6-6" />
@@ -272,7 +272,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <circle cx="18" cy="15" r="3" />
@@ -297,7 +297,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="m18 15-6-6-6 6" />
@@ -311,7 +311,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="m6 9 6 6 6-6" />
@@ -365,7 +365,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
@@ -381,7 +381,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="m18 15-6-6-6 6" />
@@ -395,7 +395,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="m6 9 6 6 6-6" />
@@ -449,7 +449,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
@@ -480,7 +480,7 @@ const GptSidebar = ({ onSectionSelect }: { onSectionSelect: any }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
+              strokeLinecap="round"
               stroke-linejoin="round"
             >
               <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
