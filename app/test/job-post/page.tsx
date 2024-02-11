@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function JobPostsPage() {
   return (
@@ -23,7 +24,9 @@ export default function JobPostsPage() {
 
               <div className="sm:col-span-9">
                 <div className="flex items-center gap-5">
-                  <img
+                  <Image
+                    width={50}
+                    height={50}
                     className="inline-block h-16 w-16 rounded-full ring-2 ring-white dark:ring-gray-800"
                     src="../assets/img/160x160/img1.jpg"
                     alt="Image Description"

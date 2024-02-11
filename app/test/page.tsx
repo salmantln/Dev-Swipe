@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardNavbarV2 from "@/dashboard_components/navbar/Navbar";
+import DashboardNavbarV2 from "@/dashboard_components/navbar/dashboardNavbar";
 import GptSidebar from "@/dashboard_components/sidebar/gptSidebar";
 import { useState } from "react";
 import DashboardPage from "./dashboard/page";
