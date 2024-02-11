@@ -43,14 +43,16 @@ export default function RootLayout({
         <AuthProvider>
           {children}
           <Analytics />
-          <PrelineScript />
+         
           {/* <Navbar  />
         {children}
         <Footer />
         <Analytics />
         <PrelineScript /> */}
         </AuthProvider>
+       
       </body>
+      <PrelineScript />
     </html>
   );
 }

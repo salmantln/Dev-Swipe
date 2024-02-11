@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "✓ Discover your ideal job role ✓ 1000+ job opportunities ✓ Simple, anonymous application ✓ Get the DevSwipe-App ✓ PlayStore & AppStore ✓ Dev Swipe",
   applicationName: "DevSwipe",
   authors: [{ name: "Salman Lartey", url: "https://dev-swipe.com" }],
-  keywords: ["job boards for tech jobs", "best job boards for tech jobs", "ux design job boards", "ai job board", "swe job board", "stage software engineer"],
+  keywords: ["dev swipe", "job boards for tech jobs", "best job boards for tech jobs", "ux design job boards", "ai job board", "swe job board", "stage software engineer"],
   twitter: {
     card: "summary_large_image",
   },
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-between min-h-screen lg:pl-15 lg:pr-15 xl:pl-32 xl:pr-32">
+    <main className="flex flex-col justify-between min-h-screen lg:pl-15 lg:pr-15 xl:pl-32 xl:pr-32 bg-gray-500">
     {/* <main className="flex flex-col justify-between min-h-screen "> */}
       {/* <Navbar /> */}
       <div>

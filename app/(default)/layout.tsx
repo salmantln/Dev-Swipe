@@ -27,7 +27,7 @@ export default function DefaultLayout({
 
   return (
     <>
-      <main className="grow ">
+      <main className="grow bg-gray-500 ">
       <Navbar/>
         {/* <PageIllustration /> */}
 
