@@ -98,7 +98,7 @@ function NewsletterForm({
       <div className="control">
         <button
           data-aos="fade-down"
-          className="-mt-px inline-flex cursor-pointer justify-center whitespace-nowrap  rounded-md md:ml-5 border-0 bg-[#50d71e]  px-7 py-4 text-center font-medium leading-4 text-[#ffffff] no-underline shadow-lg"
+          className="-mt-px inline-flex cursor-pointer justify-center whitespace-nowrap  rounded-md md:ml-5 border-0 bg-[#000000]  px-7 py-4 text-center font-medium leading-4 text-[#ffffff] no-underline shadow-lg"
           // className="-mt-px inline-flex cursor-pointer justify-center whitespace-nowrap rounded-sm border-0 bg-gradient-to-r from-green-400 to-blue-500 px-7 py-4 text-center font-medium leading-4 text-white no-underline shadow-lg"
           type="submit"
         >

@@ -43,7 +43,7 @@ const Faq = () => {
                       } w-5 h-5 text-gradient-to-r from-green-400 to-blue-500`}
                     />
                   </Disclosure.Button>
-                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-gray-900 dark:text-gray-300">
+                  <Disclosure.Panel className="px-4 pt-4 pb-2 text-gray-900 ">
                     {item.answer}
                   </Disclosure.Panel>
                 </>
