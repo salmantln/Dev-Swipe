@@ -1,17 +1,14 @@
 "use client";
 
-import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
-import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { Footer } from "@/components/footer";
-import Navbar from "@/components/nav/Navbar";
-import { Inter, Architects_Daughter } from "next/font/google";
 import PrelineScript from "@/components/PrelineScript";
-import "aos/dist/aos.css";
+import { Analytics } from "@vercel/analytics/react";
 import AOS from "aos";
+import "aos/dist/aos.css";
+import { Architects_Daughter, Inter } from "next/font/google";
 import { useEffect } from "react";
 import AuthProvider from "./context/AuthProvider";
+import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",

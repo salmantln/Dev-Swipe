@@ -44,15 +44,13 @@ const Features = () => {
           {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             Deploy faster
           </h2> */}
-          <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <p className="mt-2 text-3xl font-bold tracking-tight text-black sm:text-4xl">
             {/* <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"> */}
-            Why using DevSwipe
+            Why using DevSwipe?
           </p>
-          <p className="mt-6 text-lg leading-8 text-gray-500">
+          <p className="mt-6 text-lg leading-8 text-[#000000]">
             {/* <p className="mt-6 text-lg leading-8 text-gray-600"> */}
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-            Suspendisse eget egestas a elementum pulvinar et feugiat blandit at.
-            In mi viverra elit nunc.
+           Well, it is actually quite simple why:
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
@@ -63,13 +61,13 @@ const Features = () => {
                   <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
                   {/* <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-secondary"> */}
                     <feature.icon
-                      className="h-6 w-6 text-secondary"
+                      className="h-6 w-6 text-[#000000]"
                       aria-hidden="true"
                     />
                   </div>
                   {feature.name}
                 </dt>
-                <dd className="mt-2 text-base leading-7 text-gray-200">
+                <dd className="mt-2 text-base leading-7 text-gray-500">
                   {feature.description}
                 </dd>
               </div>

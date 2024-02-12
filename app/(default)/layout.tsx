@@ -35,6 +35,7 @@ export default function DefaultLayout({
           style={{
             backgroundImage:
               "url('https://preline.co/assets/svg/examples/polygon-bg-element.svg')",
+              // "url('/free_grid.jpg')",
             backgroundSize: "cover", // Ensure it covers the whole screen without repeating
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center", // Center the background image
