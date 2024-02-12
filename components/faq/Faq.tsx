@@ -35,7 +35,7 @@ const Faq = () => {
             <Disclosure>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-[#ffffff] rounded-lg bg-secondary hover:bg-primary hover:text-secondary focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-white">
+                  <Disclosure.Button className="flex items-center justify-between w-full px-4 py-4 text-lg text-left text-[#000000] rounded-lg bg-gray-500 hover:bg-gray-400 hover:text-[#000000] focus:outline-none focus-visible:ring focus-visible:ring-indigo-100 focus-visible:ring-opacity-75 dark:bg-trueGray-800 dark:text-white">
                     <span>{item.question}</span>
                     <ChevronUpIcon
                       className={`${
