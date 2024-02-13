@@ -3073,6 +3073,7 @@ const Page = () => {
         <Pricing />
         <Faqs />
       </main>
+      <Footer />
     </>
   );
 };

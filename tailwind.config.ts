@@ -64,19 +64,59 @@ module.exports = {
         "tremor-small": "0.375rem",
         "tremor-default": "0.5rem",
         "tremor-full": "9999px",
+        '4xl': '2rem',
+        '5xl': '2.5rem',
       },
       fontSize: {
         "tremor-label": ["0.75rem", { lineHeight: "1rem" }],
         "tremor-default": ["0.875rem", { lineHeight: "1.25rem" }],
         "tremor-title": ["1.125rem", { lineHeight: "1.75rem" }],
         "tremor-metric": ["1.875rem", { lineHeight: "2.25rem" }],
+        xs: ['0.75rem', { lineHeight: '1rem' }],
+        sm: ['0.875rem', { lineHeight: '1.5rem' }],
+        base: ['1rem', { lineHeight: '1.5rem' }],
+        // lg: ['1.125rem', { lineHeight: '2rem' }],
+        xl: ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['2rem', { lineHeight: '3rem' }],
+        '4xl': ['2.5rem', { lineHeight: '3rem' }],
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }],
+        '9xl': ['8rem', { lineHeight: '1' }],
       },
       backgroundImage: {
         'hero-pattern': "url('https://preline.co/assets/svg/examples/polygon-bg-element.svg')",
         'footer-texture': "url('/img/footer-texture.png')",
-      }
+      },
+      maxWidth: {
+        '2xl': '40rem',
+      },
+      keyframes: {
+        'fade-in': {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+        marquee: {
+          '100%': {
+            transform: 'translateY(-50%)',
+          },
+        },
+        'spin-reverse': {
+          to: {
+            transform: 'rotate(-360deg)',
+          },
+        },
+      },
     },
   },
+
+  
   safelist: [
     {
       pattern:
