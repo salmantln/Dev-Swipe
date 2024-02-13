@@ -7,6 +7,7 @@ import AOS from "aos";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/footer/Footer";
 import Hero from "@/components/hero/Hero";
+import LandingpageTrusted from "@/components/landingpageTrusted";
 // import 'aos/dist/aos.css'
 
 // import PageIllustration from '@/components/page-illustration'
@@ -42,6 +43,7 @@ export default function DefaultLayout({
           }}
         >
           <Hero />
+          <LandingpageTrusted />
         </div>
 
         {children}
