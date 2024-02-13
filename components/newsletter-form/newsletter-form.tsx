@@ -76,7 +76,7 @@ function NewsletterForm({
         <label className="hidden" htmlFor="email" aria-hidden="true">
           Email
         </label>
-        <input
+        {/* <input
           required
           placeholder="Email&hellip;"
           id="email"
@@ -87,7 +87,20 @@ function NewsletterForm({
           autoComplete="off"
           className="w-full rounded-sm border  border-[#878787] bg-[#F5F5F5] px-4 py-3 text-sm text-gray-500 shadow-none"
           data-aos="fade-right"
+        /> */}
+        <input
+          required
+          id="email"
+          name="email"
+          type="email"
+          autoComplete="off"
+          className="py-3 px-4 block w-full xl:min-w-[18rem] border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+          placeholder="Email"
+          value={email}
+          onChange={handleChange}
+          data-aos="fade-right"
         />
+
         {success && (
           <div className="mt-2 text-xs italic text-gray-500">
             Email submitted successfully!
