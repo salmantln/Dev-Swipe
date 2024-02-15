@@ -6,13 +6,47 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./componentsV2/**/*.{js,ts,jsx,tsx}",
+    "./dashboard_components/**/*.{js,ts,jsx,tsx}",
     './node_modules/preline/preline.js',
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+ 
     transparent: "transparent",
     current: "currentColor",
+
     extend: {
+      animation: {
+        'fade-in': 'fade-in 0.5s linear forwards',
+        marquee: 'marquee var(--marquee-duration) linear infinite',
+        'spin-slow': 'spin 4s linear infinite',
+        'spin-slower': 'spin 6s linear infinite',
+        'spin-reverse': 'spin-reverse 1s linear infinite',
+        'spin-reverse-slow': 'spin-reverse 4s linear infinite',
+        'spin-reverse-slower': 'spin-reverse 6s linear infinite',
+      },
+      
+    keyframes: {
+      'fade-in': {
+        from: {
+          opacity: 0,
+        },
+        to: {
+          opacity: 1,
+        },
+      },
+      marquee: {
+        '100%': {
+          transform: 'translateY(-50%)',
+        },
+      },
+      'spin-reverse': {
+        to: {
+          transform: 'rotate(-360deg)',
+        },
+      },
+    },
       colors: {
         // light mode
         tremor: {
@@ -93,26 +127,7 @@ module.exports = {
       maxWidth: {
         '2xl': '40rem',
       },
-      keyframes: {
-        'fade-in': {
-          from: {
-            opacity: 0,
-          },
-          to: {
-            opacity: 1,
-          },
-        },
-        marquee: {
-          '100%': {
-            transform: 'translateY(-50%)',
-          },
-        },
-        'spin-reverse': {
-          to: {
-            transform: 'rotate(-360deg)',
-          },
-        },
-      },
+     
     },
   },
 
@@ -146,6 +161,7 @@ module.exports = {
         /^(fill-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(?:50|100|200|300|400|500|600|700|800|900|950))$/,
     },
   ],
+ 
   plugins: [
     require("@headlessui/tailwindcss"),
     require("@tailwindcss/typography"),

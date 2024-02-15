@@ -386,8 +386,8 @@ export function Hero() {
                 // ['CBS', logoCbs],
                 // ['Fast Company', logoFastCompany],
                 // ['HuffPost', logoHuffpost, 'hidden xl:block'],
-                ['Fast Company', linkedin, 'hidden xl:block'],
-                ['HuffPost', reddit, 'hidden xl:block'],
+                ['Linkedin', linkedin, 'hidden xl:block'],
+                ['Reddit', reddit, 'hidden xl:block'],
               ].map(([name, logo, className]) => (
                 <li key={name} className={clsx('flex', className)}>
                   <Image src={logo} alt={name} className="h-8" unoptimized />

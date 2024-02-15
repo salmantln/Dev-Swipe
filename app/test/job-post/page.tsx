@@ -28,7 +28,7 @@ export default function JobPostsPage() {
                     width={50}
                     height={50}
                     className="inline-block h-16 w-16 rounded-full ring-2 ring-white dark:ring-gray-800"
-                    src="../assets/img/160x160/img1.jpg"
+                    src="/avatars/avatar1.png"
                     alt="Image Description"
                   />
                   <div className="flex gap-x-2">

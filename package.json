@@ -33,7 +33,6 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vercel/analytics": "^1.1.1",
-    "@windmill/react-ui": "^0.6.0",
     "aos": "^2.3.4",
     "bcrypt": "^5.1.1",
     "clsx": "^2.0.0",
@@ -71,11 +70,11 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/scrollreveal": "^0.0.11",
-    "autoprefixer": "^10.0.1",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }
