@@ -49,7 +49,7 @@ export default function JobPostsPage() {
           </label>{" "}
           <div className="mt-1">
             <textarea
-              rows="1"
+              rows={1}
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
             ></textarea>
           </div>
@@ -63,7 +63,7 @@ export default function JobPostsPage() {
           </label>{" "}
           <div className="mt-1">
             <textarea
-              rows="3"
+              rows={3}
               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
             ></textarea>
           </div>
@@ -295,7 +295,7 @@ export default function JobPostsPage() {
               <input
                 type="text"
                 placeholder="City or region"
-                autocomplete="off"
+                autoComplete="off"
                 className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300 pac-target-input"
               />
             </div>{" "}
@@ -323,7 +323,7 @@ export default function JobPostsPage() {
             </label>{" "}
             <div className="mt-1 flex rounded-md shadow-sm">
               <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option disabled="disabled" value="">
+                <option disabled={true} value="">
                   Not selected
                 </option>{" "}
                 <option>Internship</option> <option>Entry</option>{" "}
@@ -342,7 +342,7 @@ export default function JobPostsPage() {
             </label>{" "}
             <div className="mt-1 flex rounded-md shadow-sm">
               <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option disabled="disabled" value="">
+                <option disabled={true} value="">
                   Not selected
                 </option>{" "}
                 <option>Frontend</option> <option>Backend</option>{" "}
@@ -369,7 +369,7 @@ export default function JobPostsPage() {
             <div className="mt-1 flex">
               <div className="flex flex-col w-1/2">
                 <select className="block overflow-auto w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option disabled="disabled" selected="selected" value="">
+                  <option disabled={true} selected={true} value="">
                     Min pay in USD
                   </option>{" "}
                   <option value="10">USD 10k per year</option>
@@ -422,7 +422,7 @@ export default function JobPostsPage() {
               <p className="mx-3">-</p>{" "}
               <div className="flex flex-col w-1/2">
                 <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option disabled="disabled" selected="selected" value="">
+                  <option disabled={true} selected={true} value="">
                     Max pay in USD
                   </option>{" "}
                   <option value="10">USD 10k per year</option>
