@@ -24,18 +24,21 @@ export default function DefaultLayout({
 
   return (
     <>
-      <main className="grow">
-        <Navbar />
-        {/* <PageIllustration /> */}
-        {children}
-        <div className="flex flex-col justify-between p-4">
-          <div className="w-full">
-            <FaqCompany />
-          </div>
-          {/* <CTA /> */}
-        </div>
-        <Footer />
-      </main>
+    {children}
     </>
+    // <>
+    //   <main className="grow">
+    //     {/* <Navbar /> */}
+    //     {/* <PageIllustration /> */}
+    //     {children}
+    //     <div className="flex flex-col justify-between p-4">
+    //       <div className="w-full">
+    //         <FaqCompany />
+    //       </div>
+    //       {/* <CTA /> */}
+    //     </div>
+    //     <Footer />
+    //   </main>
+    // </>
   );
 }

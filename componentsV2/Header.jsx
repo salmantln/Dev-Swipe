@@ -1,11 +1,12 @@
-import Link from 'next/link'
-import { Popover } from '@headlessui/react'
-import { AnimatePresence, motion } from 'framer-motion'
+import Link from "next/link";
+import { Popover } from "@headlessui/react";
+import { AnimatePresence, motion } from "framer-motion";
 
-import { Button } from '@/componentsV2/Button'
-import { Container } from '@/componentsV2/Container'
-import { Logo } from '@/componentsV2/Logo'
-import { NavLinks } from '@/componentsV2/NavLinks'
+import { Button } from "@/componentsV2/Button";
+import { Container } from "@/componentsV2/Container";
+import { Logo } from "@/componentsV2/Logo";
+import { NavLinks } from "@/componentsV2/NavLinks";
+import { usePathname } from "next/navigation";
 
 function MenuIcon(props) {
   return (
@@ -17,7 +18,7 @@ function MenuIcon(props) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 function ChevronUpIcon(props) {
@@ -30,7 +31,7 @@ function ChevronUpIcon(props) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 function MobileNavLink({ children, ...props }) {
@@ -42,10 +43,14 @@ function MobileNavLink({ children, ...props }) {
     >
       {children}
     </Popover.Button>
-  )
+  );
 }
 
-export  function Header() {
+export function Header() {
+  const pathname = usePathname();
+
+  pathname.startsWith("/company");
+
   return (
     <header>
       <nav>
@@ -110,10 +115,16 @@ export  function Header() {
                             <MobileNavLink href="#faqs">FAQs</MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button href="/login" variant="outline">
+                            {/* <Button href="/login" variant="outline">
                               Log in
-                            </Button>
-                            <Button href="#">Download the app</Button>
+                            </Button> */}
+
+                            {pathname.startsWith("/company") && (
+                              <Button href="/login" variant="outline">
+                                Log in
+                              </Button>
+                            )}
+                            <Button href="/company">Companies</Button>
                           </div>
                         </Popover.Panel>
                       </>
@@ -122,15 +133,31 @@ export  function Header() {
                 </>
               )}
             </Popover>
+
+            {/* pathname.startsWith("/company")
             <Button href="/login" variant="outline" className="hidden lg:block">
               Log in
             </Button>
             <Button href="#" className="hidden lg:block">
               Download
-            </Button>
+            </Button> */}
+            <>
+              {pathname.startsWith("/company") && (
+                <Button
+                  href="/login"
+                  variant="outline"
+                  className="hidden lg:block"
+                >
+                  Log in
+                </Button>
+              )}
+              <Button href="/company" className="hidden lg:block">
+                Companies
+              </Button>
+            </>
           </div>
         </Container>
       </nav>
     </header>
-  )
+  );
 }
