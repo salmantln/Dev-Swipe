@@ -1,6 +1,6 @@
 "use client";
 
-// import { Inter } from "next/font/google";
+import Script from "next/script";
 import PrelineScript from "@/components/PrelineScript";
 import { Analytics } from "@vercel/analytics/react";
 import AOS from "aos";
@@ -32,24 +32,42 @@ export default function RootLayout({
   }, []);
 
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${architects_daughter.variable} `}
-        // className={`${inter.variable} ${architects_daughter.variable} pr-8 pl-8`}
-      >
-        <AuthProvider>
+    <>
+      <head>
+        <Script
+          async
+          // src="https://www.googletagmanager.com/gtag/js?id=  ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        />
+
+        <Script id="google-analytics">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS});
+          `}
+        </Script>
+      </head>
+
+      <html lang="en">
+        <body
+          className={`${inter.variable} ${architects_daughter.variable} `}
+          // className={`${inter.variable} ${architects_daughter.variable} pr-8 pl-8`}
+        >
+          <AuthProvider>
+            {children}
+            <Analytics />
+
+            {/* <Navbar  />
           {children}
+          <Footer />
           <Analytics />
-         
-          {/* <Navbar  />
-        {children}
-        <Footer />
-        <Analytics />
-        <PrelineScript /> */}
-        </AuthProvider>
-       
-      </body>
-      <PrelineScript />
-    </html>
+          <PrelineScript /> */}
+          </AuthProvider>
+        </body>
+        <PrelineScript />
+      </html>
+    </>
   );
 }
