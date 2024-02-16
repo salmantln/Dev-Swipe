@@ -1,3 +1,5 @@
+"use client";
+
 import { useId } from 'react'
 
 import { Container } from '@/componentsV2/Container'
