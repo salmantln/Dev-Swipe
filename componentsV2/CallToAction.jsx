@@ -1,6 +1,7 @@
 import { AppStoreLink } from '@/componentsV2/AppStoreLink'
 import { CircleBackground } from '@/componentsV2/CircleBackground'
 import { Container } from '@/componentsV2/Container'
+import { PlayStoreLink } from './PlayStoreLink'
 
 export function CallToAction() {
   return (
@@ -23,6 +24,7 @@ export function CallToAction() {
           </p>
           <div className="mt-8 flex justify-center">
             <AppStoreLink color="white" />
+            <PlayStoreLink color="white" />
           </div>
         </div>
       </Container>

@@ -5,6 +5,7 @@ import { motion, useInView, useMotionValue } from 'framer-motion'
 
 import { AppScreen } from '@/componentsV2/AppScreen'
 import { AppStoreLink } from '@/componentsV2/AppStoreLink'
+import { PlayStoreLink } from '@/componentsV2/PlayStoreLink'
 import { Button } from '@/componentsV2/Button'
 import { Container } from '@/componentsV2/Container'
 import { PhoneFrame } from '@/componentsV2/PhoneFrame'
@@ -343,7 +344,7 @@ export function Hero() {
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
             <h1 className="text-4xl font-medium tracking-tight text-gray-900">
-              Invest at the perfect time.
+              Developer jobs within reach.
             </h1>
             <p className="mt-6 text-lg text-gray-600">
               By leveraging insights from our network of industry insiders,
@@ -352,13 +353,14 @@ export function Hero() {
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
-              <Button
+              <PlayStoreLink />
+              {/* <Button
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 variant="outline"
               >
                 <PlayIcon className="h-6 w-6 flex-none" />
                 <span className="ml-2.5">Watch the video</span>
-              </Button>
+              </Button> */}
             </div>
           </div>
           <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
