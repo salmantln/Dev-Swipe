@@ -22,7 +22,9 @@ export function CallToAction() {
             account today and we’ll send you a tip guaranteed to double your
             first investment.
           </p>
-          <div className="mt-8 flex justify-center">
+
+          <div className="mt-8 flex flex-wrap gap-x-6 justify-center gap-y-4">
+          {/* <div className="mt-8 flex justify-center"> */}
             <AppStoreLink color="white" />
             <PlayStoreLink color="white" />
           </div>
