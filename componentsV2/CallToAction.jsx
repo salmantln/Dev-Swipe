@@ -17,10 +17,13 @@ export function CallToAction() {
           <h2 className="text-3xl font-medium tracking-tight text-white sm:text-4xl">
             Get your first tips today
           </h2>
-          <p className="mt-4 text-lg text-gray-300">
+          {/* <p className="mt-4 text-lg text-gray-300">
             It takes 30 seconds to sign up. Download the app and create an
             account today and we’ll send you a tip guaranteed to double your
             first investment.
+          </p> */}
+          <p className="mt-4 text-lg text-gray-300">
+            It takes 30 seconds to sign up. Download the app and get the perfect developers job for you!
           </p>
 
           <div className="mt-8 flex flex-wrap gap-x-6 justify-center gap-y-4">

@@ -50,7 +50,7 @@ export function Footer() {
                 </Link>
               </p>
               <p className="mt-1 text-sm text-gray-700">
-                Scan the QR code to download the app from the App Store.
+                Scan the QR code to download the app from the App Store & Play Store.
               </p>
             </div>
           </div>
