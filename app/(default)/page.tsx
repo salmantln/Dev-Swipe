@@ -15,7 +15,7 @@ import { SecondaryFeatures } from "@/componentsV2/SecondaryFeatures";
 import MyDefaultPage from "./my-Cool-page";
 
 export const metadata: Metadata = {
-  title: "DevSwipe: Developer Jobs and UI/ux Jobs with an Easy Swipe ",
+  title: "DevSwipe: Developer jobs and UI/UX jobs with an Easy Swipe ",
   description:
     "✓ Discover your ideal job role ✓ 1000+ job opportunities ✓ Simple, anonymous application ✓ Get the DevSwipe-App ✓ PlayStore & AppStore ✓ Dev Swipe",
   applicationName: "DevSwipe",
