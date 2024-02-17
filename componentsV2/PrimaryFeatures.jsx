@@ -25,23 +25,27 @@ const MotionAppScreenBody = motion(AppScreen.Body);
 
 const features = [
   {
-    name: "Invite friends for better returns",
+    name: "Easy account creation",
     description:
-      "For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.",
+      "Fill in your skills, personal  characteristics and desired occupational group. Based on this we can show the most suitable vacancies",
+    // "Je vult onder andere je skills, persoonlijke eigenschappen en gewenste beroepsgroep in. Op basis daarvan kunnen wij de meest geschikte vacatures laten zien.",
+    // "For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.",
     icon: DeviceUserIcon,
     screen: InviteScreen,
   },
   {
-    name: "Notifications on stock dips",
+    name: "Swipe & like vacancies",
     description:
-      "Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.",
+      "
+      If you like a job or swipe right, your anonymous profile will be visible to the employer, who only sees qualifications. If you match, they'll like you back!",
     icon: DeviceNotificationIcon,
     screen: StocksScreen,
   },
   {
-    name: "Invest what you want",
+    name: "Chat and plan meetings with your future employer",
     description:
-      "We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.",
+      "A match! When you get a match, it means the employer is interested in your profile and want to know more about you.",
+    // "A match! Wanneer je een match hebt, dan betekent dit dat de werkgever geïnteresseerd is in jouw profiel and you will p",
     icon: DeviceTouchIcon,
     screen: InvestScreen,
   },
