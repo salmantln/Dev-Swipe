@@ -1,13 +1,7 @@
 "use client";
 
-import React from 'react'
 
 
-import { CTA } from "@/components/call-to-action";
-import { Faq } from "@/components/faq";
-import { Features } from "@/components/feature";
-import Zigzag from "@/components/zigzag/Zigzag";
-import type { Metadata } from "next";
 import { CallToAction } from "@/componentsV2/CallToAction";
 import { Faqs } from "@/componentsV2/Faqs";
 import { Footer } from "@/componentsV2/Footer";
