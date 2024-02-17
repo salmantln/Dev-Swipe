@@ -150,7 +150,7 @@ export function Header() {
                     variant="outline"
                     className="hidden lg:block"
                   >
-                    Log in
+                    Employer Login
                   </Button>
                   <Button href="/" className="hidden lg:block">
                     Employee
@@ -158,7 +158,7 @@ export function Header() {
                 </>
               ) : (
                 <Button href="/company" className="hidden lg:block">
-                  Companies
+                  For Employers
                 </Button>
               )}
             </>

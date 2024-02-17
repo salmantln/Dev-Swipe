@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 
-const CompanyInfoModal = () => {
+export function CompanyInfoModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -53,7 +53,7 @@ const CompanyInfoModal = () => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="px-4 py-2 text-white bg-secondary rounded-md focus:outline-none"
+        className="px-4 py-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 rounded-full focus:outline-none"
         data-aos="fade-right"
       >
         Post your job offer
@@ -63,11 +63,11 @@ const CompanyInfoModal = () => {
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
         <div className="fixed inset-0 flex items-center justify-center p-4">
-          <Dialog.Panel className="w-full max-w-md rounded bg-primary">
-            <Dialog.Title className="text-lg text-center text-secondary font-medium p-4 border-b">
+          <Dialog.Panel className="w-full max-w-md rounded bg-red-200">
+            <Dialog.Title className="text-lg text-center text-black font-medium p-4 border-b">
               Post your job offer
             </Dialog.Title>
-            <p className="mb-8 text-center text-secondary">
+            <p className="mb-8 text-center text-black">
               {/* Laat hieronder jouw gegevens achter, dan zorgen wij dat je zo snel
               mogelijk aan de slag kunt */}
               Drop down your details and we will contact you as soon as possible
@@ -196,7 +196,7 @@ const CompanyInfoModal = () => {
                 <div className="flex justify-center">
                   <button
                     type="submit"
-                    className="px-4 py-2 text-white bg-secondary rounded-md focus:outline-none"
+                    className="px-4 py-2 text-white bg-black rounded-md focus:outline-none"
                   >
                     Submit
                   </button>
@@ -208,6 +208,4 @@ const CompanyInfoModal = () => {
       </Dialog>
     </>
   );
-};
-
-export default CompanyInfoModal;
+}

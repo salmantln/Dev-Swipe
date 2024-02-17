@@ -1,4 +1,4 @@
-import CompanyInfoModal from "../modal/Modal";
+import {CompanyInfoModal} from "../modal/Modal";
 
 const navigation = [
   { name: "Product", href: "#" },
