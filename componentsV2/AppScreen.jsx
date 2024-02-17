@@ -68,7 +68,7 @@ AppScreen.Header = forwardRef(function AppScreenHeader({ children }, ref) {
 AppScreen.Title = forwardRef(function AppScreenTitle({ children }, ref) {
   return (
     <div ref={ref} className="text-2xl text-white">
-      {children}
+      {/* {children} */}
     </div>
   )
 })
@@ -90,7 +90,7 @@ AppScreen.Body = forwardRef(function AppScreenBody(
       ref={ref}
       className={clsx('mt-6 flex-auto rounded-t-2xl bg-white', className)}
     >
-      {children}
+      {/* {children} */}
     </div>
   )
 })

@@ -174,14 +174,14 @@ const bodyAnimation = {
 function InviteScreen({ custom, animated = false }) {
   return (
     <AppScreen className="w-full">
-      <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
+      {/* <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
         <AppScreen.Title>Invite people</AppScreen.Title>
         <AppScreen.Subtitle>
           Get tips <span className="text-white">5s sooner</span> for every
           invite.
         </AppScreen.Subtitle>
-      </MotionAppScreenHeader>
-      <MotionAppScreenBody {...(animated ? { ...bodyAnimation, custom } : {})}>
+      </MotionAppScreenHeader> */}
+      {/* <MotionAppScreenBody {...(animated ? { ...bodyAnimation, custom } : {})}>
         <div className="px-4 py-6">
           <div className="space-y-6">
             {[
@@ -199,8 +199,10 @@ function InviteScreen({ custom, animated = false }) {
           <div className="mt-6 rounded-lg bg-cyan-500 px-3 py-2 text-center text-sm font-semibold text-white">
             Invite person
           </div>
-        </div>
-      </MotionAppScreenBody>
+        </div> */}
+      {/* </MotionAppScreenBody> */}
+
+      <img src="Screen - Characters.svg" alt="Screen_account_creation" ></img>
     </AppScreen>
   );
 }
@@ -208,7 +210,7 @@ function InviteScreen({ custom, animated = false }) {
 function StocksScreen({ custom, animated = false }) {
   return (
     <AppScreen className="w-full">
-      <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
+      {/* <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
         <AppScreen.Title>Stocks</AppScreen.Title>
         <AppScreen.Subtitle>March 9, 2022</AppScreen.Subtitle>
       </MotionAppScreenHeader>
@@ -300,7 +302,8 @@ function StocksScreen({ custom, animated = false }) {
             </div>
           ))}
         </div>
-      </MotionAppScreenBody>
+      </MotionAppScreenBody> */}
+        <img src="Screen  - Swipe.svg" alt="Screen_developer jobs" ></img>
     </AppScreen>
   );
 }
@@ -308,7 +311,7 @@ function StocksScreen({ custom, animated = false }) {
 function InvestScreen({ custom, animated = false }) {
   return (
     <AppScreen className="w-full">
-      <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
+      {/* <MotionAppScreenHeader {...(animated ? headerAnimation : {})}>
         <AppScreen.Title>Buy $LA</AppScreen.Title>
         <AppScreen.Subtitle>
           <span className="text-white">$34.28</span> per share
@@ -353,7 +356,8 @@ function InvestScreen({ custom, animated = false }) {
             </div>
           </div>
         </div>
-      </MotionAppScreenBody>
+      </MotionAppScreenBody> */}
+       <img src="Screen - Chat.svg" alt="Screen_developer chat" ></img>
     </AppScreen>
   );
 }
@@ -553,7 +557,7 @@ export function PrimaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
           <h2 className="text-3xl font-medium tracking-tight text-white">
-            Every feature you need to win. Try it for yourself.
+            Every feature you need to get a job in tech. Try it for yourself.
           </h2>
           <p className="mt-2 text-lg text-gray-400">
             DevSwipe was built for developers and UI/UX designers like you who
