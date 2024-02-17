@@ -36,8 +36,7 @@ const features = [
   {
     name: "Swipe & like vacancies",
     description:
-      "
-      If you like a job or swipe right, your anonymous profile will be visible to the employer, who only sees qualifications. If you match, they'll like you back!",
+      "If you like a job or swipe right, your anonymous profile will be visible to the employer, who only sees qualifications. If you match, they will like you back!",
     icon: DeviceNotificationIcon,
     screen: StocksScreen,
   },
