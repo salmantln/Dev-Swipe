@@ -8,7 +8,7 @@ type ScrollRevealRefElement =
   | HTMLHeadingElement
   | HTMLParagraphElement;
 
-const Hero = () => {
+export function Hero() {
   async function onNewsletterSubmit(values: any) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -413,5 +413,4 @@ const Hero = () => {
       </div>
     </div>
   );
-};
-export default Hero;
+}

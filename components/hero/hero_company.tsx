@@ -7,7 +7,8 @@ const navigation = [
   { name: "Company", href: "#" },
 ];
 
-const HeroCompany = () => {
+
+  export function HeroCompany() {
   // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>

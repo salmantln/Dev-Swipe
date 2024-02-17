@@ -21,7 +21,7 @@ const MyDefaultPage = () => {
        <SecondaryFeatures />
        <CallToAction />
        <Reviews />
-       <Pricing />
+       {/* <Pricing /> */}
        <Faqs />
      </main>
      <Footer />

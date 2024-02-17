@@ -1,4 +1,3 @@
-
 // export const metadata: Metadata = {
 //   title: "DevSwipe: Developer jobs and UI/UX jobs with an Easy Swipe ",
 //   description:
@@ -28,10 +27,11 @@
 import MyDefaultPage from "./my-Cool-page";
 
 const CompanyPage = () => {
-  return <>
-  <MyDefaultPage />
-
-  </>;
+  return (
+    <>
+      <MyDefaultPage />
+    </>
+  );
 };
 
 export default CompanyPage;
