@@ -1,14 +1,14 @@
 "use client";
-import { Fragment, useEffect, useId, useRef, useState } from 'react'
-import { Tab } from '@headlessui/react'
-import clsx from 'clsx'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useDebouncedCallback } from 'use-debounce'
+import { Fragment, useEffect, useId, useRef, useState } from "react";
+import { Tab } from "@headlessui/react";
+import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
+import { useDebouncedCallback } from "use-debounce";
 
-import { AppScreen } from '@/componentsV2/AppScreen'
-import { CircleBackground } from '@/componentsV2/CircleBackground'
-import { Container } from '@/componentsV2/Container'
-import { PhoneFrame } from '@/componentsV2/PhoneFrame'
+import { AppScreen } from "@/componentsV2/AppScreen";
+import { CircleBackground } from "@/componentsV2/CircleBackground";
+import { Container } from "@/componentsV2/Container";
+import { PhoneFrame } from "@/componentsV2/PhoneFrame";
 import {
   DiageoLogo,
   LaravelLogo,
@@ -18,34 +18,34 @@ import {
   StaticKitLogo,
   TransistorLogo,
   TupleLogo,
-} from '@/componentsV2/StockLogos'
+} from "@/componentsV2/StockLogos";
 
-const MotionAppScreenHeader = motion(AppScreen.Header)
-const MotionAppScreenBody = motion(AppScreen.Body)
+const MotionAppScreenHeader = motion(AppScreen.Header);
+const MotionAppScreenBody = motion(AppScreen.Body);
 
 const features = [
   {
-    name: 'Invite friends for better returns',
+    name: "Invite friends for better returns",
     description:
-      'For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.',
+      "For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.",
     icon: DeviceUserIcon,
     screen: InviteScreen,
   },
   {
-    name: 'Notifications on stock dips',
+    name: "Notifications on stock dips",
     description:
-      'Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.',
+      "Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.",
     icon: DeviceNotificationIcon,
     screen: StocksScreen,
   },
   {
-    name: 'Invest what you want',
+    name: "Invest what you want",
     description:
-      'We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.',
+      "We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.",
     icon: DeviceTouchIcon,
     screen: InvestScreen,
   },
-]
+];
 
 function DeviceUserIcon(props) {
   return (
@@ -64,7 +64,7 @@ function DeviceUserIcon(props) {
         fill="#A3A3A3"
       />
     </svg>
-  )
+  );
 }
 
 function DeviceNotificationIcon(props) {
@@ -82,11 +82,11 @@ function DeviceNotificationIcon(props) {
         fill="#737373"
       />
     </svg>
-  )
+  );
 }
 
 function DeviceTouchIcon(props) {
-  let id = useId()
+  let id = useId();
 
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
@@ -122,51 +122,51 @@ function DeviceTouchIcon(props) {
         fill="#A3A3A3"
       />
     </svg>
-  )
+  );
 }
 
 const headerAnimation = {
   initial: { opacity: 0, transition: { duration: 0.3 } },
   animate: { opacity: 1, transition: { duration: 0.3, delay: 0.3 } },
   exit: { opacity: 0, transition: { duration: 0.3 } },
-}
+};
 
-const maxZIndex = 2147483647
+const maxZIndex = 2147483647;
 
 const bodyVariantBackwards = {
   opacity: 0.4,
   scale: 0.8,
   zIndex: 0,
-  filter: 'blur(4px)',
+  filter: "blur(4px)",
   zIndex: 0,
   transition: { duration: 0.4 },
-}
+};
 
 const bodyVariantForwards = (custom) => ({
-  y: '100%',
+  y: "100%",
   zIndex: maxZIndex - custom.changeCount,
   transition: { duration: 0.4 },
-})
+});
 
 const bodyAnimation = {
-  initial: 'initial',
-  animate: 'animate',
-  exit: 'exit',
+  initial: "initial",
+  animate: "animate",
+  exit: "exit",
   variants: {
     initial: (custom) =>
       custom.isForwards ? bodyVariantForwards(custom) : bodyVariantBackwards,
     animate: (custom) => ({
-      y: '0%',
+      y: "0%",
       opacity: 1,
       scale: 1,
       zIndex: maxZIndex / 2 - custom.changeCount,
-      filter: 'blur(0px)',
+      filter: "blur(0px)",
       transition: { duration: 0.4 },
     }),
     exit: (custom) =>
       custom.isForwards ? bodyVariantBackwards : bodyVariantForwards(custom),
   },
-}
+};
 
 function InviteScreen({ custom, animated = false }) {
   return (
@@ -182,8 +182,8 @@ function InviteScreen({ custom, animated = false }) {
         <div className="px-4 py-6">
           <div className="space-y-6">
             {[
-              { label: 'Full name', value: 'Albert H. Wiggin' },
-              { label: 'Email address', value: 'awiggin@chase.com' },
+              { label: "Full name", value: "Albert H. Wiggin" },
+              { label: "Email address", value: "awiggin@chase.com" },
             ].map((field) => (
               <div key={field.label}>
                 <div className="text-sm text-gray-500">{field.label}</div>
@@ -199,7 +199,7 @@ function InviteScreen({ custom, animated = false }) {
         </div>
       </MotionAppScreenBody>
     </AppScreen>
-  )
+  );
 }
 
 function StocksScreen({ custom, animated = false }) {
@@ -213,59 +213,59 @@ function StocksScreen({ custom, animated = false }) {
         <div className="divide-y divide-gray-100">
           {[
             {
-              name: 'Laravel',
-              price: '4,098.01',
-              change: '+4.98%',
-              color: '#F9322C',
+              name: "Laravel",
+              price: "4,098.01",
+              change: "+4.98%",
+              color: "#F9322C",
               logo: LaravelLogo,
             },
             {
-              name: 'Tuple',
-              price: '5,451.10',
-              change: '-3.38%',
-              color: '#5A67D8',
+              name: "Tuple",
+              price: "5,451.10",
+              change: "-3.38%",
+              color: "#5A67D8",
               logo: TupleLogo,
             },
             {
-              name: 'Transistor',
-              price: '4,098.41',
-              change: '+6.25%',
-              color: '#2A5B94',
+              name: "Transistor",
+              price: "4,098.41",
+              change: "+6.25%",
+              color: "#2A5B94",
               logo: TransistorLogo,
             },
             {
-              name: 'Diageo',
-              price: '250.65',
-              change: '+1.25%',
-              color: '#3320A7',
+              name: "Diageo",
+              price: "250.65",
+              change: "+1.25%",
+              color: "#3320A7",
               logo: DiageoLogo,
             },
             {
-              name: 'StaticKit',
-              price: '250.65',
-              change: '-3.38%',
-              color: '#2A3034',
+              name: "StaticKit",
+              price: "250.65",
+              change: "-3.38%",
+              color: "#2A3034",
               logo: StaticKitLogo,
             },
             {
-              name: 'Statamic',
-              price: '5,040.85',
-              change: '-3.11%',
-              color: '#0EA5E9',
+              name: "Statamic",
+              price: "5,040.85",
+              change: "-3.11%",
+              color: "#0EA5E9",
               logo: StatamicLogo,
             },
             {
-              name: 'Mirage',
-              price: '140.44',
-              change: '+9.09%',
-              color: '#16A34A',
+              name: "Mirage",
+              price: "140.44",
+              change: "+9.09%",
+              color: "#16A34A",
               logo: MirageLogo,
             },
             {
-              name: 'Reversable',
-              price: '550.60',
-              change: '-1.25%',
-              color: '#8D8D8D',
+              name: "Reversable",
+              price: "550.60",
+              change: "-1.25%",
+              color: "#8D8D8D",
               logo: ReversableLogo,
             },
           ].map((stock) => (
@@ -285,10 +285,10 @@ function StocksScreen({ custom, animated = false }) {
                 </div>
                 <div
                   className={clsx(
-                    'text-xs leading-5',
-                    stock.change.startsWith('+')
-                      ? 'text-cyan-500'
-                      : 'text-gray-500'
+                    "text-xs leading-5",
+                    stock.change.startsWith("+")
+                      ? "text-cyan-500"
+                      : "text-gray-500"
                   )}
                 >
                   {stock.change}
@@ -299,7 +299,7 @@ function StocksScreen({ custom, animated = false }) {
         </div>
       </MotionAppScreenBody>
     </AppScreen>
-  )
+  );
 }
 
 function InvestScreen({ custom, animated = false }) {
@@ -315,9 +315,9 @@ function InvestScreen({ custom, animated = false }) {
         <div className="px-4 py-6">
           <div className="space-y-4">
             {[
-              { label: 'Number of shares', value: '100' },
+              { label: "Number of shares", value: "100" },
               {
-                label: 'Current market price',
+                label: "Current market price",
                 value: (
                   <div className="flex">
                     $34.28
@@ -333,7 +333,7 @@ function InvestScreen({ custom, animated = false }) {
                   </div>
                 ),
               },
-              { label: 'Estimated cost', value: '$3,428.00' },
+              { label: "Estimated cost", value: "$3,428.00" },
             ].map((item) => (
               <div
                 key={item.label}
@@ -352,33 +352,33 @@ function InvestScreen({ custom, animated = false }) {
         </div>
       </MotionAppScreenBody>
     </AppScreen>
-  )
+  );
 }
 
 function usePrevious(value) {
-  let ref = useRef()
+  let ref = useRef();
 
   useEffect(() => {
-    ref.current = value
-  }, [value])
+    ref.current = value;
+  }, [value]);
 
-  return ref.current
+  return ref.current;
 }
 
 function FeaturesDesktop() {
-  let [changeCount, setChangeCount] = useState(0)
-  let [selectedIndex, setSelectedIndex] = useState(0)
-  let prevIndex = usePrevious(selectedIndex)
-  let isForwards = prevIndex === undefined ? true : selectedIndex > prevIndex
+  let [changeCount, setChangeCount] = useState(0);
+  let [selectedIndex, setSelectedIndex] = useState(0);
+  let prevIndex = usePrevious(selectedIndex);
+  let isForwards = prevIndex === undefined ? true : selectedIndex > prevIndex;
 
   let onChange = useDebouncedCallback(
     (selectedIndex) => {
-      setSelectedIndex(selectedIndex)
-      setChangeCount((changeCount) => changeCount + 1)
+      setSelectedIndex(selectedIndex);
+      setChangeCount((changeCount) => changeCount + 1);
     },
     100,
     { leading: true }
-  )
+  );
 
   return (
     <Tab.Group
@@ -445,21 +445,21 @@ function FeaturesDesktop() {
         </PhoneFrame>
       </div>
     </Tab.Group>
-  )
+  );
 }
 
 function FeaturesMobile() {
-  let [activeIndex, setActiveIndex] = useState(0)
-  let slideContainerRef = useRef()
-  let slideRefs = useRef([])
+  let [activeIndex, setActiveIndex] = useState(0);
+  let slideContainerRef = useRef();
+  let slideRefs = useRef([]);
 
   useEffect(() => {
     let observer = new window.IntersectionObserver(
       (entries) => {
         for (let entry of entries) {
           if (entry.isIntersecting) {
-            setActiveIndex(slideRefs.current.indexOf(entry.target))
-            break
+            setActiveIndex(slideRefs.current.indexOf(entry.target));
+            break;
           }
         }
       },
@@ -467,18 +467,18 @@ function FeaturesMobile() {
         root: slideContainerRef.current,
         threshold: 0.6,
       }
-    )
+    );
 
     for (let slide of slideRefs.current) {
       if (slide) {
-        observer.observe(slide)
+        observer.observe(slide);
       }
     }
 
     return () => {
-      observer.disconnect()
-    }
-  }, [slideContainerRef, slideRefs])
+      observer.disconnect();
+    };
+  }, [slideContainerRef, slideRefs]);
 
   return (
     <>
@@ -496,7 +496,7 @@ function FeaturesMobile() {
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <CircleBackground
                   color="#13B5C8"
-                  className={featureIndex % 2 === 1 ? 'rotate-180' : undefined}
+                  className={featureIndex % 2 === 1 ? "rotate-180" : undefined}
                 />
               </div>
               <PhoneFrame className="relative mx-auto w-full max-w-[366px]">
@@ -521,15 +521,15 @@ function FeaturesMobile() {
             type="button"
             key={featureIndex}
             className={clsx(
-              'relative h-0.5 w-4 rounded-full',
-              featureIndex === activeIndex ? 'bg-gray-300' : 'bg-gray-500'
+              "relative h-0.5 w-4 rounded-full",
+              featureIndex === activeIndex ? "bg-gray-300" : "bg-gray-500"
             )}
             aria-label={`Go to slide ${featureIndex + 1}`}
             onClick={() => {
               slideRefs.current[featureIndex].scrollIntoView({
-                block: 'nearest',
-                inline: 'nearest',
-              })
+                block: "nearest",
+                inline: "nearest",
+              });
             }}
           >
             <span className="absolute -inset-x-1.5 -inset-y-3" />
@@ -537,7 +537,7 @@ function FeaturesMobile() {
         ))}
       </div>
     </>
-  )
+  );
 }
 
 export function PrimaryFeatures() {
@@ -553,10 +553,13 @@ export function PrimaryFeatures() {
             Every feature you need to win. Try it for yourself.
           </h2>
           <p className="mt-2 text-lg text-gray-400">
-            Pocket was built for investors like you who play by their own rules
+            DevSwipe was built for developers and UI/UX designers like you who
+            don&apos;t want to get rejected multiple times at interviews or
+            worse, not even getting their submission being seen.
+            {/* play by their own rules
             and aren’t going to let SEC regulations get in the way of their
             dreams. If other investing tools are afraid to build it, Pocket has
-            it.
+            it. */}
           </p>
         </div>
       </Container>
@@ -567,5 +570,5 @@ export function PrimaryFeatures() {
         <FeaturesDesktop />
       </Container>
     </section>
-  )
+  );
 }

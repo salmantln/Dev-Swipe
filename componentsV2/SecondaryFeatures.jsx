@@ -1,47 +1,47 @@
 "use client";
 
-import { useId } from 'react'
+import { useId } from "react";
 
-import { Container } from '@/componentsV2/Container'
+import { Container } from "@/componentsV2/Container";
 
 const features = [
   {
-    name: 'Invest any amount',
+    name: "Easy and fun",
     description:
-      'Whether it’s $1 or $1,000,000, we can put your money to work for you.',
+      "Just like Tinder but then more professional. Simply just swipe and you apply to the job!",
     icon: DeviceArrowIcon,
   },
   {
-    name: 'Build a balanced portfolio',
+    name: "Fair as it can be",
     description:
-      'Invest in different industries to find the most opportunities to win huge.',
+      "The employer will only look at your skills and characteristics until the match.",
     icon: DeviceCardsIcon,
   },
   {
-    name: 'Trade in real-time',
+    name: "Super fast",
     description:
-      'Get insider tips on big stock moves and act on them within seconds.',
+      "Create an account, swipe a job post, have a meeting the the contact and POOF, you hired!",
     icon: DeviceClockIcon,
   },
-  {
-    name: 'Profit from your network',
-    description:
-      'Invite new insiders to get tips faster and beat even other Pocket users.',
-    icon: DeviceListIcon,
-  },
-  {
-    name: 'Encrypted and anonymized',
-    description:
-      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
-    icon: DeviceLockIcon,
-  },
-  {
-    name: 'Portfolio tracking',
-    description:
-      'Watch your investments grow exponentially, leaving other investors in the dust.',
-    icon: DeviceChartIcon,
-  },
-]
+  // {
+  //   name: "Profit from your network",
+  //   description:
+  //     "Invite new insiders to get tips faster and beat even other Pocket users.",
+  //   icon: DeviceListIcon,
+  // },
+  // {
+  //   name: "Encrypted and anonymized",
+  //   description:
+  //     "Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.",
+  //   icon: DeviceLockIcon,
+  // },
+  // {
+  //   name: "Portfolio tracking",
+  //   description:
+  //     "Watch your investments grow exponentially, leaving other investors in the dust.",
+  //   icon: DeviceChartIcon,
+  // },
+];
 
 function DeviceArrowIcon(props) {
   return (
@@ -60,11 +60,11 @@ function DeviceArrowIcon(props) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
 function DeviceCardsIcon(props) {
-  let id = useId()
+  let id = useId();
 
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
@@ -96,7 +96,7 @@ function DeviceCardsIcon(props) {
         </linearGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
 function DeviceClockIcon(props) {
@@ -116,7 +116,7 @@ function DeviceClockIcon(props) {
         fill="#171717"
       />
     </svg>
-  )
+  );
 }
 
 function DeviceListIcon(props) {
@@ -139,7 +139,7 @@ function DeviceListIcon(props) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
 function DeviceLockIcon(props) {
@@ -159,7 +159,7 @@ function DeviceLockIcon(props) {
         fill="#171717"
       />
     </svg>
-  )
+  );
 }
 
 function DeviceChartIcon(props) {
@@ -185,7 +185,7 @@ function DeviceChartIcon(props) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
 export function SecondaryFeatures() {
@@ -198,11 +198,11 @@ export function SecondaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-3xl font-medium tracking-tight text-gray-900">
-            Now is the time to build your portfolio.
+            Getting developer jobs and UI/UX jobs has never been this easy!
           </h2>
-          <p className="mt-2 text-lg text-gray-600">
-            With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
+          <p className="mt-2 text-lg  text-gray-600">
+            Like really! You don&apos;t even need a photo, resume or cover
+            letter, it&apos;s that easy
           </p>
         </div>
         <ul
@@ -224,5 +224,5 @@ export function SecondaryFeatures() {
         </ul>
       </Container>
     </section>
-  )
+  );
 }

@@ -5,17 +5,18 @@ import { Container } from "@/componentsV2/Container";
 const faqs = [
   [
     {
-      question: "How do I know the tips are good?",
+      question: "How does the app work?",
       answer:
         "Our whole business depends on our tips being good, so it’s in our best interest that they are. The results of our customers speak for themselves, just trust us.",
+        
     },
     {
-      question: "Isn’t this insider trading?",
+      question: "I have liked a job post, now what?",
       answer:
         "Yes exactly. But at scale! Historically you could only make insider trades with knowledge from your direct network. DevSwipe brings you insider trading tips from people you don’t even know.",
     },
     {
-      question: "But isn’t insider trading illegal?",
+      question: "Is it free for me to job hunt?",
       answer:
         "Here’s the thing: you’re the one doing the insider trading, not us. We’re just giving you the tips and some tools to make trades. We’re not doing anything wrong here.",
     },
