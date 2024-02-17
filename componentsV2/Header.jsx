@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Link from "next/link";
 import { Popover } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -143,18 +143,24 @@ export function Header() {
               Download
             </Button> */}
             <>
-              {pathname.startsWith("/company") && (
-                <Button
-                  href="/login"
-                  variant="outline"
-                  className="hidden lg:block"
-                >
-                  Log in
-                </Button>
-              )}
-              <Button href="/company" className="hidden lg:block">
-                Companies
-              </Button>
+            {pathname.startsWith("/company") ? (
+        <>
+          <Button
+            href="/login"
+            variant="outline"
+            className="hidden lg:block"
+          >
+            Log in
+          </Button>
+          <Button href="/" className="hidden lg:block">
+            Employee
+          </Button>
+        </>
+      ) : (
+        <Button href="/company" className="hidden lg:block">
+          Companies
+        </Button>
+      )}
             </>
           </div>
         </Container>
