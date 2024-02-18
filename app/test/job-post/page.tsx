@@ -1,12 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
 import { Card } from "@tremor/react";
+import { EditorV2 } from "../../../dashboard_components/editor/EditorV2";
+import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
+// import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
+
 export default function JobPostsPage() {
+  const [value, setValue] = useState("");
+  const [isRemote, setIsRemote] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleCheckboxChange = (event: any) => {
+    setIsRemote(event.target.checked);
+  };
+
+  const handleSelectChange = (event: any) => {
+    setSelectedOption(event.target.value); // Set the selected option
+  };
+
+  const handleRemoveOption = () => {
+    setSelectedOption(""); // Reset the selected option
+  };
+
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  // const handleSelectChange2 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const { options } = event.target;
+  //   const selectedValues = Array.from(options)
+  //     .filter(option => option.selected)
+  //     .map(option => option.value);
+  //   setSelectedOptions(selectedValues);
+  // };
+  const handleSelectChange2 = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target;
+    if (!selectedOptions.includes(value)) {
+      setSelectedOptions([...selectedOptions, value]); // Add the selected option
+    }
+  };
+
+  const handleRemoveOption2 = (optionToRemove: string) => {
+    setSelectedOptions(selectedOptions.filter(option => option !== optionToRemove)); // Remove the selected option
+  };
+  // const handleRemoveOption2 = (optionToRemove: string) => {
+  //   setSelectedOptions(prevOptions =>
+  //     prevOptions.filter(option => option !== optionToRemove)
+  //   );
+  // };
+
   return (
     <>
-      <p className="mb-2 text-sm font-semibold text-blue-600">
-        Job post
-      </p>
+      <p className="mb-2 text-sm font-semibold text-blue-600">Job post</p>
       <Card className="mx-auto" decoration="top" decorationColor="indigo">
         <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
           <div className="grid grid-cols-2 gap-6">
@@ -308,17 +354,29 @@ export default function JobPostsPage() {
                   <input
                     type="checkbox"
                     className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                    onChange={handleCheckboxChange}
+                    checked={isRemote}
                   />
-                </div>{" "}
+                </div>
                 <div className="ml-2 text-xs my-auto">
                   <label htmlFor="remote" className="font-medium text-gray-700">
                     This is a remote position
                   </label>
                 </div>
-              </div>{" "}
-              <div className="mt-1 flex flex-wrap min-h-fit"></div>
-            </div>{" "}
-            <div className="col-span-1 sm:col-span-1">
+              </div>
+              {isRemote && (
+                <span className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black">
+                  Remote
+                  <span
+                    className="ml-1 pl-1.5 cursor-pointer"
+                    onClick={() => setIsRemote(false)}
+                  >
+                    x
+                  </span>
+                </span>
+              )}
+            </div>
+            {/* <div className="col-span-1 sm:col-span-1">
               <label
                 htmlFor="Seniority"
                 className="block text-sm font-medium text-gray-700"
@@ -335,9 +393,48 @@ export default function JobPostsPage() {
                   <option>Staff</option> <option>Principal</option>
                 </select>
               </div>{" "}
+             
               <div className="mt-1 flex flex-wrap min-h-fit"></div>
-            </div>{" "}
+            </div>{" "} */}
+
             <div className="col-span-1 sm:col-span-1">
+              <label
+                htmlFor="Seniority"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Seniority
+              </label>
+              <div className="mt-1 flex rounded-md shadow-sm">
+              {/* <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> */}
+                <select
+                  value={selectedOption}
+                  onChange={handleSelectChange}
+                  className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option disabled={true} value="">
+                    Not selected
+                  </option>
+                  <option>Internship</option>
+                  <option>Entry</option>
+                  <option>Mid Level</option>
+                  <option>Senior</option>
+                  <option>Staff</option>
+                  <option>Principal</option>
+                </select>
+              </div>
+              {selectedOption && (
+                <span
+                  className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
+                  onClick={handleRemoveOption}
+                >
+                  {selectedOption}
+                  <span className="ml-1 pl-1.5 cursor-pointer">x</span>
+                </span>
+              )}
+              <div className="mt-1 flex flex-wrap min-h-fit"></div>
+            </div>
+
+            {/* <div className="col-span-1 sm:col-span-1">
               <label
                 htmlFor="Focus"
                 className="block text-sm font-medium text-gray-700"
@@ -358,7 +455,65 @@ export default function JobPostsPage() {
                 </select>
               </div>{" "}
               <div className="mt-1 flex flex-wrap min-h-fit"></div>
-            </div>
+            </div> */}
+
+<div className="col-span-1 sm:col-span-1">
+      <label
+        htmlFor="Focus"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Focus
+      </label>
+      <div className="mt-1 flex rounded-md shadow-sm">
+        <select
+          // multiple  // Add this attribute to allow multiple selections
+          value={selectedOptions}
+          onChange={handleSelectChange2}
+          className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          <option disabled={true} value="">
+            Not selected
+          </option>
+          <option>Frontend</option>
+          <option>Backend</option>
+          <option>FullStack</option>
+          <option>DevOps</option>
+          <option>Infrastructure</option>
+          <option>Machine Learning</option>
+          <option>SRE</option>
+          <option>QA</option>
+          <option>Android</option>
+          <option>iOS</option>
+        </select>
+      </div>
+      <div className="mt-1">
+        {/* {selectedOptions.map(option => (
+          <span
+            key={option}
+            className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
+          >
+            {option}
+            <span
+              className="ml-1 pl-1.5 cursor-pointer"
+              onClick={() => handleRemoveOption2(option)}
+            >
+              x
+            </span>
+          </span>
+        ))} */}
+        {selectedOptions.map(option => (
+          <span
+            key={option}
+            className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
+            onClick={() => handleRemoveOption2(option)}
+          >
+            {option}
+            <span className="ml-1 pl-1.5 cursor-pointer">x</span>
+          </span>
+        ))}
+      </div>
+    </div>
+            
           </div>
           <div className="grid grid-cols-1 gap-6">
             <div className="col-span-1 sm:col-span-1 w-2/3">
@@ -479,6 +634,15 @@ export default function JobPostsPage() {
               </div>
             </div>
           </div>
+          {/* <ReactQuill theme="snow" value={value} onChange={setValue} /> */}
+          <label
+            htmlFor="company-name"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Job description
+            <span className="text-sm text-red-500 font-black">●</span>
+          </label>{" "}
+          <MyQuillEditor />
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
               type="submit"
@@ -490,5 +654,7 @@ export default function JobPostsPage() {
         </div>
       </Card>
     </>
+
+    // <EditorV2/>
   );
 }
