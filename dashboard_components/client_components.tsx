@@ -6,7 +6,7 @@ import "react-quill/dist/quill.snow.css";
 import { MyQuillEditor } from "./editor/editor";
 // import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
 
-export  function ClientComponent() {
+  const ClientComponent = () => {
   const [value, setValue] = useState("");
   const [isRemote, setIsRemote] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -657,3 +657,4 @@ export  function ClientComponent() {
     // <EditorV2/>
   );
 }
+export default ClientComponent
