@@ -1,12 +1,10 @@
-import React from 'react'
-import {ClientComponent} from './client_components'
+import React from "react";
+import ClientComponent from "./client_components";
 
-const JobPostPage = () => {
+export default function JobPostPage() {
   return (
     <>
       <ClientComponent />
     </>
-  )
+  );
 }
-
-export default JobPostPage
