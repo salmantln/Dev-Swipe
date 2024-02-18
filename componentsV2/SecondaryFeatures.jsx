@@ -8,19 +8,19 @@ const features = [
   {
     name: "Easy and fun",
     description:
-      "Just like Tinder but then more professional. Simply just swipe and you apply to the job!",
+      "Just as easy to use as a dating app, simply swipe right and you apply to the job!",
     icon: DeviceArrowIcon,
   },
   {
     name: "Fair as it can be",
     description:
-      "The employer will only look at your skills and characteristics until the match.",
+      "The employer will only see your skill set and characteristics until the match, personal details come later.",
     icon: DeviceCardsIcon,
   },
   {
     name: "Super fast",
     description:
-      "Create an account, swipe a job post, have a meeting the the contact and POOF, you hired!",
+      "Create an account, swipe a job post, meet your future employer and POOF, you hired!",
     icon: DeviceClockIcon,
   },
   // {
