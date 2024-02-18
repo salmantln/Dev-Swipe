@@ -3,7 +3,7 @@
 import { Card } from "@tremor/react";
 import React, { useState } from "react";
 import "react-quill/dist/quill.snow.css";
-import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
+import { MyQuillEditor } from "./editor/editor";
 // import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
 
 export default function ClientComponent() {
