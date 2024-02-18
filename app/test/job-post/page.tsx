@@ -1,5 +1,5 @@
 import React from 'react'
-import ClientComponent from './client_components'
+import {ClientComponent} from './client_components'
 
 const JobPostPage = () => {
   return (
