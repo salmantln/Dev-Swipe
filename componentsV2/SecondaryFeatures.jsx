@@ -20,7 +20,7 @@ const features = [
   {
     name: "Super fast",
     description:
-      "Create an account, swipe a job post, meet your future employer and POOF, you hired!",
+      "Create an account, swipe a job post, meet your future employer and POOF, you are hired!",
     icon: DeviceClockIcon,
   },
   // {
