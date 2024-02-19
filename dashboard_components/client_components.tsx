@@ -3,7 +3,7 @@
 import { Card } from "@tremor/react";
 import React, { useState } from "react";
 import "react-quill/dist/quill.snow.css";
-// import { MyQuillEditor } from "./editor/editor";
+import { MyQuillEditor } from "./editor/editor";
 // import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
 
   const ClientComponent = () => {
@@ -641,7 +641,7 @@ import "react-quill/dist/quill.snow.css";
             Job description
             <span className="text-sm text-red-500 font-black">●</span>
           </label>{" "}
-          {/* <MyQuillEditor /> */}
+          <MyQuillEditor />
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
               type="submit"
