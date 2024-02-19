@@ -13,6 +13,10 @@ const ClientComponent = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [placeholder, setPlaceholder] = useState("");
+  const [data, setData] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
+
+
   const handleCheckboxChange = (event: any) => {
     setIsRemote(event.target.checked);
   };
@@ -42,11 +46,26 @@ const ClientComponent = () => {
     setPlaceholder(placeholderValue);
   };
 
-  const handlePostJob = async (e: any) => {
-    e.preventDefault();
-
+  const handleFetchData = async () => {
     const apiEndpoint = "/api/test"; // Your API endpoint
-    // setPlaceholder(placeholderValue);
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      });
+      const responseData = await response.json();
+
+      if (response.ok) {
+        console.log(responseData)
+        setData(responseData);
+      } else {
+        setError(responseData.message || "Failed to fetch data");
+      }
+    } catch (error) {
+      setError("Error occurred while fetching data");
+    }
   };
 
   return (
@@ -388,8 +407,8 @@ const ClientComponent = () => {
             />{" "}
             <button
               type="submit"
-              onClick={() => handlePostJob}
-              className="w-1/5 inline-flex items-center px-16 rounded-r-md text-white text-sm border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
+              onClick={handleFetchData}
+              className="w-1/5 inline-flex items-center px-16 rounded-r-md text-white text-sm border-black bg-black hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
             >
               <span className="mx-auto">Import</span>
             </button>
