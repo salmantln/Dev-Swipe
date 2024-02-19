@@ -6,12 +6,13 @@ import "react-quill/dist/quill.snow.css";
 import { MyQuillEditor } from "./editor/editor";
 // import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
 
-  const ClientComponent = () => {
+const ClientComponent = () => {
   const [value, setValue] = useState("");
   const [isRemote, setIsRemote] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
-
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [placeholder, setPlaceholder] = useState("");
   const handleCheckboxChange = (event: any) => {
     setIsRemote(event.target.checked);
   };
@@ -24,15 +25,6 @@ import { MyQuillEditor } from "./editor/editor";
     setSelectedOption(""); // Reset the selected option
   };
 
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
-  // const handleSelectChange2 = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //   const { options } = event.target;
-  //   const selectedValues = Array.from(options)
-  //     .filter(option => option.selected)
-  //     .map(option => option.value);
-  //   setSelectedOptions(selectedValues);
-  // };
   const handleSelectChange2 = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     if (!selectedOptions.includes(value)) {
@@ -41,13 +33,14 @@ import { MyQuillEditor } from "./editor/editor";
   };
 
   const handleRemoveOption2 = (optionToRemove: string) => {
-    setSelectedOptions(selectedOptions.filter(option => option !== optionToRemove)); // Remove the selected option
+    setSelectedOptions(
+      selectedOptions.filter((option) => option !== optionToRemove)
+    ); // Remove the selected option
   };
-  // const handleRemoveOption2 = (optionToRemove: string) => {
-  //   setSelectedOptions(prevOptions =>
-  //     prevOptions.filter(option => option !== optionToRemove)
-  //   );
-  // };
+
+  const handleListItemClick = (placeholderValue: string) => {
+    setPlaceholder(placeholderValue);
+  };
 
   return (
     <>
@@ -197,7 +190,15 @@ import { MyQuillEditor } from "./editor/editor";
             </div>
             <div className="w-fit my-auto pl-4">
               <ul className="flex flex-col md:flex-row flex-wrap list-none border-b-0">
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://boards.greenhouse.io/COMPANY/jobs/JOB_ID"
+                    )
+                  }
+                >
                   <div
                     title="greenhouse"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -209,7 +210,15 @@ import { MyQuillEditor } from "./editor/editor";
                     />
                   </div>
                 </li>{" "}
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://jobs.lever.co/COMPANY/JOB_UUID"
+                    )
+                  }
+                >
                   <div
                     title="lever"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -221,7 +230,15 @@ import { MyQuillEditor } from "./editor/editor";
                     />
                   </div>
                 </li>{" "}
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://apply.workable.com/COMPANY/j/JOB_ID"
+                    )
+                  }
+                >
                   <div
                     title="workable"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -233,7 +250,15 @@ import { MyQuillEditor } from "./editor/editor";
                     />
                   </div>
                 </li>{" "}
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://jobs.jobvite.com/COMPANY/job/JOB_ID"
+                    )
+                  }
+                >
                   <div
                     title="breezy"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -245,7 +270,15 @@ import { MyQuillEditor } from "./editor/editor";
                     />
                   </div>
                 </li>
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://COMPANY.breezy.hr/p/JOB_HANDLE"
+                    )
+                  }
+                >
                   <div
                     title="jobvite"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -257,7 +290,15 @@ import { MyQuillEditor } from "./editor/editor";
                     />
                   </div>
                 </li>{" "}
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://jobs.smartrecruiters.com/COMPANY/JOB_HANDLE"
+                    )
+                  }
+                >
                   <div
                     title="smartrecruiters"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -269,7 +310,15 @@ import { MyQuillEditor } from "./editor/editor";
                     />
                   </div>
                 </li>{" "}
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://COMPANY.recruitee.com/o/JOB_HANDLE"
+                    )
+                  }
+                >
                   <div
                     title="recruitee"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -281,7 +330,15 @@ import { MyQuillEditor } from "./editor/editor";
                     />
                   </div>
                 </li>{" "}
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://COMPANY.hire.trakstar.com/jobs/JOB_ID"
+                    )
+                  }
+                >
                   <div
                     title="trakstar"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -293,7 +350,15 @@ import { MyQuillEditor } from "./editor/editor";
                     />
                   </div>
                 </li>{" "}
-                <li role="presentation" className="flex-grow mx-3 text-center">
+                <li
+                  role="presentation"
+                  className="flex-grow mx-3 text-center"
+                  onClick={() =>
+                    handleListItemClick(
+                      "https://YOUR_COMPANY_CAREER.com/jobs/JOB_ID"
+                    )
+                  }
+                >
                   <div
                     title="teamtailor"
                     className="flex-shrink-0 h-12 w-12 grayscale cursor-pointer hover:grayscale-0 active:grayscale-50"
@@ -308,6 +373,19 @@ import { MyQuillEditor } from "./editor/editor";
               </ul>
             </div>
           </div>{" "}
+          <div className="mt-6 flex rounded-md shadow-sm">
+            <input
+              type="text"
+              placeholder={placeholder}
+              className="focus:outline-none flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300"
+            />{" "}
+            <button
+              type="submit"
+              className="w-1/5 inline-flex items-center px-16 rounded-r-md text-white text-sm border-emerald-700 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 focus:bg-emerald-700"
+            >
+              <span className="mx-auto">Import</span>
+            </button>
+          </div>
         </div>
 
         {/* Description Section */}
@@ -404,7 +482,7 @@ import { MyQuillEditor } from "./editor/editor";
                 Seniority
               </label>
               <div className="mt-1 flex rounded-md shadow-sm">
-              {/* <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> */}
+                {/* <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> */}
                 <select
                   value={selectedOption}
                   onChange={handleSelectChange}
@@ -456,37 +534,37 @@ import { MyQuillEditor } from "./editor/editor";
               <div className="mt-1 flex flex-wrap min-h-fit"></div>
             </div> */}
 
-<div className="col-span-1 sm:col-span-1">
-      <label
-        htmlFor="Focus"
-        className="block text-sm font-medium text-gray-700"
-      >
-        Focus
-      </label>
-      <div className="mt-1 flex rounded-md shadow-sm">
-        <select
-          // multiple  // Add this attribute to allow multiple selections
-          value={selectedOptions}
-          onChange={handleSelectChange2}
-          className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        >
-          <option disabled={true} value="">
-            Not selected
-          </option>
-          <option>Frontend</option>
-          <option>Backend</option>
-          <option>FullStack</option>
-          <option>DevOps</option>
-          <option>Infrastructure</option>
-          <option>Machine Learning</option>
-          <option>SRE</option>
-          <option>QA</option>
-          <option>Android</option>
-          <option>iOS</option>
-        </select>
-      </div>
-      <div className="mt-1">
-        {/* {selectedOptions.map(option => (
+            <div className="col-span-1 sm:col-span-1">
+              <label
+                htmlFor="Focus"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Focus
+              </label>
+              <div className="mt-1 flex rounded-md shadow-sm">
+                <select
+                  // multiple  // Add this attribute to allow multiple selections
+                  value={selectedOptions}
+                  onChange={handleSelectChange2}
+                  className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option disabled={true} value="">
+                    Not selected
+                  </option>
+                  <option>Frontend</option>
+                  <option>Backend</option>
+                  <option>FullStack</option>
+                  <option>DevOps</option>
+                  <option>Infrastructure</option>
+                  <option>Machine Learning</option>
+                  <option>SRE</option>
+                  <option>QA</option>
+                  <option>Android</option>
+                  <option>iOS</option>
+                </select>
+              </div>
+              <div className="mt-1">
+                {/* {selectedOptions.map(option => (
           <span
             key={option}
             className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
@@ -500,19 +578,18 @@ import { MyQuillEditor } from "./editor/editor";
             </span>
           </span>
         ))} */}
-        {selectedOptions.map(option => (
-          <span
-            key={option}
-            className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
-            onClick={() => handleRemoveOption2(option)}
-          >
-            {option}
-            <span className="ml-1 pl-1.5 cursor-pointer">x</span>
-          </span>
-        ))}
-      </div>
-    </div>
-            
+                {selectedOptions.map((option) => (
+                  <span
+                    key={option}
+                    className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
+                    onClick={() => handleRemoveOption2(option)}
+                  >
+                    {option}
+                    <span className="ml-1 pl-1.5 cursor-pointer">x</span>
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
           <div className="grid grid-cols-1 gap-6">
             <div className="col-span-1 sm:col-span-1 w-2/3">
@@ -656,5 +733,5 @@ import { MyQuillEditor } from "./editor/editor";
 
     // <EditorV2/>
   );
-}
-export default ClientComponent
+};
+export default ClientComponent;
