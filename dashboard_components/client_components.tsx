@@ -44,8 +44,8 @@ const ClientComponent = () => {
 
   return (
     <>
-      <p className="mb-2 text-sm font-semibold text-blue-600">Job post</p>
-      <Card className="mx-auto" decoration="top" decorationColor="indigo">
+      <p className="mb-2 text-sm font-semibold text-cyan-600">Job post</p>
+      <Card className="mx-auto" decoration="top" decorationColor="cyan">
         <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
           <div className="grid grid-cols-2 gap-6">
             <div className="col-span-1 sm:col-span-1">
@@ -126,7 +126,7 @@ const ClientComponent = () => {
                 </div>{" "}
                 <div className="flex flex-col ml-3 w-full">
                   <label htmlFor="file-upload">
-                    <span className="w-3/5 inline-flex justify-center py-2 px-4 border border-transparent rounded-md text-sm text-white border-emerald-700 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 focus:bg-emerald-700">
+                    <span className="w-3/5 inline-flex justify-center py-2 px-4 border border-transparent rounded-md text-sm text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700">
                       <span className="-ml-1 mr-2 h-5 w-5">
                         <svg
                           aria-hidden="true"
@@ -170,7 +170,7 @@ const ClientComponent = () => {
                 />
                 <button
                   type="submit"
-                  className="w-2/5 inline-flex items-center px-1 rounded-r-md text-white text-sm border-emerald-700 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 focus:bg-emerald-700"
+                  className="w-2/5 inline-flex items-center px-1 rounded-r-md text-white text-sm border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
                 >
                   <span className="mx-auto">Verify email </span>
                 </button>
@@ -180,7 +180,7 @@ const ClientComponent = () => {
         </div>
 
         {/* Here is the abnner htmlFor ATS's */}
-        <div className="bg-green-200 px-6 pb-10 pt-8 border-y border-dashed text-sm">
+        <div className="bg-cyan-200 px-6 pb-10 pt-8 border-y border-dashed text-sm">
           <div className="flex flex-row">
             <div className="w-1/4 my-auto p-1 text-right">
               <span className="text-lg font-normal">
@@ -381,7 +381,7 @@ const ClientComponent = () => {
             />{" "}
             <button
               type="submit"
-              className="w-1/5 inline-flex items-center px-16 rounded-r-md text-white text-sm border-emerald-700 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 focus:bg-emerald-700"
+              className="w-1/5 inline-flex items-center px-16 rounded-r-md text-white text-sm border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
             >
               <span className="mx-auto">Import</span>
             </button>
@@ -722,7 +722,7 @@ const ClientComponent = () => {
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
               type="submit"
-              className="inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-emerald-700 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 focus:bg-emerald-700"
+              className="inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
             >
               Continue to Preview
             </button>
