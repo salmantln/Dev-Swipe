@@ -42,6 +42,13 @@ const ClientComponent = () => {
     setPlaceholder(placeholderValue);
   };
 
+  const handlePostJob = async (e: any) => {
+    e.preventDefault();
+
+    const apiEndpoint = "/api/test"; // Your API endpoint
+    // setPlaceholder(placeholderValue);
+  };
+
   return (
     <>
       <p className="mb-2 text-sm font-semibold text-cyan-600">Job post</p>
@@ -381,6 +388,7 @@ const ClientComponent = () => {
             />{" "}
             <button
               type="submit"
+              onClick={() => handlePostJob}
               className="w-1/5 inline-flex items-center px-16 rounded-r-md text-white text-sm border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
             >
               <span className="mx-auto">Import</span>

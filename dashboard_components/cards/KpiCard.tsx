@@ -13,7 +13,7 @@ type Kpi = {
 
 const kpiData: Kpi[] = [
   {
-    title: "Sales",
+    title: "People Applied",
     metric: "$ 12,699",
     progress: 15.9,
     target: "$ 80,000",
@@ -21,7 +21,7 @@ const kpiData: Kpi[] = [
     deltaType: "moderateIncrease",
   },
   {
-    title: "Profit",
+    title: "People Rejected",
     metric: "$ 45,564",
     progress: 36.5,
     target: "$ 125,000",
@@ -29,7 +29,7 @@ const kpiData: Kpi[] = [
     deltaType: "increase",
   },
   {
-    title: "Customers",
+    title: "Viewed job posts",
     metric: "1,072",
     progress: 53.6,
     target: "2,000",
