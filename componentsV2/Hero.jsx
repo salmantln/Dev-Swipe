@@ -11,7 +11,7 @@ import { PhoneFrame } from "@/componentsV2/PhoneFrame";
 import linkedin from "@/images/logos/linkedin1.svg";
 import reddit from "@/images/logos/reddit1.svg";
 import { toast } from "react-toastify";
-import { NewsletterForm } from "../components/newsletter-form/newsletter-form";
+import  NewsletterForm  from "../components/newsletter-form/newsletter-form";
 
 function BackgroundIllustration(props) {
   let id = useId();
