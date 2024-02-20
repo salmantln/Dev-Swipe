@@ -15,7 +15,7 @@ import { Container } from '@/componentsV2/Container'
 const reviews = [
   {
     title: 'Changed My Career Path!',
-    body: 'After signing up for DevSwipe, I was able to land a dream job in tech within weeks. The app's insights and direct connections with companies made all the difference.',
+    body: 'After signing up for DevSwipe, I was able to land a dream job in tech within weeks. The app\'s insights and direct connections with companies made all the difference.',
     author: 'Aarav',
     rating: 5,
   },
