@@ -10,8 +10,9 @@ import { Container } from "@/componentsV2/Container";
 import { PhoneFrame } from "@/componentsV2/PhoneFrame";
 import linkedin from "@/images/logos/linkedin1.svg";
 import reddit from "@/images/logos/reddit1.svg";
+import hackernews from "@/images/logos/hackernews SVG.svg";
 import { toast } from "react-toastify";
-import  NewsletterForm  from "../components/newsletter-form/newsletter-form";
+import NewsletterForm from "../components/newsletter-form/newsletter-form";
 
 function BackgroundIllustration(props) {
   let id = useId();
@@ -332,7 +333,6 @@ function AppDemo() {
 }
 
 export function Hero() {
-
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -340,7 +340,6 @@ export function Hero() {
   // const {ref, inView} = useInView({threshold: 0.5});
   const inputRef = useRef(null);
 
-  
   async function onNewsletterSubmit(values) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -349,11 +348,9 @@ export function Hero() {
     });
   }
 
-
   function handleChange(event) {
     setEmail(event.target.value);
   }
-
 
   return (
     <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
@@ -378,29 +375,11 @@ export function Hero() {
                 </label>
 
                 <NewsletterForm
-              className="mx-auto mt-8 max-w-md lg:mx-0 "
-              submitText="Join waitlist"
-              // onSubmit={subscribeUser}
-              onSubmit={onNewsletterSubmit}
-            />
-                {/* <input
-                  type="text"
-                  onChange={handleChange}
-                  value={email}
-                  required
-                  id="hero-input"
-                  name="hero-input"
-                  class="py-3 px-4 block w-full xl:min-w-72 border-gray-200 rounded-md text-sm focus:border-cyan-500 focus:ring-cyan-500 disabled:opacity-50 disabled:pointer-events-none "
-                  placeholder="Email"
-                /> */}
-              </div>
-              {/* <button
-                class="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-cyan-600 text-white hover:bg-cyan-700 disabled:opacity-50 disabled:pointer-events-none "
-           
-              onClick={() =>handleSubmit({email})}
-              >
-                Join waitlist
-              </button> */}
+                  className="mx-auto mt-8 max-w-md lg:mx-0 "
+                  submitText="Join waitlist"
+                  onSubmit={onNewsletterSubmit}
+                />          
+              </div>      
             </div>
             {/* <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
@@ -431,9 +410,9 @@ export function Hero() {
                 // ['BBC', logoBbc],
                 // ['CBS', logoCbs],
                 // ['Fast Company', logoFastCompany],
-                // ['HuffPost', logoHuffpost, 'hidden xl:block'],
-                ["Linkedin", linkedin],
-                ["Reddit", reddit],
+                ['Featured on Hackernews', hackernews],
+                ["Featured on LinkedIn", linkedin],
+                ["Featured on Reddit", reddit],
               ].map(([name, logo, className]) => (
                 <li key={name} className={clsx("flex", className)}>
                   <Image src={logo} alt={name} className="h-8" unoptimized />
