@@ -379,7 +379,7 @@ export function Hero() {
 
                 <NewsletterForm
               className="mx-auto mt-8 max-w-md lg:mx-0 "
-              submitText="Get early access"
+              submitText="Join waitlist"
               // onSubmit={subscribeUser}
               onSubmit={onNewsletterSubmit}
             />
