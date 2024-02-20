@@ -3,7 +3,7 @@ import type { ChangeEvent, FormEvent } from "react";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-export function NewsletterForm({
+export default function NewsletterForm({
   className,
   onSubmit,
   submitText = "Submit",
