@@ -5,54 +5,53 @@ import { Container } from "@/componentsV2/Container";
 const faqs = [
   [
     {
-      question: "How does the app work?",
+      question: "How does DevSwipe work?",
       answer:
-        "Our whole business depends on our tips being good, so it’s in our best interest that they are. The results of our customers speak for themselves, just trust us.",
-        
+        "DevSwipe uses advanced algorithms to match job seekers with relevant job postings based on their skills, experience, and preferences. Simply create a profile, upload your resume, and start swiping through job listings to find your perfect match.",
     },
     {
       question: "I have liked a job post, now what?",
       answer:
-        "Yes exactly. But at scale! Historically you could only make insider trades with knowledge from your direct network. DevSwipe brings you insider trading tips from people you don’t even know.",
+        "Once you like a job post, your profile will be shared with the employer. If they find your profile to be a good fit, they'll reach out to you directly through the app to initiate the interview process.",
     },
     {
-      question: "Is it free for me to job hunt?",
+      question: "Is it free for me to job hunt on DevSwipe?",
       answer:
-        "Here’s the thing: you’re the one doing the insider trading, not us. We’re just giving you the tips and some tools to make trades. We’re not doing anything wrong here.",
+        "Yes, DevSwipe is free for job seekers! Our goal is to connect talented individuals with their dream jobs without any barriers.",
     },
   ],
   [
     {
-      question: "Do the people giving you tips realize what they are doing?",
+      question: "Do employers see my personal information?",
       answer:
-        "Again I would argue this isn’t really our responsibility. People make their own choices. If they don’t research the consequences that’s on them, not on us.",
+        "Employers will only see the professional information you choose to share on your profile, such as your work experience, skills, and education. Your contact information is kept private until you decide to share it.",
     },
     {
       question: "Where is DevSwipe based?",
       answer:
-        "Let’s just say it’s not somewhere where the SEC is going to find us.",
+        "DevSwipe is a global platform with our headquarters located in the tech heart of Amsterdam. We serve users and companies from all around the world.",
     },
     {
-      question: "Is there any age limit to trading on DevSwipe?",
+      question: "Is there any age limit to use DevSwipe?",
       answer:
-        "For our free plan, the age limit is based on the minimum age to trade in your country of residence. Our VIP plan uses advanced transaction anonymization though, so you can use that plan even if you’re 9 years old. Or a dog.",
+        "As you can also do your internship via DevSwipe, there is no age limit. However, companies can reject you when they think you look unprofessional",
     },
   ],
   [
     {
-      question: "How did you get this on the App Store?",
+      question: "Can I use DevSwipe for remote job searches?",
       answer:
-        "Honestly we were surprised too, but eventually we found out that the app reviewer found the app so compelling they approved it just so they could use it themselves.",
+        "Absolutely! DevSwipe offers a wide range of job listings, including remote, part-time, and freelance opportunities. You can filter your job search to find remote positions that suit your lifestyle.",
     },
     {
-      question: "How do I explain the money I withdraw from DevSwipe to the IRS?",
+      question: "How do I ensure my profile stands out to employers?",
       answer:
-        "This feels like one-hundred percent a you problem. DevSwipe is not responsible in any way for your tax returns.",
+        "Make sure to complete your profile with detailed work experience, skills, and a professional photo. Regularly updating your profile and being active on the platform increases your visibility to potential employers.",
     },
     {
-      question: "How do I become an insider?",
+      question: "How do I become a featured job seeker?",
       answer:
-        "Contact us with some details about your industry and the type of access you have to apply for an insider account. Once approved, we’ll send you a guide on collecting insider information without being detected at work.",
+        "Featured job seekers are selected based on their active engagement on the platform and the completeness of their profile. Keep your profile up to date and interact with job postings regularly to increase your chances.",
     },
   ],
 ];
