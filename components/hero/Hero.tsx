@@ -9,6 +9,8 @@ type ScrollRevealRefElement =
   | HTMLParagraphElement;
 
 export function Hero() {
+
+  
   async function onNewsletterSubmit(values: any) {
     return new Promise((resolve) => {
       setTimeout(() => {

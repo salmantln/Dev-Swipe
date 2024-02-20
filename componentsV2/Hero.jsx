@@ -1,26 +1,17 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
-import Image from "next/image";
 import clsx from "clsx";
 import { motion, useInView, useMotionValue } from "framer-motion";
+import Image from "next/image";
+import { useId, useRef, useState } from "react";
 
 import { AppScreen } from "@/componentsV2/AppScreen";
-import { AppStoreLink } from "@/componentsV2/AppStoreLink";
-import { PlayStoreLink } from "@/componentsV2/PlayStoreLink";
-import { Button } from "@/componentsV2/Button";
 import { Container } from "@/componentsV2/Container";
 import { PhoneFrame } from "@/componentsV2/PhoneFrame";
-import logoBbc from "@/images/logos/bbc.svg";
-import logoCbs from "@/images/logos/cbs.svg";
-import logoCnn from "@/images/logos/cnn.svg";
-import logoFastCompany from "@/images/logos/fast-company.svg";
-import logoForbes from "@/images/logos/forbes.svg";
-import logoHuffpost from "@/images/logos/huffpost.svg";
-import logoTechcrunch from "@/images/logos/techcrunch.svg";
-import logoWired from "@/images/logos/wired.svg";
 import linkedin from "@/images/logos/linkedin1.svg";
 import reddit from "@/images/logos/reddit1.svg";
+import { toast } from "react-toastify";
+import { NewsletterForm } from "../components/newsletter-form/newsletter-form";
 
 function BackgroundIllustration(props) {
   let id = useId();
@@ -341,6 +332,29 @@ function AppDemo() {
 }
 
 export function Hero() {
+
+  const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const {ref, inView} = useInView({threshold: 0.5});
+  const inputRef = useRef(null);
+
+  
+  async function onNewsletterSubmit(values) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ values });
+      }, 1000);
+    });
+  }
+
+
+  function handleChange(event) {
+    setEmail(event.target.value);
+  }
+
+
   return (
     <div className="overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
       <Container>
@@ -362,21 +376,31 @@ export function Hero() {
                 <label for="hero-input" class="sr-only">
                   Search
                 </label>
-                <input
+
+                <NewsletterForm
+              className="mx-auto mt-8 max-w-md lg:mx-0 "
+              submitText="Get early access"
+              // onSubmit={subscribeUser}
+              onSubmit={onNewsletterSubmit}
+            />
+                {/* <input
                   type="text"
+                  onChange={handleChange}
+                  value={email}
                   required
                   id="hero-input"
                   name="hero-input"
                   class="py-3 px-4 block w-full xl:min-w-72 border-gray-200 rounded-md text-sm focus:border-cyan-500 focus:ring-cyan-500 disabled:opacity-50 disabled:pointer-events-none "
                   placeholder="Email"
-                />
+                /> */}
               </div>
-              <a
+              {/* <button
                 class="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-cyan-600 text-white hover:bg-cyan-700 disabled:opacity-50 disabled:pointer-events-none "
-                href="#"
+           
+              onClick={() =>handleSubmit({email})}
               >
                 Join waitlist
-              </a>
+              </button> */}
             </div>
             {/* <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />

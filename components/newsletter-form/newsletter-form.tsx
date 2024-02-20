@@ -3,7 +3,7 @@ import type { ChangeEvent, FormEvent } from "react";
 import { useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-function NewsletterForm({
+export function NewsletterForm({
   className,
   onSubmit,
   submitText = "Submit",
@@ -76,18 +76,7 @@ function NewsletterForm({
         <label className="hidden" htmlFor="email" aria-hidden="true">
           Email
         </label>
-        {/* <input
-          required
-          placeholder="Email&hellip;"
-          id="email"
-          name="email"
-          type="email"
-          value={email}
-          onChange={handleChange}
-          autoComplete="off"
-          className="w-full rounded-sm border  border-[#878787] bg-[#F5F5F5] px-4 py-3 text-sm text-gray-500 shadow-none"
-          data-aos="fade-right"
-        /> */}
+       
         <input
           required
           id="email"
@@ -122,4 +111,4 @@ function NewsletterForm({
   );
 }
 
-export default NewsletterForm;
+
