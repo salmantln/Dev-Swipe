@@ -355,10 +355,33 @@ export function Hero() {
               developer jobs as well as UI/UX jobs. Get hired with a single
               swipe!
             </p>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
+
+            {/* Section for inputting email */}
+            <div class="mt-5 lg:mt-8 flex flex-col items-center gap-2 sm:flex-row sm:gap-3">
+              <div class="w-full sm:w-auto">
+                <label for="hero-input" class="sr-only">
+                  Search
+                </label>
+                <input
+                  type="text"
+                  required
+                  id="hero-input"
+                  name="hero-input"
+                  class="py-3 px-4 block w-full xl:min-w-72 border-gray-200 rounded-md text-sm focus:border-cyan-500 focus:ring-cyan-500 disabled:opacity-50 disabled:pointer-events-none "
+                  placeholder="Email"
+                />
+              </div>
+              <a
+                class="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-cyan-600 text-white hover:bg-cyan-700 disabled:opacity-50 disabled:pointer-events-none "
+                href="#"
+              >
+                Join waitlist
+              </a>
+            </div>
+            {/* <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
               <PlayStoreLink />
-            </div>
+            </div> */}
           </div>
           <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
             <BackgroundIllustration className="absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
@@ -385,8 +408,8 @@ export function Hero() {
                 // ['CBS', logoCbs],
                 // ['Fast Company', logoFastCompany],
                 // ['HuffPost', logoHuffpost, 'hidden xl:block'],
-                ["Linkedin", linkedin,],
-                ["Reddit", reddit, ],
+                ["Linkedin", linkedin],
+                ["Reddit", reddit],
               ].map(([name, logo, className]) => (
                 <li key={name} className={clsx("flex", className)}>
                   <Image src={logo} alt={name} className="h-8" unoptimized />

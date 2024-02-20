@@ -158,7 +158,7 @@ export function Header() {
                 </>
               ) : (
                 <Button href="/company" className="hidden lg:block">
-                  For Employers
+                  For Companies
                 </Button>
               )}
             </>
