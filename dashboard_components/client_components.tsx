@@ -4,19 +4,20 @@ import { Card } from "@tremor/react";
 import React, { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { MyQuillEditor } from "./editor/editor";
-import { EditorV2 } from "./editor/EditorV2";
 // import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
 
 const ClientComponent = () => {
-  const [value, setValue] = useState("");
   const [isRemote, setIsRemote] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [placeholder, setPlaceholder] = useState("");
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const [loading, setLoading] = useState(false); // Loading state
+  const [jobTitle, setJobTitle] = useState("");
+  const [jobLocation, setJobLocation] = useState("");
+  const [content, setContent] = useState("");
 
   const handleCheckboxChange = (event: any) => {
     setIsRemote(event.target.checked);
@@ -47,7 +48,20 @@ const ClientComponent = () => {
     setPlaceholder(placeholderValue);
   };
 
+  const handleJobTitleChange = (event: any) => {
+    setJobTitle(event.target.value);
+  };
+
+  const handleLocationChange = (event: any) => {
+    setJobLocation(event.target.value);
+  };
+
+  const handleContentChange = (event: any) => {
+    setContent(event.target.value);
+  };
+
   const handleFetchData = async () => {
+    setLoading(true);
     const apiEndpoint = "/api/test"; // Your API endpoint
     try {
       const response = await fetch(apiEndpoint, {
@@ -59,13 +73,22 @@ const ClientComponent = () => {
       const responseData = await response.json();
 
       if (response.ok) {
-        console.log(responseData)
+        setJobTitle(responseData.jobTitle);
+        setJobLocation(responseData.location);
+        setContent(responseData.contentHTML);
+        // console.log("Response Data fetch: " + JSON.stringify(responseData, null, 2));
+        console.log("Response Title: " + jobTitle);
+        console.log("Response Location: " + jobLocation);
+        console.log("Response Content: " + content);
+        setLoading(false);
         setData(responseData);
       } else {
         setError(responseData.message || "Failed to fetch data");
       }
     } catch (error) {
       setError("Error occurred while fetching data");
+    } finally {
+      setLoading(false); // Stop loading regardless of outcome
     }
   };
 
@@ -409,10 +432,33 @@ const ClientComponent = () => {
             <button
               type="submit"
               onClick={handleFetchData}
-              className="w-1/5 inline-flex items-center px-16 rounded-r-md text-white text-sm border-black bg-black hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
+              className="w-1/5 inline-flex items-center px-16 rounded-r-md text-white text-sm border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
             >
-              <span className="mx-auto">Import</span>
+              {/* <span className="mx-auto">Import</span> */}
+              {loading ? (
+                // Replace "Loading..." with your loading icon component or element
+                // <span className="mx-auto">Loading...</span>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="spinner"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                  className="mr-2 h-5 w-5 animate-spin svg-inline--fa fa-spinner"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
+                    className=""
+                  ></path>
+                </svg>
+              ) : (
+                <span className="mx-auto">Import</span>
+              )}
             </button>
+            {error && <p>Error: {error}</p>}
           </div>
         </div>
 
@@ -432,6 +478,8 @@ const ClientComponent = () => {
             </label>{" "}
             <div className="mt-1 flex rounded-md shadow-sm">
               <input
+                value={jobTitle}
+                onChange={handleJobTitleChange}
                 type="text"
                 className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
               />
@@ -448,6 +496,8 @@ const ClientComponent = () => {
               </label>{" "}
               <div className="mt-1 flex rounded-md shadow-sm">
                 <input
+                  value={jobLocation}
+                  onChange={handleLocationChange}
                   type="text"
                   placeholder="City or region"
                   autoComplete="off"
@@ -479,6 +529,18 @@ const ClientComponent = () => {
                     x
                   </span>
                 </span>
+              )}
+              {jobLocation && (
+             <span className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black">
+             {jobLocation}
+             <span
+               className="ml-1 pl-1.5 cursor-pointer"
+               onClick={() => setJobLocation('')} // Clear the jobLocation state
+             >
+               x
+             </span>
+           </span>
+           
               )}
             </div>
             {/* <div className="col-span-1 sm:col-span-1">
@@ -746,7 +808,7 @@ const ClientComponent = () => {
             Job description
             <span className="text-sm text-red-500 font-black">●</span>
           </label>{" "}
-          <MyQuillEditor />
+          <MyQuillEditor description1={content} />
           {/* <EditorV2 /> */}
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
