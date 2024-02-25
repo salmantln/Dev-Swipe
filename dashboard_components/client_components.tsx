@@ -76,6 +76,9 @@ const ClientComponent = () => {
         setJobTitle(responseData.jobTitle);
         setJobLocation(responseData.location);
         setContent(responseData.contentHTML);
+
+        const plainText: string = stripHtmlTags(content);
+        console.log("Plain Text: " + plainText); // Outputs: Hello, world!
         // console.log("Response Data fetch: " + JSON.stringify(responseData, null, 2));
         console.log("Response Title: " + jobTitle);
         console.log("Response Location: " + jobLocation);
@@ -92,13 +95,19 @@ const ClientComponent = () => {
     }
   };
 
+  const stripHtmlTags = (htmlText: string): string => {
+    const regExp: RegExp = new RegExp("<[^>]*>", "g");
+    return htmlText.replace(regExp, "");
+  };
+
   return (
     <>
       <p className="mb-2 text-sm font-semibold text-cyan-600">Job post</p>
       <Card className="mx-auto" decoration="top" decorationColor="cyan">
         <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
           <div className="grid grid-cols-2 gap-6">
-            <div className="col-span-1 sm:col-span-1">
+            
+            <div className="col-span-2 sm:col-span-1">
               <label
                 htmlFor="company-name"
                 className="block text-sm font-medium text-gray-700"
@@ -531,16 +540,15 @@ const ClientComponent = () => {
                 </span>
               )}
               {jobLocation && (
-             <span className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black">
-             {jobLocation}
-             <span
-               className="ml-1 pl-1.5 cursor-pointer"
-               onClick={() => setJobLocation('')} // Clear the jobLocation state
-             >
-               x
-             </span>
-           </span>
-           
+                <span className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black">
+                  {jobLocation}
+                  <span
+                    className="ml-1 pl-1.5 cursor-pointer"
+                    onClick={() => setJobLocation("")} // Clear the jobLocation state
+                  >
+                    x
+                  </span>
+                </span>
               )}
             </div>
             {/* <div className="col-span-1 sm:col-span-1">

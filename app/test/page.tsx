@@ -7,6 +7,7 @@ import { useState } from "react";
 import JobPostsPage from "./job-post/page";
 import DashboardPage from "@/dashboard_components/page1/dashboardpage";
 import Sidebar from "@/dashboard_components/sidebar/sidebar";
+import { CompanyDashboard } from "@/dashboard_components/company_component";
 
 export default function Page() {
   const [selectedSection, setSelectedSection] = useState("");
@@ -23,7 +24,7 @@ export default function Page() {
       case "link2":
         return <JobPostsPage />;
       case "link3":
-        return <div>Content for Link 3</div>;
+        return <CompanyDashboard/>;
       default:
         return <DashboardPage />;
     }
