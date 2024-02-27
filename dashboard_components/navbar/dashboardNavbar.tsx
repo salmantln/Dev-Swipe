@@ -31,7 +31,7 @@ const DashboardNavbarV2 = () => {
               className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             >
               <svg
-                className="flex-shrink-0 w-4 h-4"
+                className="flex-shrink-0 size-4"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -39,7 +39,7 @@ const DashboardNavbarV2 = () => {
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-                strokeLinecap="round"
+                stroke-linecap="round"
                 stroke-linejoin="round"
               >
                 <circle cx="11" cy="11" r="8" />
@@ -55,7 +55,7 @@ const DashboardNavbarV2 = () => {
             <div className="relative">
               <div className="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                 <svg
-                  className="flex-shrink-0 h-4 w-4 text-gray-400"
+                  className="flex-shrink-0 size-4 text-gray-400"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -63,7 +63,7 @@ const DashboardNavbarV2 = () => {
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
-                  strokeLinecap="round"
+                  stroke-linecap="round"
                   stroke-linejoin="round"
                 >
                   <circle cx="11" cy="11" r="8" />
@@ -86,7 +86,7 @@ const DashboardNavbarV2 = () => {
               className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
             >
               <svg
-                className="flex-shrink-0 w-4 h-4"
+                className="flex-shrink-0 size-4"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -94,7 +94,7 @@ const DashboardNavbarV2 = () => {
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-                strokeLinecap="round"
+                stroke-linecap="round"
                 stroke-linejoin="round"
               >
                 <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
@@ -107,7 +107,7 @@ const DashboardNavbarV2 = () => {
               data-hs-offcanvas="#hs-offcanvas-right"
             >
               <svg
-                className="flex-shrink-0 w-4 h-4"
+                className="flex-shrink-0 size-4"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -115,34 +115,35 @@ const DashboardNavbarV2 = () => {
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-                strokeLinecap="round"
+                stroke-linecap="round"
                 stroke-linejoin="round"
               >
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
               </svg>
             </button>
 
-            <div className="hs-dropdown relative inline-flex">
-              {/* Button to toggle the dropdown */}
+            <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
               <button
                 id="hs-dropdown-with-header"
                 type="button"
                 className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                onClick={toggleDropdown} // Toggle the visibility of the dropdown menu
               >
-                <Image
-                width={50}
-                height={50}
-
-                  className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800"
+                <img
+                  className="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800"
                   src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
                   alt="Image Description"
                 />
+                 {/* <Image
+                  className="inline-block size-[38px] rounded-full ring-2 ring-white dark:ring-gray-800"
+                  src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                  alt="Image Description"
+                  width={50}
+                  height={50}
+                /> */}
               </button>
+
               <div
-                className={`hs-dropdown-menu transition-[opacity,margin] duration-300 ${
-                  isDropdownOpen ? "block opacity-100" : "hidden opacity-0"
-                } absolute right-0 mt-2 min-w-[15rem] bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700`}
+                className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2 dark:bg-gray-800 dark:border dark:border-gray-700"
                 aria-labelledby="hs-dropdown-with-header"
               >
                 <div className="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
@@ -159,7 +160,7 @@ const DashboardNavbarV2 = () => {
                     href="#"
                   >
                     <svg
-                      className="flex-shrink-0 w-4 h-4"
+                      className="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
@@ -167,7 +168,7 @@ const DashboardNavbarV2 = () => {
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2"
-                      strokeLinecap="round"
+                      stroke-linecap="round"
                       stroke-linejoin="round"
                     >
                       <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
@@ -180,7 +181,7 @@ const DashboardNavbarV2 = () => {
                     href="#"
                   >
                     <svg
-                      className="flex-shrink-0 w-4 h-4"
+                      className="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
@@ -188,7 +189,7 @@ const DashboardNavbarV2 = () => {
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2"
-                      strokeLinecap="round"
+                      stroke-linecap="round"
                       stroke-linejoin="round"
                     >
                       <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
@@ -202,7 +203,7 @@ const DashboardNavbarV2 = () => {
                     href="#"
                   >
                     <svg
-                      className="flex-shrink-0 w-4 h-4"
+                      className="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
@@ -210,7 +211,7 @@ const DashboardNavbarV2 = () => {
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2"
-                      strokeLinecap="round"
+                      stroke-linecap="round"
                       stroke-linejoin="round"
                     >
                       <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
@@ -224,7 +225,7 @@ const DashboardNavbarV2 = () => {
                     href="#"
                   >
                     <svg
-                      className="flex-shrink-0 w-4 h-4"
+                      className="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
@@ -232,7 +233,7 @@ const DashboardNavbarV2 = () => {
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2"
-                      strokeLinecap="round"
+                      stroke-linecap="round"
                       stroke-linejoin="round"
                     >
                       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
