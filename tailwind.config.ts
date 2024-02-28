@@ -10,6 +10,7 @@ module.exports = {
     "./company_components/**/*.{js,ts,jsx,tsx}",
     "./dashboard_components/**/*.{js,ts,jsx,tsx}",
     './node_modules/preline/preline.js',
+    './node_modules/preline/dist/preline.js',
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
