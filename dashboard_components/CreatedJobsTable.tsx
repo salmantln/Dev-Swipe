@@ -1,5 +1,3 @@
-"use server"
-
 import { RiFlag2Line } from "@remixicon/react";
 import {
   Badge,
@@ -63,36 +61,42 @@ const data = [
 export const CreatedJobsTable = () => {
   return (
     <div className="flex-auto w-full">
-        <Card>
-      <Table className="mt-5">
-        <TableHead>
-          <TableRow>
-            <TableHeaderCell>Title</TableHeaderCell>
-            <TableHeaderCell>Salary range </TableHeaderCell>
-            <TableHeaderCell>Date Created</TableHeaderCell>
-            <TableHeaderCell>Active</TableHeaderCell>
-            <TableHeaderCell>Actions</TableHeaderCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((item) => (
-            <TableRow key={item.name}>
-              <TableCell>{item.name}</TableCell>
-              <TableCell>{item.Role}</TableCell>
-              <TableCell>{item.departement}</TableCell>
-              <TableCell>
-                {/* <Badge color="emerald" icon={RiFlag2Line}>
+      <Card>
+        <Table className="mt-5">
+          <TableHead>
+            <TableRow>
+              <TableHeaderCell>Title</TableHeaderCell>
+              <TableHeaderCell>Salary range </TableHeaderCell>
+              <TableHeaderCell>Date Created</TableHeaderCell>
+              <TableHeaderCell>Active</TableHeaderCell>
+              <TableHeaderCell>Actions</TableHeaderCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((item) => (
+              <TableRow key={item.name}>
+                <TableCell className="font-bold text-cyan-700 hover:text-sky-400 hover:underline hover:cursor-pointer">
+                  {item.name}
+                </TableCell>
+                <TableCell>{item.Role}</TableCell>
+                <TableCell>{item.departement}</TableCell>
+                <TableCell>
+                  {/* <Badge color="emerald" icon={RiFlag2Line}>
                   {item.status}
                 </Badge> */}
-                 <Switch />
-              </TableCell>
-              <TableCell>  <Badge color="red" icon={RiFlag2Line}>
+                  <Switch />
+                </TableCell>
+
+                <TableCell className="underline hover:cursor-pointer hover:text-sky-400">
+                  Edit
+                  {/* <Badge color="red" icon={RiFlag2Line}>
                   {item.status}
-                </Badge></TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+                </Badge> */}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </Card>
     </div>
   );
