@@ -1,7 +1,10 @@
+"use server"
+
 import { RiFlag2Line } from "@remixicon/react";
 import {
   Badge,
   Card,
+  Switch,
   Table,
   TableBody,
   TableCell,
@@ -9,7 +12,6 @@ import {
   TableHeaderCell,
   TableRow,
 } from "@tremor/react";
-
 const data = [
   {
     name: "Viola Amherd",
@@ -79,9 +81,10 @@ export const CreatedJobsTable = () => {
               <TableCell>{item.Role}</TableCell>
               <TableCell>{item.departement}</TableCell>
               <TableCell>
-                <Badge color="emerald" icon={RiFlag2Line}>
+                {/* <Badge color="emerald" icon={RiFlag2Line}>
                   {item.status}
-                </Badge>
+                </Badge> */}
+                 <Switch />
               </TableCell>
               <TableCell>  <Badge color="red" icon={RiFlag2Line}>
                   {item.status}
