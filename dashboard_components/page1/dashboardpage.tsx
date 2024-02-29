@@ -9,7 +9,7 @@ export default function DashboardPage() {
   return (
     <header>
       <p className="mb-2 text-sm font-semibold text-cyan-600">
-        Statistics
+        Dashboard
       </p>
 
       <KpiCardGrid />
