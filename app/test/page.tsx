@@ -38,7 +38,7 @@ export default function Page() {
         <GptSidebar onSectionSelect={handleSectionChange} />
         {/* <Sidebar/> */}
 
-        <div className="w-full pt-10 px-4 sm:px-6 md:px-8 lg:ps-72">
+        <div className="w-full pt-20 lg:pl-99 pl-11  sm:px-6 md:px-8 lg:ps-80 lg:pe-60 ">
           {renderSection()}
         </div>
       </body>

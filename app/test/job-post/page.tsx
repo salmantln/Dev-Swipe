@@ -1,6 +1,7 @@
 // import React from 'react'
 // import ClientComponent from '../../../dashboard_components/client_components'
 import { CreatedJobsTable } from "@/dashboard_components/CreatedJobsTable";
+import { DetailJob } from "@/dashboard_components/DetailJob";
 import dynamic from "next/dynamic";
 import { useState, useMemo } from "react";
 
@@ -17,7 +18,8 @@ export default function JobPostPage() {
     <>
       {/* <ClientComponent /> */}
 
-      <div className="flex flex-col items-baseline space-y-4">
+      <DetailJob />
+      {/* <div className="flex flex-col items-baseline space-y-4">
         <CreatedJobsTable />
         <button
           type="submit"
@@ -25,8 +27,7 @@ export default function JobPostPage() {
         >
           Create a job
         </button>
-      </div>
-      
+      </div> */}
     </>
   );
 }
