@@ -1,61 +1,41 @@
-
-import { NextResponse } from "next/server";
-import puppeteer from "puppeteer";
+import { JSDOM } from 'jsdom';
+import fetch from 'node-fetch';
 
 export async function GET() {
-  // try {
-  //   const browser = await puppeteer.launch();
-  //   const page = await browser.newPage();
-  //   const url =
-  //     "https://rojoconsultancy.recruitee.com/o/enterprise-integration-consultant-spain"; // Replace with the URL of the web page
+  const url = "https://rojoconsultancy.recruitee.com/o/enterprise-integration-consultant-spain";
 
-  //   await page.goto(url);
+  try {
+    // Fetch the HTML content of the page
+    const response = await fetch(url);
+    const html = await response.text();
 
-  //   const cityValue = await page.evaluate(() => {
-  //     const element = document.querySelector(".custom-css-style-job-location-city");
-  //     return element ? element.textContent.trim() : "";
-  //   });
+    // Use JSDOM to parse the HTML content
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
 
-  //   const countryValue = await page.evaluate(() => {
-  //     const element = document.querySelector(".custom-css-style-job-location-country");
-  //     return element ? element.textContent.trim() : "";
-  //   });
+    // Extract information using selectors
+    const cityValue = document.querySelector(".custom-css-style-job-location-city")?.textContent.trim() || "";
+    const countryValue = document.querySelector(".custom-css-style-job-location-country")?.textContent.trim() || "";
+    const jobTitleValue = document.querySelector(".sc-crgk9f-2")?.textContent.trim() || "";
+    const contentHTML = document.querySelector(".sc-1v95195-0")?.innerHTML || "";
 
-  //   const jobTitleValue = await page.evaluate(() => {
-  //     const element = document.querySelector(".sc-crgk9f-2");
-  //     return element ? element.textContent.trim() : "";
-  //   });
+    // Clean the HTML content if necessary
+    const cleanHTML = contentHTML
+      .replace(/(\sclass=\")[^\"]*(\")/g, "")
+      .replace(/<(\w+)(\s[^>]*)?>/g, "<$1>");
 
-  //   const contentHTML = await page.evaluate(() => {
-  //     const element = document.querySelector(".sc-1v95195-0");
-  //     return element ? element.innerHTML : "";
-  //   });
+    // Return the extracted information as JSON
+    return new Response(JSON.stringify({
+      location: `${cityValue} ${countryValue}`,
+      jobTitle: jobTitleValue,
+      contentHTML: cleanHTML,
+    }), { 
+      headers: { 'Content-Type': 'application/json' },
+      status: 200 
+    });
 
-  //   const cleanHTML = contentHTML.replace(/(\sclass=\")[^\"]*(\")/g, "").replace(/<(\w+)(\s[^>]*)?>/g, "<$1>"); // Remove class attributes and other attributes from tags
-
-  //   console.log("City:", cityValue);
-  //   console.log("Country:", countryValue);
-  //   console.log("Title:", jobTitleValue);
-  //   console.log("Content HTML:", cleanHTML);
-
-  //   await browser.close();
-
-  //   return NextResponse.json({
-  //     location: cityValue + " " + countryValue,
-  //     jobTitle: jobTitleValue,
-  //     contentHTML: cleanHTML,
-  //   });
-  // } catch (error) {
-  //   return new Response("Check field and try again.", { status: 400, error });
-  // }
-
-  const res = await fetch('https://rojoconsultancy.recruitee.com/o/enterprise-integration-consultant-spain', {
-    headers: {
-      'Content-Type': 'application/json',
-      // 'API-Key': process.env.DATA_API_KEY,
-    },
-  })
-  const data = await res.json()
- 
-  return Response.json({ data })
+  } catch (error) {
+    console.error(error);
+    return new Response("Check field and try again.", { status: 400 });
+  }
 }
