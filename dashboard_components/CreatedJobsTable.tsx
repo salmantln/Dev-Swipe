@@ -12,10 +12,10 @@ import {
 } from "@tremor/react";
 const data = [
   {
-    name: "Viola Amherd",
-    Role: "Federal Councillor",
+    name: "Socialmedia Marketeer",
+    Role: "3500 & 17000",
     departement:
-      "The Federal Department of Defence, Civil Protection and Sport (DDPS)",
+      "2024-02-28",
     status: "active",
   },
   {

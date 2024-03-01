@@ -1,9 +1,10 @@
 "use client";
 
-import { Card } from "@tremor/react";
+import { Button, Card } from "@tremor/react";
 import React, { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { MyQuillEditor } from "./editor/editor";
+import Link from "next/link";
 // import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
 
 const ClientComponent = () => {
@@ -819,12 +820,27 @@ const ClientComponent = () => {
           <MyQuillEditor description1={content} />
           {/* <EditorV2 /> */}
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-            <button
+          <div className="mt-6 flex justify-end gap-4">
+        <Link
+          href="/dashboard/invoices"
+          className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+        >
+          Cancel
+        </Link>
+        <button
+              type="submit"
+              className="inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
+            >
+              Create Job
+            </button>
+        {/* <Button type="submit">Create Invoice</Button> */}
+      </div>
+            {/* <button
               type="submit"
               className="inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
             >
               Continue to Preview
-            </button>
+            </button> */}
           </div>
         </div>
       </Card>
