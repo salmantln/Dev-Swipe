@@ -22,7 +22,8 @@ export default function JobPostPage() {
 
   return (
     <>
-      <p className="mb-2 text-sm font-semibold text-cyan-600">Jobs</p>
+      {/* <p className="mb-2 text-sm font-semibold text-cyan-600">Jobs</p> */}
+      <h1 className=" mb-4 text-xl md:text-2xl text-cyan-600">Jobs</h1>
       {/* <ClientComponent /> */}
 
       {/* <DetailJob /> */}

@@ -103,9 +103,10 @@ const ClientComponent = () => {
 
   return (
     <>
-      <p className="mb-2 text-sm font-semibold text-cyan-600">Job post</p>
+      {/* <p className="mb-2 text-sm font-semibold text-cyan-600">Job post</p> */}
+      <h1 className=" mb-4 text-xl md:text-2xl text-cyan-600">Job posts</h1>
       <Card className="mx-auto" decoration="top" decorationColor="cyan">
-        <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
+        {/* <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
           <div className="grid grid-cols-2 gap-6">
             
             <div className="col-span-2 sm:col-span-1">
@@ -237,7 +238,7 @@ const ClientComponent = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Here is the abnner htmlFor ATS's */}
         <div className="bg-cyan-200 px-6 pb-10 pt-8 border-y border-dashed text-sm">
@@ -820,21 +821,21 @@ const ClientComponent = () => {
           <MyQuillEditor description1={content} />
           {/* <EditorV2 /> */}
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <div className="mt-6 flex justify-end gap-4">
-        <Link
-          href="/dashboard/invoices"
-          className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
-        >
-          Cancel
-        </Link>
-        <button
-              type="submit"
-              className="inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
-            >
-              Create Job
-            </button>
-        {/* <Button type="submit">Create Invoice</Button> */}
-      </div>
+            <div className="mt-6 flex justify-end gap-4">
+              <Link
+                href="/dashboard/invoices"
+                className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+              >
+                Cancel
+              </Link>
+              <button
+                type="submit"
+                className="inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
+              >
+                Create Job
+              </button>
+              {/* <Button type="submit">Create Invoice</Button> */}
+            </div>
             {/* <button
               type="submit"
               className="inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
