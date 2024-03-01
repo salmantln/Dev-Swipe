@@ -20,7 +20,7 @@ export default function DefaultDashboard() {
             <li>Other notifications regarding your account.</li>
           </ul>
           <span className="block text-base text-gray-900  mt-4">
-            Questions? Let us know via
+            Questions? Let us know via 
             {/* Vragen? Laat het ons weten via */}
             <a
               href="mailto:devswipe.app@gmail.com"
