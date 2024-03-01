@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { MyQuillEditor } from "./editor/editor";
 import Link from "next/link";
+import useSWR from "swr";
 
 // import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
 
@@ -67,10 +68,13 @@ const ClientComponent = () => {
     const apiEndpoint = "/api/test"; // Your API endpoint
     try {
       const response = await fetch(apiEndpoint, {
-        method: "GET",
-        headers: {
-          accept: "application/json",
+        next: {
+          revalidate: 0,
         },
+        // method: "GET",
+        // headers: {
+        //   accept: "application/json",
+        // },
       });
       const responseData = await response.json();
 
@@ -79,9 +83,8 @@ const ClientComponent = () => {
         setJobLocation(responseData.location);
         setContent(responseData.contentHTML);
 
-        const plainText: string = stripHtmlTags(content);
-        console.log("Plain Text: " + plainText); // Outputs: Hello, world!
-        // console.log("Response Data fetch: " + JSON.stringify(responseData, null, 2));
+        // const plainText: string = stripHtmlTags(content);
+        // console.log("Plain Text: " + plainText);
         console.log("Response Title: " + jobTitle);
         console.log("Response Location: " + jobLocation);
         console.log("Response Content: " + content);
