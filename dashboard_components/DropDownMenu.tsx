@@ -72,7 +72,7 @@ export function MyDropdown() {
                   </a>
                 )}
               </Menu.Item>
-              <form method="POST" action="#">
+              {/* <form method="POST" action="#">
                 <Menu.Item>
                   {({ active }) => (
                     <button
@@ -86,7 +86,7 @@ export function MyDropdown() {
                     </button>
                   )}
                 </Menu.Item>
-              </form>
+              </form> */}
             </div>
           </Menu.Items>
         </Transition>
