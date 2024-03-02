@@ -41,19 +41,19 @@ export default function NewsletterForm({
 
       if (res.ok) {
         // Show a success message
-        toast.success("You have successfully subscribed!");
+        // toast.success("You have successfully subscribed!");
         setEmail(""); // Reset the email state
       } else {
         // Show an error message
-        toast.error(
-          "An error occurred while subscribing. Please try again later."
-        );
+        // toast.error(
+        //   "An error occurred while subscribing. Please try again later."
+        // );
       }
     } catch (error) {
       // Show an error message
-      toast.error(
-        "An error occurred while subscribing. Please try again later."
-      );
+      // toast.error(
+      //   "An error occurred while subscribing. Please try again later."
+      // );
     }
 
     setSuccess(true);
