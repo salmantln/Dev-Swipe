@@ -11,7 +11,6 @@ import { PhoneFrame } from "@/componentsV2/PhoneFrame";
 import linkedin from "@/images/logos/linkedin1.svg";
 import reddit from "@/images/logos/reddit1.svg";
 import hackernews from "@/images/logos/hackernews SVG.svg";
-import { toast } from "react-toastify";
 import NewsletterForm from "../components/newsletter-form/newsletter-form";
 
 function BackgroundIllustration(props) {
