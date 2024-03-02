@@ -26,7 +26,7 @@ export async function GET() {
 
     // Return the extracted information as JSON
     return new Response(JSON.stringify({
-      location: `${cityValue} ${countryValue}`,
+      location: `${cityValue}, ${countryValue}`,
       jobTitle: jobTitleValue,
       contentHTML: cleanHTML,
     }), { 

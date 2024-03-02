@@ -4,8 +4,69 @@ import { Button, Card } from "@tremor/react";
 import React, { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { MyQuillEditor } from "./editor/editor";
-import Link from "next/link";
-import useSWR from "swr";
+
+interface Skill {
+  name: string;
+  isSelected: boolean;
+}
+
+// Combine all skills into one array
+const allSkills: Skill[] = [
+  "AWS",
+  "Firebase",
+  "Innovative",
+  "Google Cloud",
+  "Heroku",
+  "Microsoft Azure",
+  "Share Point",
+  "Angular",
+  "Django",
+  "Flutter",
+  "Laravel",
+  "Magento",
+  "Next.js",
+  "Node.js",
+  "React",
+  "Vue.js",
+  "Wordpress",
+  "jQuery",
+  "C#",
+  "C/C++",
+  "Dart",
+  "Go",
+  "HTML/CSS",
+  "java",
+  "JavaScript",
+  "Kotlin",
+  "PHP",
+  "Perl",
+  "Python",
+  "R",
+  "Ruby",
+  "Rust",
+  "SQL",
+  "Swift",
+  "TypeScript",
+  "Agile/scrum",
+  "Backend",
+  "Consultancy",
+  "Data Science",
+  "ETL",
+  "Frond-end",
+  "Machine Learning",
+  "Security",
+  "Mobile",
+  "Product management",
+  "CRM",
+  "Docker",
+  "ERP",
+  "Linux",
+  "No-SQL databases",
+  "Office 365",
+  "Power BI",
+  "SQL databases",
+  "Tableau",
+].map((skill) => ({ name: skill, isSelected: false }));
 
 // import { MyQuillEditor } from "../../../dashboard_components/editor/editor";
 
@@ -21,6 +82,7 @@ const ClientComponent = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [content, setContent] = useState("");
+  const [skills, setSkills] = useState<Skill[]>(allSkills);
 
   const handleCheckboxChange = (event: any) => {
     setIsRemote(event.target.checked);
@@ -105,9 +167,18 @@ const ClientComponent = () => {
     return htmlText.replace(regExp, "");
   };
 
+  const handleCheckboxChange2 = (index: number) => {
+    const newSkills = [...skills];
+    const selectedCount = newSkills.filter((skill) => skill.isSelected).length;
+
+    // If trying to select more than 5, ignore
+    if (selectedCount >= 5 && !newSkills[index].isSelected) return;
+
+    newSkills[index].isSelected = !newSkills[index].isSelected;
+    setSkills(newSkills);
+  };
   return (
     <>
-      {/* <p className="mb-2 text-sm font-semibold text-cyan-600">Job post</p> */}
       <h1 className=" mb-4 text-xl md:text-2xl text-cyan-600">Job posts</h1>
       <Card className="mx-auto" decoration="top" decorationColor="cyan">
         {/* <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
@@ -500,6 +571,26 @@ const ClientComponent = () => {
               />
             </div>{" "}
           </div>
+          <div>
+            <label
+              htmlFor="about"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Glassdoor link
+              <span className="text-sm text-red-500 font-black">●</span>{" "}
+              <span className="text-xs font-light text-amber-600">
+                Be aware we only accept <i>software engineering</i> related jobs
+              </span>
+            </label>{" "}
+            <div className="mt-1 flex rounded-md shadow-sm">
+              <input
+                // value={jobTitle}
+                onChange={handleJobTitleChange}
+                type="text"
+                className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
+              />
+            </div>{" "}
+          </div>
           <div className="grid grid-cols-3 gap-6">
             <div className="col-span-1 sm:col-span-1">
               <label
@@ -523,7 +614,7 @@ const ClientComponent = () => {
                 <div className="flex items-center h-5">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                    className="h-4 w-4 text-cyan-600 border-gray-300 rounded"
                     onChange={handleCheckboxChange}
                     checked={isRemote}
                   />
@@ -557,33 +648,51 @@ const ClientComponent = () => {
                 </span>
               )}
             </div>
-            {/* <div className="col-span-1 sm:col-span-1">
-              <label
-                htmlFor="Seniority"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Seniority
-              </label>{" "}
-              <div className="mt-1 flex rounded-md shadow-sm">
-                <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option disabled={true} value="">
-                    Not selected
-                  </option>{" "}
-                  <option>Internship</option> <option>Entry</option>{" "}
-                  <option>Mid Level</option> <option>Senior</option>{" "}
-                  <option>Staff</option> <option>Principal</option>
-                </select>
-              </div>{" "}
-             
-              <div className="mt-1 flex flex-wrap min-h-fit"></div>
-            </div>{" "} */}
 
             <div className="col-span-1 sm:col-span-1">
               <label
                 htmlFor="Seniority"
                 className="block text-sm font-medium text-gray-700"
               >
-                Seniority
+                Estimated work experience
+              </label>
+              <div className="mt-1 flex rounded-md shadow-sm">
+                <select
+                  value={selectedOption}
+                  onChange={handleSelectChange}
+                  className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option disabled={true} value="">
+                    Not selected
+                  </option>
+                  <option>Less than 1 year</option>
+                  <option>1 - 2 years</option>
+                  <option>2 - 4 years</option>
+                  <option>4 - 7 years</option>
+                  <option>7 - 10 years</option>
+                  <option>10 - 15 years</option>
+                  <option>15+ years</option>
+                </select>
+              </div>
+              {selectedOption && (
+                <span
+                  className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
+                  onClick={handleRemoveOption}
+                >
+                  {selectedOption}
+                  <span className="ml-1 pl-1.5 cursor-pointer">x</span>
+                </span>
+              )}
+              <div className="mt-1 flex flex-wrap min-h-fit"></div>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-6">
+            <div className="col-span-1 sm:col-span-1">
+              <label
+                htmlFor="Seniority"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Type of job
               </label>
               <div className="mt-1 flex rounded-md shadow-sm">
                 {/* <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> */}
@@ -595,12 +704,11 @@ const ClientComponent = () => {
                   <option disabled={true} value="">
                     Not selected
                   </option>
+
+                  <option>Fulltime</option>
+                  <option>Parttime</option>
                   <option>Internship</option>
-                  <option>Entry</option>
-                  <option>Mid Level</option>
-                  <option>Senior</option>
-                  <option>Staff</option>
-                  <option>Principal</option>
+                  <option>Temporary</option>
                 </select>
               </div>
               {selectedOption && (
@@ -617,82 +725,69 @@ const ClientComponent = () => {
 
             {/* <div className="col-span-1 sm:col-span-1">
               <label
-                htmlFor="Focus"
+                htmlFor="Seniority"
                 className="block text-sm font-medium text-gray-700"
               >
-                Focus
-              </label>{" "}
-              <div className="mt-1 flex rounded-md shadow-sm">
-                <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option disabled={true} value="">
-                    Not selected
-                  </option>{" "}
-                  <option>Frontend</option> <option>Backend</option>{" "}
-                  <option>FullStack</option> <option>DevOps</option>{" "}
-                  <option>Infrastructure</option>{" "}
-                  <option>Machine Learning</option> <option>SRE</option>{" "}
-                  <option>QA</option> <option>Android</option>{" "}
-                  <option>iOS</option>
-                </select>
-              </div>{" "}
-              <div className="mt-1 flex flex-wrap min-h-fit"></div>
-            </div> */}
-
-            <div className="col-span-1 sm:col-span-1">
-              <label
-                htmlFor="Focus"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Focus
+                Does it have a screening
               </label>
               <div className="mt-1 flex rounded-md shadow-sm">
                 <select
-                  // multiple  // Add this attribute to allow multiple selections
-                  value={selectedOptions}
-                  onChange={handleSelectChange2}
+                  // value={selectedOption}
+                  onChange={handleSelectChange}
                   className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
                   <option disabled={true} value="">
                     Not selected
                   </option>
-                  <option>Frontend</option>
-                  <option>Backend</option>
-                  <option>FullStack</option>
-                  <option>DevOps</option>
-                  <option>Infrastructure</option>
-                  <option>Machine Learning</option>
-                  <option>SRE</option>
-                  <option>QA</option>
-                  <option>Android</option>
-                  <option>iOS</option>
+
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Optional</option>
                 </select>
               </div>
-              <div className="mt-1">
-                {/* {selectedOptions.map(option => (
-          <span
-            key={option}
-            className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
-          >
-            {option}
-            <span
-              className="ml-1 pl-1.5 cursor-pointer"
-              onClick={() => handleRemoveOption2(option)}
-            >
-              x
-            </span>
-          </span>
-        ))} */}
-                {selectedOptions.map((option) => (
-                  <span
-                    key={option}
-                    className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
-                    onClick={() => handleRemoveOption2(option)}
-                  >
-                    {option}
-                    <span className="ml-1 pl-1.5 cursor-pointer">x</span>
-                  </span>
-                ))}
+              {selectedOption && (
+                <span
+                  className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
+                  onClick={handleRemoveOption}
+                >
+                  {selectedOption}
+                  <span className="ml-1 pl-1.5 cursor-pointer">x</span>
+                </span>
+              )}
+              <div className="mt-1 flex flex-wrap min-h-fit"></div>
+            </div> */}
+
+            <div className="col-span-1 sm:col-span-1">
+              <label
+                htmlFor="Seniority"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Type of workplace
+              </label>
+              <div className="mt-1 flex rounded-md shadow-sm">
+                <select
+                  value={selectedOption}
+                  onChange={handleSelectChange}
+                  className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                >
+                  <option disabled={true} value="">
+                    Not selected
+                  </option>
+                  <option>On Site</option>
+                  <option>Remote</option>
+                  <option>Hybride</option>
+                </select>
               </div>
+              {selectedOption && (
+                <span
+                  className="px-1.5 py-0.5 my-1 ml-0 mr-2 inline-flex text-xs font-normal rounded border-2 text-black"
+                  onClick={handleRemoveOption}
+                >
+                  {selectedOption}
+                  <span className="ml-1 pl-1.5 cursor-pointer">x</span>
+                </span>
+              )}
+              <div className="mt-1 flex flex-wrap min-h-fit"></div>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-6">
@@ -822,6 +917,20 @@ const ClientComponent = () => {
             Job description
             <span className="text-sm text-red-500 font-black">●</span>
           </label>{" "}
+          {/* Skills */}
+          <div className="flex flex-col justify-start gap-4">
+            {skills.map((skill, index) => (
+              <label key={skill.name} className="inline-flex items-center mt-3">
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-5 w-5 text-gray-600"
+                  checked={skill.isSelected}
+                  onChange={() => handleCheckboxChange2(index)}
+                />
+                <span className="ml-2 text-gray-700">{skill.name}</span>
+              </label>
+            ))}
+          </div>
           <MyQuillEditor description1={content} />
           {/* <EditorV2 /> */}
           <div className="px-4 py-3  text-right sm:px-6">
