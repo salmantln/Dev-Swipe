@@ -2,7 +2,6 @@
 
 import { Button, Card } from "@tremor/react";
 import React, { useState } from "react";
-import "react-quill/dist/quill.snow.css";
 import { MyQuillEditor } from "./editor/editor";
 
 interface Skill {
