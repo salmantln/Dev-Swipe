@@ -1,7 +1,6 @@
 import { cn } from "@/utils/cn";
 import type { ChangeEvent, FormEvent } from "react";
 import { useRef, useState } from "react";
-import { toast } from "react-toastify";
 
 export default function NewsletterForm({
   className,
