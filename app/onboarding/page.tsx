@@ -1,48 +1,165 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+"use client";
+
+import FileUpload from "@/dashboard_components/file-upload.component";
 import { CameraIcon, UserCircleIcon } from "@heroicons/react/solid";
 import { Card } from "@tremor/react";
+import { useState } from "react";
 
 export default function Example() {
+  const [newUserInfo, setNewUserInfo] = useState({
+    profileImages: [],
+  });
+
+  const updateUploadedFiles = (files: any) =>
+    setNewUserInfo({ ...newUserInfo, profileImages: files });
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    //logic to create new user...
+  };
+
   return (
     <div className="mx-auto max-w-3xl py-24 px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <Card className="" decoration="top" decorationColor="cyan">
         <form className="">
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Profile
-              </h2>
+              <h1 className="text-base font-semibold leading-7 text-gray-900">
+                Onboarding
+              </h1>
               <p className="mt-1 text-sm leading-6 text-gray-600">
                 This information will be displayed publicly so be careful what
                 you share.
               </p>
 
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                <div className="sm:col-span-4">
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="first-name"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Company Name
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="company-name"
+                      id="company-name"
+                      autoComplete="given-company"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="last-name"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Glassdoor Link
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="glassdoor-link"
+                      id="glassdoor-link"
+                      autoComplete="family-name"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-2 sm:col-start-1">
+                  <label
+                    htmlFor="city"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    City
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="city"
+                      id="city"
+                      autoComplete="address-level2"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="region"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Country
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="region"
+                      id="region"
+                      autoComplete="address-level1"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+
+                {/* company size */}
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="country"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Company Size
+                  </label>
+                  <div className="mt-2">
+                    <select
+                      id="country"
+                      name="country"
+                      autoComplete="country-name"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                    >
+                      <option value="0-1">0-1</option>
+                      <option value="2-10">2-10</option>
+                      <option value="11-50">11-50</option>
+                      <option value="51-200">51-200</option>
+                      <option value="501-1000">501-1000</option>
+                      <option value="1001-5000">1001-5000</option>
+                      <option value="5001-10.000">5001-10.000</option>
+                      <option value="10.000+">10.000+</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* <div className="sm:col-span-2">
+                  <label
+                    htmlFor="postal-code"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    ZIP / Postal code
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="postal-code"
+                      id="postal-code"
+                      autoComplete="postal-code"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div> */}
+
+                {/* <div className="sm:col-span-4">
                   <label
                     htmlFor="username"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Username
+                    Company Name
                   </label>
                   <div className="mt-2">
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-600 sm:max-w-md">
-                      <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-                        workcation.com/
-                      </span>
+                    
                       <input
                         type="text"
                         name="username"
@@ -53,6 +170,27 @@ export default function Example() {
                       />
                     </div>
                   </div>
+                </div> */}
+
+                <div className="col-span-full">
+                  <label
+                    htmlFor="about"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Who are we as a company?
+                  </label>
+                  <div className="mt-2">
+                    <textarea
+                      id="description"
+                      name="description"
+                      rows={3}
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                      defaultValue={""}
+                    />
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-gray-600">
+                    Write a few sentences about yourself.
+                  </p>
                 </div>
 
                 <div className="col-span-full">
@@ -60,12 +198,32 @@ export default function Example() {
                     htmlFor="about"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    About
+                    Mission
                   </label>
                   <div className="mt-2">
                     <textarea
-                      id="about"
-                      name="about"
+                      id="description"
+                      name="description"
+                      rows={3}
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                      defaultValue={""}
+                    />
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-gray-600">
+                    Write a few sentences about yourself.
+                  </p>
+                </div>
+                <div className="col-span-full">
+                  <label
+                    htmlFor="about"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Culture and core values
+                  </label>
+                  <div className="mt-2">
+                    <textarea
+                      id="description"
+                      name="description"
                       rows={3}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                       defaultValue={""}
@@ -136,7 +294,7 @@ export default function Example() {
 
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Personal Information
+                Contact of company
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-600">
                 Use a permanent address where you can receive mail.
@@ -153,6 +311,7 @@ export default function Example() {
                   <div className="mt-2">
                     <input
                       type="text"
+                      placeholder="Jan or J."
                       name="first-name"
                       id="first-name"
                       autoComplete="given-name"
@@ -170,6 +329,7 @@ export default function Example() {
                   </label>
                   <div className="mt-2">
                     <input
+                      placeholder="Do"
                       type="text"
                       name="last-name"
                       id="last-name"
@@ -179,7 +339,7 @@ export default function Example() {
                   </div>
                 </div>
 
-                <div className="sm:col-span-4">
+                {/* <div className="sm:col-span-4">
                   <label
                     htmlFor="email"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -195,9 +355,9 @@ export default function Example() {
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
                   </div>
-                </div>
+                </div> */}
 
-                <div className="sm:col-span-3">
+                {/* <div className="sm:col-span-3">
                   <label
                     htmlFor="country"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -252,8 +412,8 @@ export default function Example() {
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
                   </div>
-                </div>
-
+                </div> */}
+                {/* 
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="region"
@@ -270,9 +430,9 @@ export default function Example() {
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
                   </div>
-                </div>
+                </div> */}
 
-                <div className="sm:col-span-2">
+                {/* <div className="sm:col-span-2">
                   <label
                     htmlFor="postal-code"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -288,11 +448,19 @@ export default function Example() {
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
                   </div>
-                </div>
+                </div> */}
+              </div>
+              <div className="col-span-full py-10">
+                <FileUpload
+                  accept=".jpg,.png,.jpeg"
+                  label="Impression of company Image(s)"
+                  multiple
+                  updateFilesCb={updateUploadedFiles}
+                />
               </div>
             </div>
 
-            <div className="border-b border-gray-900/10 pb-12">
+            {/* <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
                 Notifications
               </h2>
@@ -427,7 +595,7 @@ export default function Example() {
                   </div>
                 </fieldset>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="mt-6 flex items-center justify-end gap-x-6">

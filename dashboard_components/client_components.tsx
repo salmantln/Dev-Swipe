@@ -95,12 +95,9 @@ const ClientComponent = () => {
   const [minPay, setMinPay] = useState("");
   const [maxPay, setMaxPay] = useState("");
 
-
   const handleCheckboxChange = (event: any) => {
     setIsRemote(event.target.checked);
   };
-
- 
 
   const handleSelectChange = (event: any) => {
     setSelectedOption(event.target.value); // Set the selected option
@@ -114,7 +111,6 @@ const ClientComponent = () => {
   const handleSelectChangePlace = (event: any) => {
     setSelectedOptionPlace(event.target.value); // Set the selected option
   };
-
 
   const handleRemoveOption = () => {
     setSelectedOption(""); // Reset the selected option
@@ -856,7 +852,13 @@ const ClientComponent = () => {
             <MyQuillEditor description1={content} />
             <div className="px-4 py-3  text-right sm:px-6">
               <div className="mt-6 flex justify-end gap-4">
-                <Button variant="secondary">Cancel</Button>
+                {/* <Button variant="secondary">Cancel</Button> */}
+                <button
+                  type="button"
+                  className="text-sm font-semibold leading-6 text-gray-900"
+                >
+                  Cancel
+                </button>
                 <button
                   type="submit"
                   className="inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
