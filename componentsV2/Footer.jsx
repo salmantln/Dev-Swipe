@@ -110,6 +110,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col items-center border-t border-gray-200 pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6">
           <form
+          method="POST"
             onSubmit={handleSubmit}
             className={cn(
               "newsletter-form is-revealing  flex-col gap-2 sm:flex-row flex w-full justify-center md:w-auto"

@@ -3,9 +3,65 @@
 import FileUpload from "@/dashboard_components/file-upload.component";
 import { CameraIcon, UserCircleIcon } from "@heroicons/react/solid";
 import { Card } from "@tremor/react";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+import { signOut, useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+import { db } from "../../lib/firebase/firebase-config";
+import { collection, addDoc } from "firebase/firestore";
 
 export default function Example() {
+  // const [companyName, setCompanyName] = useState("");
+  // const [glassdoorLink, setGlassdoorLink] = useState("");
+  // const [city, setCity] = useState("");
+  // const [country, setCountry] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [mission, setMission] = useState("");
+  // const [culture, setCulture] = useState("");
+  // const [companyImage, setCompanyImage] = useState("");
+  // const [companyCoverImage, setCompanyCoverImage] = useState("");
+  // const [contactFirstname, setContactFirstname] = useState("");
+  // const [contactLastname, setContactLastname] = useState("");
+  // const [impressionImages, setImpressionImages] = useState([]);
+
+  const [state, setState] = useState({
+    companyName: "",
+    glassdoorLink: "",
+    city: "",
+    companySize: "",
+    country: "",
+    description: "",
+    mission: "",
+    culture: "",
+    companyImage: "",
+    companyCoverImage: "",
+    contactFirstname: "",
+    contactLastname: "",
+    impressionImages: [],
+  });
+
+  const session = useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect('/signin');
+    },
+  });
+
+  // const handleChange = (evt: any) => {
+  //   const { name, value, type, checked } = evt.target;
+  //   setState((prevState) => ({
+  //     ...prevState,
+  //     [name]: type === "checkbox" ? checked : value,
+  //   }));
+  // };
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setState((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
   const [newUserInfo, setNewUserInfo] = useState({
     profileImages: [],
   });
@@ -18,10 +74,41 @@ export default function Example() {
     //logic to create new user...
   };
 
+  const submitCompanyInfo = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // This prevents the page reload
+
+    // const jobPostData = {
+    //   companyName: companyName,
+    //   glassdoorLink: glassdoorLink,
+    //   city: city,
+    //   country: country,
+    //   // companySize: companySize,
+    //   description: description,
+    //   mission: mission,
+    //   culture: culture,
+    //   companyImage: companyImage,
+    //   companyCoverImage: companyCoverImage,
+    //   contactFirstname: contactFirstname,
+    //   contactLastname: contactLastname,
+    //   impressionImages: impressionImages,
+    // };
+    // Your form submission logic here
+    try {
+      const docRef = await addDoc(collection(db, "Company"), state);
+      console.log("Document written with ID: ", docRef);
+      // Attempt to save to Firestore
+      // Redirect or show a success message upon success
+    } catch (error) {
+      // Handle the error
+      console.error("Document Error:", error);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-3xl py-24 px-4 sm:px-6 xl:max-w-5xl xl:px-0">
       <Card className="" decoration="top" decorationColor="cyan">
-        <form className="">
+        <form onSubmit={submitCompanyInfo} method="POST">
+          {/* <form onSubmit={submitCompanyInfo}> */}
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
               <h1 className="text-base font-semibold leading-7 text-gray-900">
@@ -35,16 +122,18 @@ export default function Example() {
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
                   <label
-                    htmlFor="first-name"
+                    htmlFor="companyName"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     Company Name
                   </label>
                   <div className="mt-2">
                     <input
+                      value={state.companyName}
+                      onChange={handleChange}
                       type="text"
-                      name="company-name"
-                      id="company-name"
+                      name="companyName"
+                      id="companyName"
                       autoComplete="given-company"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
@@ -53,17 +142,19 @@ export default function Example() {
 
                 <div className="sm:col-span-3">
                   <label
-                    htmlFor="last-name"
+                    htmlFor="glassdoorLink"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     Glassdoor Link
                   </label>
                   <div className="mt-2">
                     <input
+                      value={state.glassdoorLink}
+                      onChange={handleChange}
                       type="text"
-                      name="glassdoor-link"
-                      id="glassdoor-link"
-                      autoComplete="family-name"
+                      name="glassdoorLink"
+                      id="glassdoorLink"
+                      // autoComplete="family-name"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -78,6 +169,8 @@ export default function Example() {
                   </label>
                   <div className="mt-2">
                     <input
+                      value={state.city}
+                      onChange={handleChange}
                       type="text"
                       name="city"
                       id="city"
@@ -89,16 +182,18 @@ export default function Example() {
 
                 <div className="sm:col-span-2">
                   <label
-                    htmlFor="region"
+                    htmlFor="country"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     Country
                   </label>
                   <div className="mt-2">
                     <input
+                      value={state.country}
+                      onChange={handleChange}
                       type="text"
-                      name="region"
-                      id="region"
+                      name="country"
+                      id="country"
                       autoComplete="address-level1"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
@@ -108,16 +203,17 @@ export default function Example() {
                 {/* company size */}
                 <div className="sm:col-span-2">
                   <label
-                    htmlFor="country"
+                    htmlFor="companySize"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     Company Size
                   </label>
                   <div className="mt-2">
                     <select
-                      id="country"
-                      name="country"
-                      autoComplete="country-name"
+                      id="companySize"
+                      name="companySize"
+                      onChange={handleChange}
+                      value={state.companySize}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     >
                       <option value="0-1">0-1</option>
@@ -132,55 +228,17 @@ export default function Example() {
                   </div>
                 </div>
 
-                {/* <div className="sm:col-span-2">
-                  <label
-                    htmlFor="postal-code"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    ZIP / Postal code
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      name="postal-code"
-                      id="postal-code"
-                      autoComplete="postal-code"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div> */}
-
-                {/* <div className="sm:col-span-4">
-                  <label
-                    htmlFor="username"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Company Name
-                  </label>
-                  <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-cyan-600 sm:max-w-md">
-                    
-                      <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        autoComplete="username"
-                        className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                        placeholder="janesmith"
-                      />
-                    </div>
-                  </div>
-                </div> */}
-
                 <div className="col-span-full">
                   <label
-                    htmlFor="about"
+                    htmlFor="description"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     Who are we as a company?
                   </label>
                   <div className="mt-2">
                     <textarea
+                      value={state.description}
+                      onChange={handleChange}
                       id="description"
                       name="description"
                       rows={3}
@@ -202,8 +260,10 @@ export default function Example() {
                   </label>
                   <div className="mt-2">
                     <textarea
-                      id="description"
-                      name="description"
+                      value={state.mission}
+                      onChange={handleChange}
+                      id="mission"
+                      name="mission"
                       rows={3}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                       defaultValue={""}
@@ -222,8 +282,10 @@ export default function Example() {
                   </label>
                   <div className="mt-2">
                     <textarea
-                      id="description"
-                      name="description"
+                      value={state.culture}
+                      onChange={handleChange}
+                      id="culture"
+                      name="culture"
                       rows={3}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                       defaultValue={""}
@@ -239,7 +301,7 @@ export default function Example() {
                     htmlFor="photo"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Photo
+                    Company image
                   </label>
                   <div className="mt-2 flex items-center gap-x-3">
                     <UserCircleIcon
@@ -275,6 +337,8 @@ export default function Example() {
                         >
                           <span>Upload a file</span>
                           <input
+                            value={state.companyCoverImage}
+                            onChange={handleChange}
                             id="file-upload"
                             name="file-upload"
                             type="file"
@@ -297,7 +361,7 @@ export default function Example() {
                 Contact of company
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-600">
-                Use a permanent address where you can receive mail.
+                The person who will contact with the job seekers.
               </p>
 
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -310,10 +374,12 @@ export default function Example() {
                   </label>
                   <div className="mt-2">
                     <input
+                      value={state.contactFirstname}
+                      onChange={handleChange}
                       type="text"
                       placeholder="Jan or J."
-                      name="first-name"
-                      id="first-name"
+                      name="contactFirstname"
+                      id="contactFirstname"
                       autoComplete="given-name"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
@@ -322,133 +388,24 @@ export default function Example() {
 
                 <div className="sm:col-span-3">
                   <label
-                    htmlFor="last-name"
+                    htmlFor="contactLastname"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
                     Last name
                   </label>
                   <div className="mt-2">
                     <input
+                      value={state.contactLastname}
+                      onChange={handleChange}
                       placeholder="Do"
                       type="text"
-                      name="last-name"
-                      id="last-name"
+                      name="contactLastname"
+                      id="contactLastname"
                       autoComplete="family-name"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
-
-                {/* <div className="sm:col-span-4">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Email address
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div> */}
-
-                {/* <div className="sm:col-span-3">
-                  <label
-                    htmlFor="country"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Country
-                  </label>
-                  <div className="mt-2">
-                    <select
-                      id="country"
-                      name="country"
-                      autoComplete="country-name"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                    >
-                      <option>United States</option>
-                      <option>Canada</option>
-                      <option>Mexico</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="col-span-full">
-                  <label
-                    htmlFor="street-address"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    Street address
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      name="street-address"
-                      id="street-address"
-                      autoComplete="street-address"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-
-                <div className="sm:col-span-2 sm:col-start-1">
-                  <label
-                    htmlFor="city"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    City
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      name="city"
-                      id="city"
-                      autoComplete="address-level2"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div> */}
-                {/* 
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="region"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    State / Province
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      name="region"
-                      id="region"
-                      autoComplete="address-level1"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div> */}
-
-                {/* <div className="sm:col-span-2">
-                  <label
-                    htmlFor="postal-code"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                  >
-                    ZIP / Postal code
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      type="text"
-                      name="postal-code"
-                      id="postal-code"
-                      autoComplete="postal-code"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div> */}
               </div>
               <div className="col-span-full py-10">
                 <FileUpload
@@ -459,143 +416,6 @@ export default function Example() {
                 />
               </div>
             </div>
-
-            {/* <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Notifications
-              </h2>
-              <p className="mt-1 text-sm leading-6 text-gray-600">
-                We&apos;ll always let you know about important changes, but you
-                pick what else you want to hear about.
-              </p>
-
-              <div className="mt-10 space-y-10">
-                <fieldset>
-                  <legend className="text-sm font-semibold leading-6 text-gray-900">
-                    By Email
-                  </legend>
-                  <div className="mt-6 space-y-6">
-                    <div className="relative flex gap-x-3">
-                      <div className="flex h-6 items-center">
-                        <input
-                          id="comments"
-                          name="comments"
-                          type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-600"
-                        />
-                      </div>
-                      <div className="text-sm leading-6">
-                        <label
-                          htmlFor="comments"
-                          className="font-medium text-gray-900"
-                        >
-                          Comments
-                        </label>
-                        <p className="text-gray-500">
-                          Get notified when someones posts a comment on a
-                          posting.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="relative flex gap-x-3">
-                      <div className="flex h-6 items-center">
-                        <input
-                          id="candidates"
-                          name="candidates"
-                          type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-600"
-                        />
-                      </div>
-                      <div className="text-sm leading-6">
-                        <label
-                          htmlFor="candidates"
-                          className="font-medium text-gray-900"
-                        >
-                          Candidates
-                        </label>
-                        <p className="text-gray-500">
-                          Get notified when a candidate applies for a job.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="relative flex gap-x-3">
-                      <div className="flex h-6 items-center">
-                        <input
-                          id="offers"
-                          name="offers"
-                          type="checkbox"
-                          className="h-4 w-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-600"
-                        />
-                      </div>
-                      <div className="text-sm leading-6">
-                        <label
-                          htmlFor="offers"
-                          className="font-medium text-gray-900"
-                        >
-                          Offers
-                        </label>
-                        <p className="text-gray-500">
-                          Get notified when a candidate accepts or rejects an
-                          offer.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <fieldset>
-                  <legend className="text-sm font-semibold leading-6 text-gray-900">
-                    Push Notifications
-                  </legend>
-                  <p className="mt-1 text-sm leading-6 text-gray-600">
-                    These are delivered via SMS to your mobile phone.
-                  </p>
-                  <div className="mt-6 space-y-6">
-                    <div className="flex items-center gap-x-3">
-                      <input
-                        id="push-everything"
-                        name="push-notifications"
-                        type="radio"
-                        className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-600"
-                      />
-                      <label
-                        htmlFor="push-everything"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Everything
-                      </label>
-                    </div>
-                    <div className="flex items-center gap-x-3">
-                      <input
-                        id="push-email"
-                        name="push-notifications"
-                        type="radio"
-                        className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-600"
-                      />
-                      <label
-                        htmlFor="push-email"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        Same as email
-                      </label>
-                    </div>
-                    <div className="flex items-center gap-x-3">
-                      <input
-                        id="push-nothing"
-                        name="push-notifications"
-                        type="radio"
-                        className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-600"
-                      />
-                      <label
-                        htmlFor="push-nothing"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                      >
-                        No push notifications
-                      </label>
-                    </div>
-                  </div>
-                </fieldset>
-              </div>
-            </div> */}
           </div>
 
           <div className="mt-6 flex items-center justify-end gap-x-6">

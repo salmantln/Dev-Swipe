@@ -8,6 +8,7 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "./componentsV2/**/*.{js,ts,jsx,tsx}",
     "./company_components/**/*.{js,ts,jsx,tsx}",
+    "./login_components/**/*.{js,ts,jsx,tsx}",
     "./dashboard_components/**/*.{js,ts,jsx,tsx}",
     './node_modules/preline/preline.js',
     './node_modules/preline/dist/preline.js',

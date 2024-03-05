@@ -110,7 +110,7 @@ export const CompanyDashboard = () => {
             </label>{" "}
             <div className="mt-1">
               {/* File uploaded */}
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} method="POST">
                 <FileUpload
                   accept=".jpg,.png,.jpeg"
                   label="Profile Image(s)"

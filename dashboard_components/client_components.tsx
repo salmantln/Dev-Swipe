@@ -3,8 +3,7 @@
 import { Button, Card } from "@tremor/react";
 import React, { useState } from "react";
 import { MyQuillEditor } from "./editor/editor";
-import { db } from "../lib/firebase/firebase-config"; // Adjust the import path according to your file structure
-// import  firebase_app  from "../lib/firebase/firebase-config"; // Adjust the import path according to your file structure
+import { db } from "../lib/firebase/firebase-config"; 
 import { collection, addDoc } from "firebase/firestore";
 
 import addData from "../lib/firebase/addData";
@@ -214,21 +213,6 @@ const ClientComponent = () => {
       maxPay: maxPay,
       skills: skills,
     };
-
-    // try {
-    //   // const docRef = await addDoc(collection(firebase_app, "jobPosts"), jobPostData);
-    //   // const { result, error } = await addData('jobPost', 'jobPostId', jobPostData)
-
-    //   // console.log("Document written with ID: ", result);
-    //   // if (error) {
-    //   //   return console.log(error)
-    //   // }
-    //   // Handle successful save (e.g., show a confirmation message)
-    // } catch (e) {
-    //   console.error("Error adding document: ", e);
-    //   // Handle error (e.g., show an error message)
-    // }
-
     // Your form submission logic here
     try {
       const docRef = await addDoc(collection(db, "jobPosts"), jobPostData);
@@ -245,7 +229,7 @@ const ClientComponent = () => {
     <>
       <h1 className=" mb-4 text-xl md:text-2xl text-cyan-600">Job posts</h1>
       <Card className="mx-auto" decoration="top" decorationColor="cyan">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} method="POST">
           <div className="bg-cyan-200 px-6 pb-10 pt-8 border-y border-dashed text-sm">
             <div className="flex flex-row">
               <div className="w-1/4 my-auto p-1 text-right">

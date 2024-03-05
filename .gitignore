@@ -15,6 +15,7 @@
 
 # production
 /build
+service-account.json
 
 # misc
 .DS_Store

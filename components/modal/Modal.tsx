@@ -79,7 +79,7 @@ export function CompanyInfoModal() {
                 </h2>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 p-4">
+              <form onSubmit={handleSubmit} className="space-y-4 p-4" method="POST">
                 {/* <input
                 type="text"
                 name="name"
