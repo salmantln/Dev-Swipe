@@ -4,24 +4,16 @@ import FileUpload from "@/dashboard_components/file-upload.component";
 import { CameraIcon, UserCircleIcon } from "@heroicons/react/solid";
 import { Card } from "@tremor/react";
 import { ChangeEvent, useState } from "react";
-import { signOut, useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
+import { signOut, useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 import { db } from "../../lib/firebase/firebase-config";
 import { collection, addDoc } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Example() {
-  // const [companyName, setCompanyName] = useState("");
-  // const [glassdoorLink, setGlassdoorLink] = useState("");
-  // const [city, setCity] = useState("");
-  // const [country, setCountry] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [mission, setMission] = useState("");
-  // const [culture, setCulture] = useState("");
-  // const [companyImage, setCompanyImage] = useState("");
-  // const [companyCoverImage, setCompanyCoverImage] = useState("");
-  // const [contactFirstname, setContactFirstname] = useState("");
-  // const [contactLastname, setContactLastname] = useState("");
-  // const [impressionImages, setImpressionImages] = useState([]);
+  const { data: session, status } = useSession();
+  console.log("status", status);
+  console.log("session", session);
 
   const [state, setState] = useState({
     companyName: "",
@@ -39,20 +31,12 @@ export default function Example() {
     impressionImages: [],
   });
 
-  const session = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect('/signin');
-    },
-  });
-
-  // const handleChange = (evt: any) => {
-  //   const { name, value, type, checked } = evt.target;
-  //   setState((prevState) => ({
-  //     ...prevState,
-  //     [name]: type === "checkbox" ? checked : value,
-  //   }));
-  // };
+  // const session = useSession({
+  //   required: true,
+  //   onUnauthenticated() {
+  //     redirect("/signin");
+  //   },
+  // });
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;

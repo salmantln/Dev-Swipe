@@ -22,7 +22,23 @@ export default function Example() {
 
   // const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+  // const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.currentTarget);
+  //   const response = await signIn('credentials', {
+  //     email: formData.get('email'),
+  //     password: formData.get('password'),
+  //     redirect: false,
+  //   });
+
+  //   console.log({ response });
+  //   if (!response?.error) {
+  //     router.push('/');
+  //     router.refresh();
+  //   }
+  // };
+
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
     // Extract form data from the event
@@ -34,18 +50,30 @@ export default function Example() {
 
     setError(null);
 
+    const response = await signIn("credentials", {
+      email: formData.get("email"),
+      password: formData.get("password"),
+      redirect: false,
+    });
+
+    console.log({ response });
+    if (!response?.error) {
+      router.push("/onboarding");
+      // router.refresh();
+    }
+
     // Check if passwords match. If they do, create user in Firebase and redirect to your logged in page.
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential: any) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error: any) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
+    // signInWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential: any) => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     // ...
+    //   })
+    //   .catch((error: any) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //   });
     // signInWithEmailAndPassword(auth,email, passwordOne)
     //   .then(authUser => {
     //     console.log("Success. The user is created in Firebase");
@@ -80,7 +108,7 @@ export default function Example() {
           </h2>
         </div>
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={onSubmit}>
             {/* <form className="space-y-6" action={dispatch} method="POST"> */}
             <div>
               <label
@@ -134,15 +162,15 @@ export default function Example() {
 
             <div>
               <button
-                // type="submit"
-                onClick={() =>
-                  signIn("credentials", {
-                    email,
-                    password,
-                    redirect: true,
-                    callbackUrl: "/",
-                  })
-                }
+                type="submit"
+                // onClick={() =>
+                //   signIn("credentials", {
+                //     email,
+                //     password,
+                //     redirect: true,
+                //     callbackUrl: "/",
+                //   })
+                // }
                 disabled={!email || !password}
                 className="flex w-full justify-center rounded-md bg-cyan-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600"
               >

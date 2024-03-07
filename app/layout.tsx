@@ -1,14 +1,11 @@
-// "use server";
-
 import PrelineScript from "@/components/PrelineScript";
 import { Analytics } from "@vercel/analytics/react";
 import "aos/dist/aos.css";
 import { Architects_Daughter, Inter } from "next/font/google";
 import Script from "next/script";
 // import { useEffect } from "react";
-// import getServerSession from "next-auth";
-import { getServerSession } from "next-auth";
-import { authoptions  } from './api/auth/[...nextauth]/route';
+import getServerSession from "next-auth";
+import { options } from "./api/auth/[...nextauth]/options";
 import AuthProvider from "./context/AuthProvider";
 import "./globals.css";
 
@@ -30,11 +27,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // useEffect(() => {
-  //   AOS.init();
-  // }, []);
-  const session = await getServerSession(authoptions );
-  
+
+  const session = await getServerSession(options);
   return (
     <>
       <head>
@@ -56,17 +50,10 @@ export default async function RootLayout({
       <html lang="en">
         <body
           className={`${inter.variable} ${architects_daughter.variable} `}
-          // className={`${inter.variable} ${architects_daughter.variable} pr-8 pl-8`}
         >
-          <AuthProvider session={session}>
+          <AuthProvider>
             {children}
             <Analytics />
-
-            {/* <Navbar  />
-          {children}
-          <Footer />
-          <Analytics />
-          <PrelineScript /> */}
           </AuthProvider>
         </body>
         <PrelineScript />
