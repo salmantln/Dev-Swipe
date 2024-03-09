@@ -5,12 +5,13 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useFormState } from "react-dom";
-import { auth } from "../../lib/firebase/firebase-config";
+import { auth, app, db } from "../../lib/firebase/firebase-config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   getAuth,
 } from "firebase/auth";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 export default function Example() {
   const [email, setEmail] = useState("");
@@ -38,52 +39,67 @@ export default function Example() {
   //   }
   // };
 
+  const updateUserMetadata = async ({
+    userId,
+    metadata,
+  }: {
+    userId: any;
+    metadata: any;
+  }) => {
+    const userRef = doc(db, "users", userId);
+    await setDoc(userRef, metadata, { merge: true });
+  };
+
+
+  
+  // Assuming setError is defined elsewhere in your component
   const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-
-    // Extract form data from the event
+  
+    // Extract form data
     const formData = new FormData(event.currentTarget);
     const email = formData.get("email") as string;
-    const passwordOne = formData.get("passwordOne") as string;
-    // const passwordTwo = formData.get("passwordTwo") as string;
-    event.preventDefault();
-
+    const password = formData.get("passwordOne") as string; // Ensure this matches your form
     setError(null);
+  
+   const response = await signIn("credentials", {
+  redirect: false,
+  email,
+  password,
+});
 
-    const response = await signIn("credentials", {
-      email: formData.get("email"),
-      password: formData.get("password"),
-      redirect: false,
-    });
-
+if (response) { // Check if response is not undefined
+  if (!response.error && response.user) {
+    await checkOnboardingStatus(response.user.id);
+  } else {
     console.log({ response });
-    if (!response?.error) {
-      router.push("/onboarding");
-      // router.refresh();
-    }
+    // Handle error case
+  }
+} else {
+  // Handle the case where response is undefined
+  console.error("Sign-in response is undefined.");
+}
 
-    // Check if passwords match. If they do, create user in Firebase and redirect to your logged in page.
-
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential: any) => {
-    //     // Signed in
-    //     const user = userCredential.user;
-    //     // ...
-    //   })
-    //   .catch((error: any) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //   });
-    // signInWithEmailAndPassword(auth,email, passwordOne)
-    //   .then(authUser => {
-    //     console.log("Success. The user is created in Firebase");
-    //     router.push("/logged_in");
-    //   })
-    //   .catch(error => {
-    //     // An error occurred. Set error message to be displayed to user
-    //     setError(error.message);
-    //   });
   };
+  
+  const checkOnboardingStatus = async (userId: string) => {
+
+    const docRef = doc(db, "users", userId);
+    const docSnap = await getDoc(docRef);
+  
+    if (docSnap.exists()) {
+      const userData = docSnap.data();
+      if (!userData.onboarded) {
+        router.push('/onboarding');
+      } else {
+        router.push('/dashboard');
+      }
+    } else {
+      console.error("No such document!");
+      // Optionally, handle user record creation or error
+    }
+  };
+  
 
   return (
     <>
