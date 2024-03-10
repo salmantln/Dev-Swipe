@@ -1,105 +1,106 @@
 "use client";
 import { Logo } from "@/componentsV2/Logo";
-import { ExclamationCircleIcon } from "@heroicons/react/outline";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useFormState } from "react-dom";
-import { auth, app, db } from "../../lib/firebase/firebase-config";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  getAuth,
-} from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
-
+import { User } from "@supabase/supabase-js";
+import { supabase } from "../../lib/supabase/supabaseClient";
 export default function Example() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
-  // const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  const handleSignIn = async () => {
+    await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    router.refresh();
+  };
 
-  // const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
 
-  // const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.currentTarget);
-  //   const response = await signIn('credentials', {
-  //     email: formData.get('email'),
-  //     password: formData.get('password'),
-  //     redirect: false,
-  //   });
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-  //   console.log({ response });
-  //   if (!response?.error) {
-  //     router.push('/');
-  //     router.refresh();
-  //   }
-  // };
+    if (error) {
+      alert(error.message);
+    } else {
+      // Redirect user or update UI
 
-  const updateUserMetadata = async ({
+      const userId = (await supabase.auth.getUser()).data.user?.id; // Get current user's ID
+
+      await supabase.auth.updateUser({
+        data: { onboarding: false },
+      });
+
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      // console.log(      updateOnboardingStatus({ userId, onboardingStatus: false }))
+      console.log("User ID: ", userId);
+      console.log("User Data: ", user?.user_metadata);
+
+      if (user?.user_metadata?.onboarding === false) {
+        router.push("/onboarding");
+        console.log("User has onboarding: false");
+      } else {
+        router.push("/dashboard");
+        console.log("User does not have onboarding: false");
+      }
+ 
+    }
+
+    setLoading(false);
+  };
+
+  async function updateOnboardingStatus({
     userId,
-    metadata,
+    onboardingStatus,
   }: {
     userId: any;
-    metadata: any;
-  }) => {
-    const userRef = doc(db, "users", userId);
-    await setDoc(userRef, metadata, { merge: true });
-  };
+    onboardingStatus: boolean;
+  }) {
+    const { data, error } = await supabase
+      .from("profiles")
+      .update({ onboarding: onboardingStatus })
+      .eq("id", userId);
 
-
-  
-  // Assuming setError is defined elsewhere in your component
-  const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault();
-  
-    // Extract form data
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get("email") as string;
-    const password = formData.get("passwordOne") as string; // Ensure this matches your form
-    setError(null);
-  
-   const response = await signIn("credentials", {
-  redirect: false,
-  email,
-  password,
-});
-
-if (response) { // Check if response is not undefined
-  if (!response.error && response.user) {
-    await checkOnboardingStatus(response.user.id);
-  } else {
-    console.log({ response });
-    // Handle error case
-  }
-} else {
-  // Handle the case where response is undefined
-  console.error("Sign-in response is undefined.");
-}
-
-  };
-  
-  const checkOnboardingStatus = async (userId: string) => {
-
-    const docRef = doc(db, "users", userId);
-    const docSnap = await getDoc(docRef);
-  
-    if (docSnap.exists()) {
-      const userData = docSnap.data();
-      if (!userData.onboarded) {
-        router.push('/onboarding');
-      } else {
-        router.push('/dashboard');
-      }
-    } else {
-      console.error("No such document!");
-      // Optionally, handle user record creation or error
+    if (error) {
+      console.error("Error updating onboarding status:", error);
+      return null;
     }
-  };
-  
+
+    return data;
+  }
+  // const handleLogin = async (e: any) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setError(null);
+
+  //   const { error } = await supabase.auth.signInWithPassword({
+  //     email,
+  //     password,
+  //   });
+  //   if (error) setError(error.message);
+  //   // const res = await supabase.auth.signInWithPassword({
+  //   //   email,
+  //   //   password,
+  //   // });
+  //   // setUser(res.data.user);
+  //   router.refresh();
+  //   console.log(user);
+  //   setEmail("");
+  //   setPassword("");
+  //   setLoading(false);
+  // };
 
   return (
     <>
@@ -124,7 +125,8 @@ if (response) { // Check if response is not undefined
           </h2>
         </div>
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={onSubmit}>
+          {/* <form className="space-y-6" action="/auth/login"> */}
+          <form className="space-y-6" onSubmit={handleLogin}>
             {/* <form className="space-y-6" action={dispatch} method="POST"> */}
             <div>
               <label

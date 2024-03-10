@@ -3,39 +3,46 @@
 import FileUpload from "@/dashboard_components/file-upload.component";
 import { CameraIcon, UserCircleIcon } from "@heroicons/react/solid";
 import { Card } from "@tremor/react";
-import { ChangeEvent, useState } from "react";
-import { signOut, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { addDoc, collection } from "firebase/firestore";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { db } from "../../lib/firebase/firebase-config";
-import { collection, addDoc, query } from "firebase/firestore";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useCollection } from "react-firebase-hooks/firestore";
+import { supabase } from "@/lib/supabase/supabaseClient";
 export default function Example() {
   const [newUserInfo, setNewUserInfo] = useState({
     profileImages: [],
   });
 
-  const { data: session, status } = useSession();
-  console.log("status", status);
-  console.log("session", session);
+  // const { data: session, status } = useSession();
+  // console.log("status", status);
+  // console.log("session", session);
 
-  const [users, loading, error] = useCollection(query(collection(db, "users")));
+  // const [users, loading, error] = useCollection(query(collection(db, "users")));
 
   const [state, setState] = useState({
-    companyName: "",
-    glassdoorLink: "",
+    company_name: "",
+    glassdoor_link: "",
     city: "",
-    companySize: "",
+    company_size: "",
     country: "",
     description: "",
     mission: "",
-    culture: "",
-    companyImage: "",
-    companyCoverImage: "",
-    contactFirstname: "",
-    contactLastname: "",
-    impressionImages: [],
+    culture_and_values: "",
+    company_image: "",
+    cover_image: "",
+    contact_firstname: "",
+    contact_lastname: "",
+    impression_images: [],
   });
+
+  const router = useRouter();
+
+  // const checkOnboardingStatus = async () => {
+  //   const user = supabase.auth.getUser();
+  //   if (!user) {
+  //     router.push("/login");
+  //     return;
+  //   }
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -49,44 +56,44 @@ export default function Example() {
     setNewUserInfo({ ...newUserInfo, profileImages: files });
 
   const submitCompanyInfo = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // This prevents the page reload
+    event.preventDefault(); // Prevent the form from reloading the page
 
-    // const jobPostData = {
-    //   companyName: companyName,
-    //   glassdoorLink: glassdoorLink,
-    //   city: city,
-    //   country: country,
-    //   // companySize: companySize,
-    //   description: description,
-    //   mission: mission,
-    //   culture: culture,
-    //   companyImage: companyImage,
-    //   companyCoverImage: companyCoverImage,
-    //   contactFirstname: contactFirstname,
-    //   contactLastname: contactLastname,
-    //   impressionImages: impressionImages,
-    // };
-    // Your form submission logic here
+    // Get the current user
+    const user = supabase.auth.getUser();
+
+    if (!user) {
+      console.error("User not authenticated");
+      return; // Early return if no user is authenticated
+    }
+
     try {
-      const docRef = await addDoc(collection(db, "Company"), state);
-      console.log("Document written with ID: ", docRef);
-      // Attempt to save to Firestore
-      // Redirect or show a success message upon success
+      console.log(state);
+      const { data, error } = await supabase
+        .from("companies") // Make sure your table name is correct
+        .insert([
+          {
+            // Assuming 'user_id' column exists to link the company info to the user
+            id: (await user).data.user?.id,
+            ...state, // Spread the state object to match the columns in your table
+          },
+        ]);
+
+      if (error) throw error;
+
+      // Handle success - for example, redirect or show a success message
+      console.log("Company info saved:", data);
     } catch (error) {
-      // Handle the error
-      console.error("Document Error:", error);
+      console.error("Failed to save company info:", error);
     }
   };
 
+  // };
+
   return (
     <>
-
-
       <div className="mx-auto max-w-3xl py-24 px-4 sm:px-6 xl:max-w-5xl xl:px-0">
         <Card className="" decoration="top" decorationColor="cyan">
-        {users?.docs[0].data().email}
-      <div>{session?.data?.user?.name}</div>
-          <form onSubmit={submitCompanyInfo} method="POST">
+          <form onSubmit={submitCompanyInfo}>
             {/* <form onSubmit={submitCompanyInfo}> */}
             <div className="space-y-12">
               <div className="border-b border-gray-900/10 pb-12">
@@ -101,18 +108,19 @@ export default function Example() {
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="companyName"
+                      htmlFor="company_name"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Company Name
                     </label>
                     <div className="mt-2">
                       <input
-                        value={state.companyName}
+                        required
+                        value={state.company_name}
                         onChange={handleChange}
                         type="text"
-                        name="companyName"
-                        id="companyName"
+                        name="company_name"
+                        id="company_name"
                         autoComplete="given-company"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                       />
@@ -121,18 +129,18 @@ export default function Example() {
 
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="glassdoorLink"
+                      htmlFor="glassdoor_link"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Glassdoor Link
                     </label>
                     <div className="mt-2">
                       <input
-                        value={state.glassdoorLink}
+                        value={state.glassdoor_link}
                         onChange={handleChange}
                         type="text"
-                        name="glassdoorLink"
-                        id="glassdoorLink"
+                        name="glassdoor_link"
+                        id="glassdoor_link"
                         // autoComplete="family-name"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                       />
@@ -148,6 +156,7 @@ export default function Example() {
                     </label>
                     <div className="mt-2">
                       <input
+                        required
                         value={state.city}
                         onChange={handleChange}
                         type="text"
@@ -168,6 +177,7 @@ export default function Example() {
                     </label>
                     <div className="mt-2">
                       <input
+                        required
                         value={state.country}
                         onChange={handleChange}
                         type="text"
@@ -182,17 +192,17 @@ export default function Example() {
                   {/* company size */}
                   <div className="sm:col-span-2">
                     <label
-                      htmlFor="companySize"
+                      htmlFor="company_size"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Company Size
                     </label>
                     <div className="mt-2">
                       <select
-                        id="companySize"
-                        name="companySize"
+                        id="company_size"
+                        name="company_size"
                         onChange={handleChange}
-                        value={state.companySize}
+                        value={state.company_size}
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:max-w-xs sm:text-sm sm:leading-6"
                       >
                         <option value="0-1">0-1</option>
@@ -216,10 +226,12 @@ export default function Example() {
                     </label>
                     <div className="mt-2">
                       <textarea
+                        required
                         value={state.description}
                         onChange={handleChange}
                         id="description"
                         name="description"
+                        placeholder="Example, your company activities..."
                         rows={3}
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                         defaultValue={""}
@@ -239,8 +251,10 @@ export default function Example() {
                     </label>
                     <div className="mt-2">
                       <textarea
+                        required
                         value={state.mission}
                         onChange={handleChange}
+                        placeholder="What is the main goal of the company"
                         id="mission"
                         name="mission"
                         rows={3}
@@ -254,17 +268,19 @@ export default function Example() {
                   </div>
                   <div className="col-span-full">
                     <label
-                      htmlFor="about"
+                      htmlFor="culture_and_values"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Culture and core values
                     </label>
                     <div className="mt-2">
                       <textarea
-                        value={state.culture}
+                        
+                        value={state.culture_and_values}
                         onChange={handleChange}
-                        id="culture"
-                        name="culture"
+                        placeholder="How is the culture of the workspace like"
+                        id="culture_and_values"
+                        name="culture_and_values"
                         rows={3}
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                         defaultValue={""}
@@ -277,7 +293,7 @@ export default function Example() {
 
                   <div className="col-span-full">
                     <label
-                      htmlFor="photo"
+                      htmlFor="company_image"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Company image
@@ -298,7 +314,7 @@ export default function Example() {
 
                   <div className="col-span-full">
                     <label
-                      htmlFor="cover-photo"
+                      htmlFor="cover_image"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Cover photo
@@ -311,15 +327,15 @@ export default function Example() {
                         />
                         <div className="mt-4 flex text-sm leading-6 text-gray-600">
                           <label
-                            htmlFor="file-upload"
+                            htmlFor="cover_image"
                             className="relative cursor-pointer rounded-md bg-white font-semibold text-cyan-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-cyan-600 focus-within:ring-offset-2 hover:text-cyan-500"
                           >
                             <span>Upload a file</span>
                             <input
-                              value={state.companyCoverImage}
+                              value={state.cover_image}
                               onChange={handleChange}
-                              id="file-upload"
-                              name="file-upload"
+                              id="cover_image"
+                              name="cover_image"
                               type="file"
                               className="sr-only"
                             />
@@ -346,19 +362,20 @@ export default function Example() {
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="first-name"
+                      htmlFor="contact_firstname"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       First name
                     </label>
                     <div className="mt-2">
                       <input
-                        value={state.contactFirstname}
+                        required
+                        value={state.contact_firstname}
                         onChange={handleChange}
                         type="text"
                         placeholder="Jan or J."
-                        name="contactFirstname"
-                        id="contactFirstname"
+                        name="contact_firstname"
+                        id="contact_firstname"
                         autoComplete="given-name"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                       />
@@ -367,19 +384,20 @@ export default function Example() {
 
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="contactLastname"
+                      htmlFor="contact_lastname"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Last name
                     </label>
                     <div className="mt-2">
                       <input
-                        value={state.contactLastname}
+                        required
+                        value={state.contact_lastname}
                         onChange={handleChange}
                         placeholder="Do"
                         type="text"
-                        name="contactLastname"
-                        id="contactLastname"
+                        name="contact_lastname"
+                        id="contact_lastname"
                         autoComplete="family-name"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                       />

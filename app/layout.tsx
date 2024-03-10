@@ -53,10 +53,10 @@ export default async function RootLayout({
         <body
           className={`${inter.variable} ${architects_daughter.variable} `}
         >
-          <AuthProvider  session={session}>
+          {/* <AuthProvider  session={session}> */}
             {children}
             <Analytics />
-          </AuthProvider>
+          {/* </AuthProvider> */}
         </body>
         <PrelineScript />
       </html>
