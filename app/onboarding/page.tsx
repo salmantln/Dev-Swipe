@@ -1,17 +1,25 @@
 "use client";
 
 import FileUpload from "@/dashboard_components/file-upload.component";
+import { supabase } from "@/lib/supabase/supabaseClient";
 import { CameraIcon, UserCircleIcon } from "@heroicons/react/solid";
 import { Card } from "@tremor/react";
-import { addDoc, collection } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { db } from "../../lib/firebase/firebase-config";
-import { supabase } from "@/lib/supabase/supabaseClient";
 export default function Example() {
+  const router = useRouter(); // For navigation after successful submission
+  
   const [newUserInfo, setNewUserInfo] = useState({
     profileImages: [],
   });
+  const [descriptionTouched, setDescriptionTouched] = useState(false);
+  const [showDescriptionError, setShowDescriptionError] = useState(false);
+  const handleBlur = (e: any) => {
+    // Set descriptionTouched to true if the description is empty when the user leaves the field
+    if (e.target.name === "description" && e.target.value.trim() === "") {
+      setDescriptionTouched(true);
+    }
+  };
 
   const [state, setState] = useState({
     company_name: "",
@@ -31,6 +39,12 @@ export default function Example() {
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
+
+    // Check if the description is being cleared
+    if (name === "description") {
+      setShowDescriptionError(value.trim().length === 0);
+    }
+
     setState((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -40,37 +54,36 @@ export default function Example() {
   const updateUploadedFiles = (files: any) =>
     setNewUserInfo({ ...newUserInfo, profileImages: files });
 
-  const submitCompanyInfo = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Prevent the form from reloading the page
-
-    // Get the current user
-    const user = supabase.auth.getUser();
-
-    if (!user) {
-      console.error("User not authenticated");
-      return; // Early return if no user is authenticated
-    }
-
-    try {
-      console.log(state);
-      const { data, error } = await supabase
-        .from("companies") // Make sure your table name is correct
-        .insert([
-          {
-            // Assuming 'user_id' column exists to link the company info to the user
-            id: (await user).data.user?.id,
-            ...state, // Spread the state object to match the columns in your table
-          },
-        ]);
-
-      if (error) throw error;
-
-      // Handle success - for example, redirect or show a success message
-      console.log("Company info saved:", data);
-    } catch (error) {
-      console.error("Failed to save company info:", error);
-    }
-  };
+    const submitCompanyInfo = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault(); // Prevent the form from reloading the page
+  
+      const user = supabase.auth.getUser(); // Corrected way to get the current user
+  
+      if (!user) {
+        console.error("User not authenticated");
+        return; // Early return if no user is authenticated
+      }
+  
+      try {
+        console.log(state);
+        const { data, error } = await supabase
+          .from("companies") // Make sure your table name is correct
+          .insert([
+            {
+              user_id: (await user).data.user?.id, // Assuming 'user_id' column exists to link the company info to the user
+              ...state, // Spread the state object to match the columns in your table
+            },
+          ]);
+  
+        if (error) throw error;
+  
+        // Redirect or show a success message
+        console.log("Company info saved:", data);
+        router.push('/dashboard'); // Navigate to the dashboard
+      } catch (error) {
+        console.error("Failed to save company info:", error);
+      }
+    };
 
   // };
 
@@ -216,14 +229,20 @@ export default function Example() {
                         onChange={handleChange}
                         id="description"
                         name="description"
+                        // onBlur={handleBlur} // Add onBlur event handler
                         placeholder="Example, your company activities..."
+                        maxLength={255} // Ensure users cannot exceed the limit
                         rows={3}
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                         defaultValue={""}
                       />
                     </div>
-                    <p className="mt-3 text-sm leading-6 text-gray-600">
-                      Write a few sentences about yourself.
+                    <p className="mt-3 text-sm leading-6 text-red-600">
+                      {showDescriptionError && (
+                        <p className="mt-3 text-sm leading-6 text-red-600">
+                          You must enter the description.
+                        </p>
+                      )}
                     </p>
                   </div>
 
