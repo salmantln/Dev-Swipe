@@ -13,12 +13,6 @@ export default function Example() {
     profileImages: [],
   });
 
-  // const { data: session, status } = useSession();
-  // console.log("status", status);
-  // console.log("session", session);
-
-  // const [users, loading, error] = useCollection(query(collection(db, "users")));
-
   const [state, setState] = useState({
     company_name: "",
     glassdoor_link: "",
@@ -34,15 +28,6 @@ export default function Example() {
     contact_lastname: "",
     impression_images: [],
   });
-
-  const router = useRouter();
-
-  // const checkOnboardingStatus = async () => {
-  //   const user = supabase.auth.getUser();
-  //   if (!user) {
-  //     router.push("/login");
-  //     return;
-  //   }
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -275,7 +260,6 @@ export default function Example() {
                     </label>
                     <div className="mt-2">
                       <textarea
-                        
                         value={state.culture_and_values}
                         onChange={handleChange}
                         placeholder="How is the culture of the workspace like"

@@ -5,9 +5,7 @@ import "aos/dist/aos.css";
 import { Architects_Daughter, Inter } from "next/font/google";
 import Script from "next/script";
 // import { useEffect } from "react";
-import getServerSession from "next-auth";
 // import { options } from "./api/auth/[...nextauth]/options";
-import AuthProvider from "./context/AuthProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,9 +23,9 @@ const architects_daughter = Architects_Daughter({
 
 export default async function RootLayout({
   children
-  , session
+
 }: {
-  children: React.ReactNode, session : any
+  children: React.ReactNode, 
 }) {
 
   // const session = await getServerSession(options);
