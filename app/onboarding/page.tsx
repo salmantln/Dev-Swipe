@@ -70,7 +70,7 @@ export default function Example() {
           .from("companies") // Make sure your table name is correct
           .insert([
             {
-              user_id: (await user).data.user?.id, // Assuming 'user_id' column exists to link the company info to the user
+              id: (await user).data.user?.id, // Assuming 'user_id' column exists to link the company info to the user
               ...state, // Spread the state object to match the columns in your table
             },
           ]);

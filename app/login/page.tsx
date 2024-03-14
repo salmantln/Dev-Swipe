@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { User } from "@supabase/supabase-js";
 import { supabase } from "../../lib/supabase/supabaseClient";
+import { cookies } from "next/headers";
+// import { createRouteHandlerClient } from "@supabase/ssr";
 export default function Example() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,13 +14,7 @@ export default function Example() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
-  const handleSignIn = async () => {
-    await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    router.refresh();
-  };
+
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -55,7 +51,6 @@ export default function Example() {
         router.push("/dashboard");
         console.log("User does not have onboarding: false");
       }
- 
     }
 
     setLoading(false);
@@ -211,12 +206,12 @@ export default function Example() {
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{" "}
+            Don&apos;t have an account yet?{" "}
             <a
               href="#"
               className="font-semibold leading-6 text-cyan-600 hover:text-cyan-500"
             >
-              Start a 14 day free trial
+              Email us!
             </a>
           </p>
         </div>

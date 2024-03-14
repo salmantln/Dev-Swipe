@@ -1,6 +1,15 @@
 import React from "react";
+import { cookies } from "next/headers";
+import { createServerClient } from "@supabase/ssr";
+import readUserSession from "@/lib/actions";
+import{redirect} from "next/navigation";
+export default async function DefaultDashboard() {
+  const { data } = await readUserSession();
 
-export default function DefaultDashboard() {
+  console.log(data.session?.user.user_metadata)
+  if (data.session?.user.user_metadata?.onboarding == false) {
+    return redirect("/onboarding");
+  }
   return (
     <>
       <main>
@@ -20,8 +29,7 @@ export default function DefaultDashboard() {
             <li>Other notifications regarding your account.</li>
           </ul>
           <span className="block text-base text-gray-900  mt-4">
-            Questions? Let us know via 
-            {/* Vragen? Laat het ons weten via */}
+            Questions? Let us know via {/* Vragen? Laat het ons weten via */}
             <a
               href="mailto:devswipe.app@gmail.com"
               className="text-blue-500 hover:text-blue-600"
