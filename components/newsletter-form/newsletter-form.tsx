@@ -1,6 +1,8 @@
 import { cn } from "@/utils/cn";
 import type { ChangeEvent, FormEvent } from "react";
 import { useRef, useState } from "react";
+import { Button } from "@tremor/react";
+import { TextInput } from "@tremor/react";
 
 export default function NewsletterForm({
   className,
@@ -75,7 +77,16 @@ export default function NewsletterForm({
         <label className="hidden" htmlFor="email" aria-hidden="true">
           Email
         </label>
-       
+        {/* <TextInput
+          required
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={handleChange}
+        /> */}
+
         <input
           required
           id="email"
@@ -86,7 +97,7 @@ export default function NewsletterForm({
           placeholder="Email"
           value={email}
           onChange={handleChange}
-          data-aos="fade-right"
+          // data-aos="fade-right"
         />
 
         {success && (
@@ -98,16 +109,20 @@ export default function NewsletterForm({
 
       <div className="control">
         <button
-          data-aos="fade-down"
+          // data-aos="fade-down"
           className="-mt-px inline-flex cursor-pointer justify-center whitespace-nowrap  rounded-md md:ml-5 border-0 bg-[#000000]  px-7 py-4 text-center font-medium leading-4 text-[#ffffff] no-underline shadow-lg"
           // className="-mt-px inline-flex cursor-pointer justify-center whitespace-nowrap rounded-sm border-0 bg-gradient-to-r from-green-400 to-blue-500 px-7 py-4 text-center font-medium leading-4 text-white no-underline shadow-lg"
           type="submit"
         >
           {submitText}
         </button>
+
+        {/* <Button data-aos="fade-down"
+         type="submit" variant="primary">
+          {" "}
+          {submitText}
+        </Button> */}
       </div>
     </form>
   );
 }
-
-

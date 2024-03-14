@@ -79,6 +79,9 @@ export default function Example() {
   
         // Redirect or show a success message
         console.log("Company info saved:", data);
+        await supabase.auth.updateUser({
+          data: { onboarding: true },
+        });
         router.push('/dashboard'); // Navigate to the dashboard
       } catch (error) {
         console.error("Failed to save company info:", error);
