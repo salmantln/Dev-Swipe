@@ -54,7 +54,7 @@ export function CompanyInfoModal() {
       <button
         onClick={() => setIsOpen(true)}
         className="px-4 py-2 bg-slate-900 text-white hover:bg-slate-700 hover:text-slate-100 rounded-full focus:outline-none"
-        data-aos="fade-right"
+        // data-aos="fade-right"
       >
         Post your job offer
       </button>
