@@ -12,8 +12,10 @@ import {
 } from "@tremor/react";
 import { Menu } from "@headlessui/react";
 import { MyDropdown } from "@/dashboard_components/DropDownMenu";
+import readUserSession from "@/lib/actions";
+import { redirect } from "next/navigation";
 
-const data = [
+const candidates = [
   {
     name: "Viola Amherd",
     Role: "Federal Councillor",
@@ -61,7 +63,15 @@ const data = [
   },
 ];
 
-const MatchesPage = () => {
+const MatchesPage = async () => {
+  const { data } = await readUserSession();
+
+  console.log(data.session?.user.user_metadata);
+
+  if (data.session?.user.user_metadata?.onboarding == false) {
+    return redirect("/onboarding");
+  }
+
   return (
     <>
       <h1 className=" mb-4 text-xl md:text-2xl">Matches</h1>
@@ -88,7 +98,7 @@ const MatchesPage = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((item) => (
+            {candidates.map((item: any) => (
               <TableRow key={item.name}>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.Role}</TableCell>
@@ -116,3 +126,4 @@ const MatchesPage = () => {
 };
 
 export default MatchesPage;
+

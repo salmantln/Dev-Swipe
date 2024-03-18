@@ -1,17 +1,21 @@
-// import React from 'react'
-// import ClientComponent from '../../../dashboard_components/client_components'
 
-"use client";
-import { CreatedJobsTable } from "@/dashboard_components/CreatedJobsTable";
-import { DetailJob } from "@/dashboard_components/DetailJob";
-import dynamic from "next/dynamic";
-import { useState, useMemo } from "react";
-
-import { useRouter } from "next/navigation";
+import readUserSession from "@/lib/actions";
 import { PlusIcon } from "@heroicons/react/outline";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-export default function JobPostPage() {
-  const router = useRouter();
+import { redirect, useRouter } from "next/navigation";
+import { useMemo } from "react";
+
+async function getData() {
+  const { data } = await readUserSession();
+
+  if (data.session?.user.user_metadata?.onboarding == false) {
+    return redirect("/onboarding");
+  }
+}
+
+export default async function JobPostPage() {
+  // const router = useRouter();
   const ClientComponent = useMemo(
     () =>
       dynamic(() => import("../../../dashboard_components/client_components"), {
@@ -19,6 +23,15 @@ export default function JobPostPage() {
       }),
     []
   );
+
+  
+  const { data } = await readUserSession();
+
+  console.log(data.session?.user.user_metadata)
+
+  if (data.session?.user.user_metadata?.onboarding === false) {
+    return redirect("/onboarding");
+  }
 
   return (
     <>
@@ -58,3 +71,11 @@ export default function JobPostPage() {
     </>
   );
 }
+
+// export async function getServerSideProps() {
+//   const { data } = await readUserSession();
+
+//   if (data.session?.user.user_metadata?.onboarding == false) {
+//     return redirect("/onboarding");
+//   }
+// }

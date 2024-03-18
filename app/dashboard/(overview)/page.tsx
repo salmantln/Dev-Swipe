@@ -3,13 +3,18 @@ import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import readUserSession from "@/lib/actions";
 import{redirect} from "next/navigation";
+
+
+
 export default async function DefaultDashboard() {
   const { data } = await readUserSession();
 
   console.log(data.session?.user.user_metadata)
-  if (data.session?.user.user_metadata?.onboarding == false) {
+
+  if (data.session?.user.user_metadata?.onboarding === false) {
     return redirect("/onboarding");
   }
+
   return (
     <>
       <main>
