@@ -68,9 +68,12 @@ const MatchesPage = async () => {
 
   console.log(data.session?.user.user_metadata);
 
-  if (data.session?.user.user_metadata?.onboarding == false) {
+  if (!data.session?.user.user_metadata?.onboarding) {
     return redirect("/onboarding");
+  } else if (!data.session) {
+    return redirect("/login");
   }
+
 
   return (
     <>

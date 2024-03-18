@@ -1,9 +1,12 @@
-"use client";
-
+import readUserSession from "@/lib/actions";
 import dynamic from "next/dynamic";
+import { redirect } from "next/navigation";
 import { useMemo } from "react";
-export default function CreateJob() {
-  
+export default async function CreateJob() {
+  const { data } = await readUserSession();
+
+  console.log(data.session?.user.user_metadata);
+
   const ClientComponent = useMemo(
     () =>
       dynamic(
@@ -15,6 +18,12 @@ export default function CreateJob() {
     []
   );
 
+  if (!data.session?.user.user_metadata?.onboarding) {
+    return redirect("/onboarding");
+  } else if (!data.session) {
+    return redirect("/login");
+  }
+
   return (
     <>
       {/* <DetailJob /> */}
@@ -23,11 +32,3 @@ export default function CreateJob() {
     </>
   );
 }
-
-// export async function getServerSideProps() {
-//   const { data } = await readUserSession();
-
-//   if (data.session?.user.user_metadata?.onboarding == false) {
-//     return redirect("/onboarding");
-//   }
-// }
