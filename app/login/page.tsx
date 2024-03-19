@@ -5,6 +5,7 @@ import { useState } from "react";
 import { User } from "@supabase/supabase-js";
 import { supabase } from "../../lib/supabase/supabaseClient";
 import { cookies } from "next/headers";
+import { signInWithEmailAndPassword } from "@/lib/actions";
 // import { createRouteHandlerClient } from "@supabase/ssr";
 export default function Example() {
   const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ export default function Example() {
     e.preventDefault();
     setLoading(true);
 
+    signInWithEmailAndPassword({ email, password })
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -30,26 +32,28 @@ export default function Example() {
     } else {
       // Redirect user or update UI
 
-      const userId = (await supabase.auth.getUser()).data.user?.id; // Get current user's ID
+      // const userId = (await supabase.auth.getUser()).data.user?.id; // Get current user's ID
 
-      await supabase.auth.updateUser({
-        data: { onboarding: false },
+      const result = await supabase.auth.updateUser({
+        data: { onboarding: true },
       });
+
+      console.log(result)
 
       const {
         data: { user },
       } = await supabase.auth.getUser();
 
       // console.log(      updateOnboardingStatus({ userId, onboardingStatus: false }))
-      console.log("User ID: ", userId);
-      console.log("User Data: ", user?.user_metadata);
+      // console.log("User ID: ", userId);
+      // console.log("User Data: ", user?.user_metadata);
 
-      if (user?.user_metadata?.onboarding === false) {
+      if (user?.user_metadata?.onboarding == false) {
         router.push("/onboarding");
-        console.log("User has onboarding: false");
+        console.log("User onboarding is FALSE");
       } else {
         router.push("/dashboard");
-        console.log("User does not have onboarding: false");
+        console.log("User DOES have onboarding set to true");
       }
     }
 

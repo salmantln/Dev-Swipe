@@ -1,12 +1,11 @@
 "use client";
 
-import { Button, Card } from "@tremor/react";
+import { Card } from "@tremor/react";
 import React, { useState } from "react";
 import { MyQuillEditor } from "./editor/editor";
-import { db } from "../lib/firebase/firebase-config"; 
-import { collection, addDoc } from "firebase/firestore";
+import { createJob } from "@/lib/jobs";
+import { toast } from 'react-hot-toast';
 
-import addData from "../lib/firebase/addData";
 interface Skill {
   name: string;
   isSelected: boolean;
@@ -70,6 +69,8 @@ const allSkills: Skill[] = [
   "Tableau",
 ].map((skill) => ({ name: skill, isSelected: false }));
 
+const notify = () => toast("Here is your toast.");
+
 const ClientComponent = () => {
   const [isRemote, setIsRemote] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
@@ -86,13 +87,13 @@ const ClientComponent = () => {
   const [glassdoorLink, setGlassdoorLink] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [content, setContent] = useState("");
-  const [jobType, setJobType] = useState("");
+  const [job_type, setjob_type] = useState("");
   const [workExperience, setWorkExperience] = useState("");
   const [workPlace, setWorkPlace] = useState("");
   const [skills, setSkills] = useState<Skill[]>(allSkills);
 
-  const [minPay, setMinPay] = useState("");
-  const [maxPay, setMaxPay] = useState("");
+  const [minPay, setMinPay] = useState(0);
+  const [maxPay, setMaxPay] = useState(0);
 
   const handleCheckboxChange = (event: any) => {
     setIsRemote(event.target.checked);
@@ -202,26 +203,34 @@ const ClientComponent = () => {
 
     const jobPostData = {
       title: jobTitle,
-      glassdoorLink: glassdoorLink,
       description: content,
       location: jobLocation,
-      workExperience: selectedOptionExperience,
-      company: "Rojo Test",
-      jobType: selectedOptionType,
-      workPlace: selectedOptionPlace,
-      minPay: minPay,
-      maxPay: maxPay,
+      work_experience: selectedOptionExperience,
+      job_type: selectedOptionType,
+      work_place: selectedOptionPlace,
+      min_pay: minPay,
+      max_pay: maxPay,
       skills: skills,
     };
+
     // Your form submission logic here
     try {
-      const docRef = await addDoc(collection(db, "jobPosts"), jobPostData);
-      console.log("Document written with ID: ", docRef);
-      // Attempt to save to Firestore
-      // Redirect or show a success message upon success
+      const result = await createJob(jobPostData);
+      console.log("Job post successful:", result);
+      // const { error } = JSON.parse(result);
+
+      toast.success("Job posted successfully!", {
+        duration: 4000,
+        position: "bottom-right",
+      });
     } catch (error) {
       // Handle the error
-      console.error("Document Error:", error);
+      console.error("Error posting job:", error);
+
+      toast.error("Failed to post job. Please try again.", {
+        duration: 4000,
+        position: "bottom-right",
+      });
     }
   };
 
@@ -499,7 +508,6 @@ const ClientComponent = () => {
               <div className="mt-1 flex rounded-md shadow-sm">
                 <input
                   value={glassdoorLink}
-                  // onChange={handleJobTitleChange}
                   type="text"
                   className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                 />
@@ -693,7 +701,16 @@ const ClientComponent = () => {
                     <select
                       name="optionMin"
                       value={minPay}
-                      onChange={(e) => setMinPay(e.target.value)}
+                      // onChange={(e) => setMinPay(e.target.value)}
+                      onChange={(e) => {
+                        if (e.target.value === "internship compensation") {
+                          // Handle the special case
+                          setMinPay(0); // Or any other value you see fit
+                        } else {
+                          // Convert to number for other cases
+                          setMinPay(parseInt(e.target.value, 10));
+                        }
+                      }}
                       className="block overflow-auto w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                       {/* <option disabled={true} selected={true} value="">
@@ -753,7 +770,17 @@ const ClientComponent = () => {
                   <div className="flex flex-col w-1/2">
                     <select
                       value={maxPay}
-                      onChange={(e) => setMaxPay(e.target.value)}
+                      // onChange={(e) => setMaxPay(e.target.value)}
+
+                      onChange={(e) => {
+                        if (e.target.value === "internship compensation") {
+                          // Handle the special case
+                          setMinPay(0); // Or any other value you see fit
+                        } else {
+                          // Convert to number for other cases
+                          setMaxPay(parseInt(e.target.value, 10));
+                        }
+                      }}
                       className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
                       {/* <option disabled={true} value={true} >

@@ -1,11 +1,17 @@
-"use server"
+"use server";
 
-import createSupabaseServerClient from "../supabase/server"
+import createSupabaseServerClient from "../supabase/server";
 
-export default async  function readUserSession(){
+export async function readUserSession() {
+  const supabase = await createSupabaseServerClient();
 
-    const supabase = await createSupabaseServerClient()
+  return supabase.auth.getSession();
+}
 
+export async function signInWithEmailAndPassword(data: {email: string, password: string}) {
+    const supabase = await createSupabaseServerClient();
 
-    return supabase.auth.getSession();
+    const result = await supabase.auth.signInWithPassword({email: data.email, password: data.password})
+
+    return  JSON.stringify(result);
 }

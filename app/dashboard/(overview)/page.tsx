@@ -1,21 +1,21 @@
 import React from "react";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
-import readUserSession from "@/lib/actions";
+import {readUserSession} from "@/lib/actions";
 import{redirect} from "next/navigation";
 
 
 
-export default async function DefaultDashboard() {
+export default  async function DefaultDashboard() {
   const { data } = await readUserSession();
 
   console.log(data.session?.user.user_metadata)
 
-  if (!data.session?.user.user_metadata?.onboarding) {
-    return redirect("/onboarding");
-  } else if (!data.session) {
-    return redirect("/login");
-  }
+  // if (!data.session?.user.user_metadata?.onboarding) {
+  //   return redirect("/onboarding");
+  // } else if (!data.session) {
+  //   return redirect("/login");
+  // }
 
   return (
     <>

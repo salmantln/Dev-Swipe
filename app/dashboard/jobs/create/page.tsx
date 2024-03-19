@@ -1,11 +1,9 @@
-import readUserSession from "@/lib/actions";
+import {readUserSession} from "@/lib/actions";
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 import { useMemo } from "react";
 export default async function CreateJob() {
-  const { data } = await readUserSession();
 
-  console.log(data.session?.user.user_metadata);
 
   const ClientComponent = useMemo(
     () =>
@@ -18,7 +16,10 @@ export default async function CreateJob() {
     []
   );
 
-  if (!data.session?.user.user_metadata?.onboarding) {
+  const { data } = await readUserSession();
+
+  console.log(data.session?.user.user_metadata);
+  if (data.session?.user.user_metadata?.onboarding == false) {
     return redirect("/onboarding");
   } else if (!data.session) {
     return redirect("/login");

@@ -1,5 +1,6 @@
 
-import readUserSession from "@/lib/actions";
+import {readUserSession} from "@/lib/actions";
+import { supabase } from "@/lib/supabase/supabaseClient";
 import { PlusIcon } from "@heroicons/react/outline";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -23,17 +24,24 @@ export default async function JobPostPage() {
       }),
     []
   );
+  const session = supabase.auth.getSession();
 
-  
-  const { data } = await readUserSession();
-
-  console.log(data.session?.user.user_metadata)
-
-  if (!data.session?.user.user_metadata?.onboarding) {
-    return redirect("/onboarding");
-  } else if (!data.session) {
-    return redirect("/login");
+  if (session) {
+    console.log('User is authenticated', session);
+  } else {
+    console.log('User is not authenticated');
   }
+  
+  
+  // const { data } = await readUserSession();
+
+  // console.log(data.session?.user.user_metadata)
+
+  // if (!data.session?.user.user_metadata?.onboarding) {
+  //   return redirect("/onboarding");
+  // } else if (!data.session) {
+  //   return redirect("/login");
+  // }
 
 
   return (
