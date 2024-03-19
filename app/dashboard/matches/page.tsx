@@ -12,7 +12,7 @@ import {
 } from "@tremor/react";
 import { Menu } from "@headlessui/react";
 import { MyDropdown } from "@/dashboard_components/DropDownMenu";
-import readUserSession from "@/lib/actions";
+import {readUserSession} from "@/lib/actions";
 import { redirect } from "next/navigation";
 
 const candidates = [
