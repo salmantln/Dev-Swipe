@@ -1,4 +1,4 @@
-import readUserSession from "@/lib/actions";
+import {readUserSession} from "@/lib/actions";
 import { redirect } from "next/navigation";
 import React from "react";
 

@@ -32,22 +32,7 @@ import SideNav from "@/dashboard_components/sidenav";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    // <>
-    //   <body className="bg-gray-50 ">
-    //     <DashboardNavbarV2 />
-
-    //     {/* <GptSidebar /> */}
-    //     <SideNav/>
-    //     {/* <GptSidebar onSectionSelect={handleSectionChange} /> */}
-    //     {/* <Sidebar/> */}
-
-    //     <div className="w-full pt-20 lg:pl-99 pl-11  sm:px-6 md:px-8 lg:ps-80 lg:pe-60 ">
-    //       {/* {renderSection()} */}
-    //       {children}
-    //     </div>
-    //   </body>
-    // </>
-
+   
     <>
       {/* <DashboardNavbarV2 /> */}
       <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
