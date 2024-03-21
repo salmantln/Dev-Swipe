@@ -208,6 +208,7 @@ const ClientComponent = () => {
       work_experience: selectedOptionExperience,
       job_type: selectedOptionType,
       work_place: selectedOptionPlace,
+      active: true,
       min_pay: minPay,
       max_pay: maxPay,
       skills: skills,
@@ -500,7 +501,7 @@ const ClientComponent = () => {
                 />
               </div>{" "}
             </div>
-            <div>
+            {/* <div>
               <label
                 htmlFor="about"
                 className="block text-sm font-medium text-gray-700"
@@ -519,7 +520,7 @@ const ClientComponent = () => {
                   className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                 />
               </div>{" "}
-            </div>
+            </div> */}
             <div className="grid grid-cols-3 gap-6">
               <div className="col-span-1 sm:col-span-1">
                 <label

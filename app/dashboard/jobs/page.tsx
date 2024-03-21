@@ -1,20 +1,12 @@
-
 import { CreatedJobsTable } from "@/dashboard_components/CreatedJobsTable";
-import {readUserSession} from "@/lib/actions";
+import { readUserSession } from "@/lib/actions";
+import { readJob } from "@/lib/jobs";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { PlusIcon } from "@heroicons/react/outline";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { redirect, useRouter } from "next/navigation";
 import { useMemo } from "react";
-
-// async function getData() {
-//   const { data } = await readUserSession();
-
-//   if (data.session?.user.user_metadata?.onboarding == false) {
-//     return redirect("/onboarding");
-//   }
-// }
 
 export default async function JobPostPage() {
   // const router = useRouter();
@@ -28,25 +20,15 @@ export default async function JobPostPage() {
   const session = supabase.auth.getSession();
 
   if (session) {
-    console.log('User is authenticated', session);
+    console.log("User is authenticated", session);
   } else {
-    console.log('User is not authenticated');
+    console.log("User is not authenticated");
   }
-  
-  
-  // const { data } = await readUserSession();
-
-  // console.log(data.session?.user.user_metadata)
-
-  // if (!data.session?.user.user_metadata?.onboarding) {
-  //   return redirect("/onboarding");
-  // } else if (!data.session) {
-  //   return redirect("/login");
-  // }
 
   const { data } = await readUserSession();
-
-  console.log(data.session?.user.user_metadata)
+  const { data: jobs } = await readJob();
+  
+  console.log(data.session?.user.user_metadata);
 
   if (!data.session?.user.user_metadata?.onboarding) {
     return redirect("/onboarding");
@@ -58,11 +40,23 @@ export default async function JobPostPage() {
     <>
       {/* <p className="mb-2 text-sm font-semibold text-cyan-600">Jobs</p> */}
       <h1 className=" mb-4 text-xl md:text-2xl text-cyan-600">Jobs</h1>
-      {/* <ClientComponent /> */}
 
-      {/* <DetailJob /> */}
       <div className="flex flex-col items-baseline space-y-4">
-        <CreatedJobsTable />
+        {jobs && jobs.length > 0 ? (
+          <CreatedJobsTable />
+        ) : (
+          <div className="rt-Flex rt-r-display-flex rt-r-fd-column rt-r-ai-center rt-r-jc-start rt-r-gap-6">
+            <h1 className="rt-Heading rt-r-size-4 font-bold">
+              Er zijn momenteel geen banen aangemaakt.
+            </h1>
+            <span className="rt-Text">
+              Maak een nieuwe baan aan door op de knop hieronder te klikken.
+              Begin vandaag met het vinden van de juiste kandidaat!
+            </span>
+          </div>
+        )}
+        {/* <CreatedJobsTable  hasJobs={jobs}/>
+        
 
         <div className="rt-Flex rt-r-display-flex rt-r-fd-column rt-r-ai-center rt-r-jc-start rt-r-gap-6">
           <h1 className="rt-Heading rt-r-size-4 font-bold">
@@ -72,8 +66,7 @@ export default async function JobPostPage() {
             Maak een nieuwe baan aan door op de knop hieronder te klikken. Begin
             vandaag met het vinden van de juiste kandidaat!
           </span>
-        </div>
-    
+        </div> */}
 
         <Link
           href="/dashboard/jobs/create"
@@ -86,11 +79,6 @@ export default async function JobPostPage() {
     </>
   );
 }
-
-// export async function getServerSideProps() {
-//   const { data } = await readUserSession();
-
-//   if (data.session?.user.user_metadata?.onboarding == false) {
-//     return redirect("/onboarding");
-//   }
+// function readJob(): { data: any } | PromiseLike<{ data: any }> {
+//   throw new Error("Function not implemented.");
 // }

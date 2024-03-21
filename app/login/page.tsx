@@ -34,11 +34,11 @@ export default function Example() {
 
       // const userId = (await supabase.auth.getUser()).data.user?.id; // Get current user's ID
 
-      const result = await supabase.auth.updateUser({
-        data: { onboarding: true },
-      });
+      // const result = await supabase.auth.updateUser({
+      //   data: { onboarding: true },
+      // });
 
-      console.log(result)
+      // console.log(result)
 
       const {
         data: { user },
