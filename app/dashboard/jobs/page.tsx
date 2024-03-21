@@ -1,4 +1,5 @@
 
+import { CreatedJobsTable } from "@/dashboard_components/CreatedJobsTable";
 import {readUserSession} from "@/lib/actions";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { PlusIcon } from "@heroicons/react/outline";
@@ -7,13 +8,13 @@ import Link from "next/link";
 import { redirect, useRouter } from "next/navigation";
 import { useMemo } from "react";
 
-async function getData() {
-  const { data } = await readUserSession();
+// async function getData() {
+//   const { data } = await readUserSession();
 
-  if (data.session?.user.user_metadata?.onboarding == false) {
-    return redirect("/onboarding");
-  }
-}
+//   if (data.session?.user.user_metadata?.onboarding == false) {
+//     return redirect("/onboarding");
+//   }
+// }
 
 export default async function JobPostPage() {
   // const router = useRouter();
@@ -43,6 +44,15 @@ export default async function JobPostPage() {
   //   return redirect("/login");
   // }
 
+  const { data } = await readUserSession();
+
+  console.log(data.session?.user.user_metadata)
+
+  if (!data.session?.user.user_metadata?.onboarding) {
+    return redirect("/onboarding");
+  } else if (!data.session) {
+    return redirect("/login");
+  }
 
   return (
     <>
@@ -52,7 +62,7 @@ export default async function JobPostPage() {
 
       {/* <DetailJob /> */}
       <div className="flex flex-col items-baseline space-y-4">
-        {/* <CreatedJobsTable /> */}
+        <CreatedJobsTable />
 
         <div className="rt-Flex rt-r-display-flex rt-r-fd-column rt-r-ai-center rt-r-jc-start rt-r-gap-6">
           <h1 className="rt-Heading rt-r-size-4 font-bold">
@@ -63,13 +73,7 @@ export default async function JobPostPage() {
             vandaag met het vinden van de juiste kandidaat!
           </span>
         </div>
-        {/* <button
-          type="button"
-          onClick={() => router.push("/test/create")}
-          className=" inline-flex justify-center py-2 px-4 font-medium rounded-md text-white border-cyan-700 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 focus:bg-cyan-700"
-        >
-          Create a job
-        </button> */}
+    
 
         <Link
           href="/dashboard/jobs/create"

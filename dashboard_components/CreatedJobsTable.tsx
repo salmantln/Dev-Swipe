@@ -1,6 +1,6 @@
-import { RiFlag2Line } from "@remixicon/react";
+// "use client"
+
 import {
-  Badge,
   Card,
   Switch,
   Table,
@@ -8,7 +8,7 @@ import {
   TableCell,
   TableHead,
   TableHeaderCell,
-  TableRow,
+  TableRow
 } from "@tremor/react";
 const data = [
   {
@@ -58,41 +58,61 @@ const data = [
   },
 ];
 
-export const CreatedJobsTable = () => {
+import { readJob } from "@/lib/jobs";
+
+export const CreatedJobsTable = async () => {
+  // const [jobs, setJobs] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchJobs = async () => {
+  //     const user = supabase.auth.getUser(); // Get the authenticated user
+      
+  //     if (user) {
+  //       const { data, error } = await supabase
+  //         .from('job_posts') // Adjust with your table name
+  //         .select('*')
+  //         .eq('company_id', (await user).data.user?.id); // Adjust 'user_id' to match your column name
+
+  //       if (error) {
+  //         console.error('Error fetching jobs:', error);
+  //       } else {
+  //         setJobs(data.values);
+  //       }
+  //     }
+  //   };
+
+  //   fetchJobs();
+  // }, []);
+
+  const {data: jobs} = await readJob()
+
+
+  console.log("Read jobs: ",jobs)
   return (
     <div className="flex-auto w-full">
+      {/* Assuming Card, Table, TableHead, TableRow, TableHeaderCell, 
+      TableBody, TableCell components are already defined/imported */}
       <Card>
         <Table className="mt-5">
           <TableHead>
             <TableRow>
               <TableHeaderCell>Title</TableHeaderCell>
-              <TableHeaderCell>Salary range </TableHeaderCell>
+              <TableHeaderCell>Salary Range</TableHeaderCell>
               <TableHeaderCell>Date Created</TableHeaderCell>
               <TableHeaderCell>Active</TableHeaderCell>
               <TableHeaderCell>Actions</TableHeaderCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((item) => (
-              <TableRow key={item.name}>
-                <TableCell className="font-bold text-cyan-700 hover:text-sky-400 hover:underline hover:cursor-pointer">
-                  {item.name}
-                </TableCell>
-                <TableCell>{item.Role}</TableCell>
-                <TableCell>{item.departement}</TableCell>
+            {jobs?.map((job, index) => (
+              <TableRow key={index}>
+                <TableCell>{job.title}</TableCell>
+                <TableCell>{`${job.min_pay} - ${job.max_pay}`}</TableCell>
+                <TableCell>{/* Display date created */}</TableCell>
                 <TableCell>
-                  {/* <Badge color="emerald" icon={RiFlag2Line}>
-                  {item.status}
-                </Badge> */}
-                  <Switch />
+                  <Switch checked={job.active} />
                 </TableCell>
-
-                <TableCell className="underline hover:cursor-pointer hover:text-sky-400">
-                  Edit
-                  {/* <Badge color="red" icon={RiFlag2Line}>
-                  {item.status}
-                </Badge> */}
-                </TableCell>
+                <TableCell>Edit</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -4,7 +4,7 @@ import { Card } from "@tremor/react";
 import React, { useState } from "react";
 import { MyQuillEditor } from "./editor/editor";
 import { createJob } from "@/lib/jobs";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 
 interface Skill {
   name: string;
@@ -217,12 +217,19 @@ const ClientComponent = () => {
     try {
       const result = await createJob(jobPostData);
       console.log("Job post successful:", result);
-      // const { error } = JSON.parse(result);
+      const { error } = JSON.parse(result);
 
-      toast.success("Job posted successfully!", {
-        duration: 4000,
-        position: "bottom-right",
-      });
+      if (error) {
+        toast.error("Failed to post job. Please try again.", {
+          duration: 4000,
+          position: "bottom-right",
+        });
+      } else {
+        toast.success("Job posted successfully!", {
+          duration: 4000,
+          position: "bottom-right",
+        });
+      }
     } catch (error) {
       // Handle the error
       console.error("Error posting job:", error);
