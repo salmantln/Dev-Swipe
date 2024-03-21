@@ -14,11 +14,27 @@ export async function createJob(data: any) {
 }
 
 export async function readJob() {
+  noStore();
   const supabase = await createSupabaseServerClient();
   const response = await supabase.from("job_posts").select("*");
   console.log("Raw response:", response);
   return response;
 }
 
+export async function fetchJobById(id: string) {
+  noStore();
+  const supabase = await createSupabaseServerClient();
+  
+  // Use the .eq() method to fetch the job post with the specific ID
+  const { data, error } = await supabase
+    .from("job_posts")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  console.log("Fetched job post:", data, "Error:", error);
+  
+  return { data, error };
+}
 export async function deleteJob() {}
 export async function updateJob() {}

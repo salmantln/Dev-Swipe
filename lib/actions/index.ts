@@ -1,7 +1,7 @@
 "use server";
 
+import { unstable_noStore as noStore } from "next/cache";
 import createSupabaseServerClient from "../supabase/server";
-import { unstable_noStore as noStore, revalidatePath } from "next/cache";
 
 export async function readUserSession() {
   const supabase = await createSupabaseServerClient();

@@ -1,6 +1,7 @@
 // "use client"
 
 import {
+  Button,
   Card,
   Switch,
   Table,
@@ -12,9 +13,11 @@ import {
 } from "@tremor/react";
 
 import { readJob } from "@/lib/jobs";
+import Link from "next/link";
+import { UpdateJob } from "./EditButton";
 
 export const CreatedJobsTable = async () => {
-// export const CreatedJobsTable = async ({hasJobs}:{hasJobs: boolean}) => {
+  // export const CreatedJobsTable = async ({hasJobs}:{hasJobs: boolean}) => {
   const { data: jobs } = await readJob();
   console.log("Read jobs: ", jobs);
 
@@ -34,13 +37,23 @@ export const CreatedJobsTable = async () => {
           <TableBody>
             {jobs?.map((job, index) => (
               <TableRow key={index}>
-                <TableCell>{job.title}</TableCell>
-                <TableCell>{`${job.min_pay} - ${job.max_pay}`}</TableCell>
-                <TableCell>{/* Display date created */}</TableCell>
+                <TableCell>
+                  <Button color="sky" variant="light">
+                    {job.title}
+                  </Button>
+                </TableCell>
+                <TableCell>{`€${job.min_pay} - €${job.max_pay}`}</TableCell>
+                <TableCell>
+                  {new Date(job.date_created).toLocaleDateString()}
+                </TableCell>
+                {/* <TableCell>{job.date_created}</TableCell> */}
                 <TableCell>
                   <Switch checked={job.active} />
                 </TableCell>
-                <TableCell>Edit</TableCell>
+                <TableCell>
+                  <UpdateJob  id={job.id} />
+                  {/* <Link   href={`/dashboard/jobs/${job.id}`}  id={job.id}>Edit</Link> */}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
