@@ -46,7 +46,6 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      {job.title}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((item) => (
           <Card key={item.name}>
@@ -70,7 +69,17 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </Card>
         ))}
-        <Card className="sm:col-span-1 lg:col-span-1"></Card>
+        <Card className="sm:col-span-1 lg:col-span-1">
+          <img
+            className="inline-block size-[100px] rounded-lg"
+            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
+            alt="Image Description"
+          />
+          <p className="text-2xl text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
+    
+            {job.title}
+          </p>
+        </Card>
         <Card className="sm:col-span-2 lg:col-span-2">
           <AppliedTable />
         </Card>

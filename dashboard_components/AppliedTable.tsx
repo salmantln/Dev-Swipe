@@ -349,7 +349,7 @@ export default function Example() {
                 <TableHeaderCell
                   key={header.id}
                 //   scope="col"
-                  className={classNames(header.column.columnDef.meta.align)}
+                //   className={classNames(header.column.columnDef.meta.align)}
                 >
                   {flexRender(
                     header.column.columnDef.header,
@@ -366,7 +366,8 @@ export default function Example() {
               {row.getVisibleCells().map((cell) => (
                 <TableCell
                   key={cell.id}
-                  className={classNames(cell.column.columnDef.meta.align)}
+                //   className={classNames(header.column.columnDef.meta?.align ?? 'default-align')}
+
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
