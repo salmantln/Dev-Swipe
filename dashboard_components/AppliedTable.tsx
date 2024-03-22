@@ -348,7 +348,7 @@ export default function Example() {
               {headerGroup.headers.map((header) => (
                 <TableHeaderCell
                   key={header.id}
-                  scope="col"
+                //   scope="col"
                   className={classNames(header.column.columnDef.meta.align)}
                 >
                   {flexRender(
