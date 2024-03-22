@@ -32,7 +32,7 @@ export async function fetchJobById(id: string) {
     .eq("id", id)
     .single();
 
-  console.log("Fetched job post:", data, "Error:", error);
+  // console.log("Fetched job post:", data, "Error:", error);
   
   return { data, error };
 }
