@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 export default function Example() {
   const router = useRouter(); // For navigation after successful submission
-  
+
   const [newUserInfo, setNewUserInfo] = useState({
     profileImages: [],
   });
@@ -54,39 +54,39 @@ export default function Example() {
   const updateUploadedFiles = (files: any) =>
     setNewUserInfo({ ...newUserInfo, profileImages: files });
 
-    const submitCompanyInfo = async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault(); // Prevent the form from reloading the page
-  
-      const user = supabase.auth.getUser(); // Corrected way to get the current user
-  
-      if (!user) {
-        console.error("User not authenticated");
-        return; // Early return if no user is authenticated
-      }
-  
-      try {
-        console.log(state);
-        const { data, error } = await supabase
-          .from("companies") // Make sure your table name is correct
-          .insert([
-            {
-              id: (await user).data.user?.id, // Assuming 'user_id' column exists to link the company info to the user
-              ...state, // Spread the state object to match the columns in your table
-            },
-          ]);
-  
-        if (error) throw error;
-  
-        // Redirect or show a success message
-        console.log("Company info saved:", data);
-        await supabase.auth.updateUser({
-          data: { onboarding: true },
-        });
-        router.push('/dashboard'); // Navigate to the dashboard
-      } catch (error) {
-        console.error("Failed to save company info:", error);
-      }
-    };
+  const submitCompanyInfo = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevent the form from reloading the page
+
+    const user = supabase.auth.getUser(); // Corrected way to get the current user
+
+    if (!user) {
+      console.error("User not authenticated");
+      return; // Early return if no user is authenticated
+    }
+
+    try {
+      console.log(state);
+      const { data, error } = await supabase
+        .from("companies") // Make sure your table name is correct
+        .insert([
+          {
+            id: (await user).data.user?.id, // Assuming 'user_id' column exists to link the company info to the user
+            ...state, // Spread the state object to match the columns in your table
+          },
+        ]);
+
+      if (error) throw error;
+
+      // Redirect or show a success message
+      console.log("Company info saved:", data);
+      await supabase.auth.updateUser({
+        data: { onboarding: true },
+      });
+      router.push("/dashboard"); // Navigate to the dashboard
+    } catch (error) {
+      console.error("Failed to save company info:", error);
+    }
+  };
 
   // };
 

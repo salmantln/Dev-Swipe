@@ -17,7 +17,7 @@ export async function readJob() {
   noStore();
   const supabase = await createSupabaseServerClient();
   const response = await supabase.from("job_posts").select("*");
-  console.log("Raw response:", response);
+  // console.log("Raw response:", response);
   return response;
 }
 
