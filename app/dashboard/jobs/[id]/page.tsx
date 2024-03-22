@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { fetchJobById } from "@/lib/jobs";
 import { Card } from "@tremor/react";
 import AppliedTable from "@/dashboard_components/AppliedTable";
+import JobCard from "@/dashboard_components/JobCard";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -13,11 +14,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const { data: job } = await fetchJobById(id);
 
-  console.log("DATA: ", job);
-  // const [job] = await Promise.all([
-  //   fetchJobById(id),
-  //   // fetchCustomers(),
-  // ]);
+  // console.log("DATA: ", job);
 
   if (!job) {
     notFound();
@@ -44,6 +41,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     },
   ];
 
+ 
+
   return (
     <>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -69,17 +68,19 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </Card>
         ))}
-        <Card className="sm:col-span-1 lg:col-span-1">
+        <JobCard title={job.title} date_created={job.date_created} active={job.active} skills={job.skills} />
+        {/* <Card className="sm:col-span-1 lg:col-span-1">
           <img
             className="inline-block size-[100px] rounded-lg"
             src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
             alt="Image Description"
           />
           <p className="text-2xl text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
-    
-            {job.title}
+            {job.title} {job.date_created} {job.active}{" "}
           </p>
-        </Card>
+          <p className="text-2xl text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">Searched skills:</p>
+          {job.skills}
+        </Card> */}
         <Card className="sm:col-span-2 lg:col-span-2">
           <AppliedTable />
         </Card>
