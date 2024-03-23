@@ -15,6 +15,7 @@ import {
 import { readJob } from "@/lib/jobs";
 import Link from "next/link";
 import { UpdateJob } from "./EditButton";
+import { UpdateButton } from "./UpdateButton";
 
 export const CreatedJobsTable = async () => {
   // export const CreatedJobsTable = async ({hasJobs}:{hasJobs: boolean}) => {
@@ -39,7 +40,8 @@ export const CreatedJobsTable = async () => {
               <TableRow key={index}>
                 <TableCell>
                   <Button color="sky" variant="light">
-                    {job.title}
+                  <UpdateJob  id={job.id} title={job.title}/>
+                    {/* {job.title} */}
                   </Button>
                 </TableCell>
                 <TableCell>{`€${job.min_pay} - €${job.max_pay}`}</TableCell>
@@ -51,7 +53,8 @@ export const CreatedJobsTable = async () => {
                   <Switch checked={job.active} />
                 </TableCell>
                 <TableCell>
-                  <UpdateJob  id={job.id} />
+                  <UpdateButton id={job.id}/>
+                  {/* <UpdateJob  id={job.id} /> */}
                   {/* <Link   href={`/dashboard/jobs/${job.id}`}  id={job.id}>Edit</Link> */}
                 </TableCell>
               </TableRow>

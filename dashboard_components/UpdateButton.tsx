@@ -4,7 +4,6 @@ import { PencilIcon } from "@heroicons/react/outline";
 import { Button } from "@tremor/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-// import { useRouter } from "next/navigation";
 export function UpdateButton({ id }: { id: string }) {
   const router = useRouter();
   const handleClick = () => {
@@ -22,6 +21,5 @@ export function UpdateButton({ id }: { id: string }) {
         ></Button>
       </div>
     </>
-
   );
 }
