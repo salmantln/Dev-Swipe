@@ -4,6 +4,8 @@ import { fetchJobById } from "@/lib/jobs";
 import { Card } from "@tremor/react";
 import AppliedTable from "@/dashboard_components/AppliedTable";
 import JobCard from "@/dashboard_components/JobCard";
+import { BackButton } from "@/dashboard_components/BackButton";
+import { UpdateButton } from "@/dashboard_components/UpdateButton";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -41,8 +43,6 @@ export default async function Page({ params }: { params: { id: string } }) {
     },
   ];
 
- 
-
   return (
     <>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -68,7 +68,27 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </Card>
         ))}
-        <JobCard title={job.title} date_created={job.date_created} active={job.active} skills={job.skills} />
+      </div>
+
+      <div className="flex space-x-11 space-y-11 justify-between items-center w-full">
+        <div className="">
+          {/* Right margin to the BackButton container */}
+          <BackButton />
+        </div>
+
+        <div className=" ">
+          {/* Left margin to the UpdateButton container */}
+          <UpdateButton id={id} />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <JobCard
+          title={job.title}
+          date_created={job.date_created}
+          active={job.active}
+          skills={job.skills}
+        />
         {/* <Card className="sm:col-span-1 lg:col-span-1">
           <img
             className="inline-block size-[100px] rounded-lg"
