@@ -10,7 +10,6 @@ export function UpdateJob({ id }: { id: string }) {
         className="font-semibold leading-6 text-sky-600 hover:text-sky-500"
       >
         Edit
-        {/* <PencilIcon className="w-5" /> */}
       </Link>
     );
   }

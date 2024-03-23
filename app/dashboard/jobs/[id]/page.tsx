@@ -70,14 +70,11 @@ export default async function Page({ params }: { params: { id: string } }) {
         ))}
       </div>
 
-      <div className="flex space-x-11 space-y-11 justify-between items-center w-full">
-        <div className="">
-          {/* Right margin to the BackButton container */}
+      <div className="flex justify-between py-4">
+        <div>
           <BackButton />
         </div>
-
-        <div className=" ">
-          {/* Left margin to the UpdateButton container */}
+        <div>
           <UpdateButton id={id} />
         </div>
       </div>
@@ -89,18 +86,6 @@ export default async function Page({ params }: { params: { id: string } }) {
           active={job.active}
           skills={job.skills}
         />
-        {/* <Card className="sm:col-span-1 lg:col-span-1">
-          <img
-            className="inline-block size-[100px] rounded-lg"
-            src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
-            alt="Image Description"
-          />
-          <p className="text-2xl text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">
-            {job.title} {job.date_created} {job.active}{" "}
-          </p>
-          <p className="text-2xl text-tremor-content-strong dark:text-dark-tremor-content-strong font-semibold">Searched skills:</p>
-          {job.skills}
-        </Card> */}
         <Card className="sm:col-span-2 lg:col-span-2">
           <AppliedTable />
         </Card>
