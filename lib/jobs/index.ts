@@ -24,7 +24,7 @@ export async function readJob() {
 export async function fetchJobById(id: string) {
   noStore();
   const supabase = await createSupabaseServerClient();
-  
+
   // Use the .eq() method to fetch the job post with the specific ID
   const { data, error } = await supabase
     .from("job_posts")
@@ -33,8 +33,18 @@ export async function fetchJobById(id: string) {
     .single();
 
   // console.log("Fetched job post:", data, "Error:", error);
-  
+
   return { data, error };
 }
-export async function deleteJob() {}
-export async function updateJob() {}
+export async function deleteJob(id: string) {
+  const supabase = await createSupabaseServerClient();
+  supabase.from("job_posts").delete().eq("id", id);
+
+  revalidatePath("/dashboard/jobs");
+}
+export async function updateJob(id: string, updated: any) {
+  const supabase = await createSupabaseServerClient();
+  supabase.from("job_posts").update({ updated }).eq("id", id);
+
+  revalidatePath("/dashboard/jobs");
+}

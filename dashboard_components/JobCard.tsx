@@ -86,7 +86,7 @@ const JobCard: React.FC<JobCardProps> = ({
           .map((skill, index) => (
             <span
               key={index}
-              className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-800 text-white dark:border-gray-500 text-gray-800"
+              className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-800  dark:border-gray-500 text-gray-800"
             >
               {skill.name}
             </span>

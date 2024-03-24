@@ -4,8 +4,9 @@ import React from "react";
 import { RiArrowRightLine, RiArrowLeftLine } from "@remixicon/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { LogoutIcon, PencilIcon } from "@heroicons/react/outline";
+import { LogoutIcon, PencilIcon, TrashIcon } from "@heroicons/react/outline";
 import { signOut } from "./signout";
+import { deleteJob } from "@/lib/jobs";
 
 export const BackButton = () => {
   const router = useRouter();
@@ -67,5 +68,18 @@ export async function SignOutButton() {
         </button>
       </form>
     </>
+  );
+}
+
+export function DeleteJobButton({ id }: { id: string }) {
+  const deleteJobWithId = deleteJob.bind(null, id);
+
+  return (
+    <form action={deleteJobWithId}>
+      <button className="rounded-md border p-2 hover:bg-gray-100">
+        <span className="sr-only">Delete</span>
+        <TrashIcon className="w-5" />
+      </button>
+    </form>
   );
 }
