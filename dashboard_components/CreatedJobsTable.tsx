@@ -61,7 +61,7 @@ export const CreatedJobsTable = async () => {
                   <div className="flex gap-3">
                     <UpdateButton id={job.id} />
                     {/* <DeleteJobButton id={job.id} /> */}
-                    <MyModal />
+                    <MyModal id={job.id} />
                   </div>
                 </TableCell>
               </TableRow>

@@ -1,11 +1,11 @@
 "use client";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useRef, useState } from "react";
 import { TrashIcon } from "@heroicons/react/outline";
 
-export default function MyModal() {
-  let [isOpen, setIsOpen] = useState(true);
-  const cancelButtonRef = useRef(null)
+export default function MyModal({ id }: { id: string }) {
+  let [isOpen, setIsOpen] = useState(false);
+  const cancelButtonRef = useRef(null);
   function closeModal() {
     setIsOpen(false);
   }
@@ -17,11 +17,13 @@ export default function MyModal() {
   return (
     <>
       <div className="">
-
-      <button onClick={openModal} className="rounded-md border p-2 hover:bg-gray-100">
-      <span className="sr-only">Delete</span>
-      <TrashIcon className="w-5" />
-    </button>
+        <button
+          onClick={openModal}
+          className="rounded-md border p-2 hover:bg-gray-100"
+        >
+          <span className="sr-only">Delete</span>
+          <TrashIcon className="w-5" />
+        </button>
         {/* <button
           type="button"
           onClick={openModal}
@@ -36,7 +38,7 @@ export default function MyModal() {
           as="div"
           className="relative z-10"
           initialFocus={cancelButtonRef}
-          onClose={setIsOpen}
+          onClose={closeModal}
         >
           <Transition.Child
             as={Fragment}
