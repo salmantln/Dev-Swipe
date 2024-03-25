@@ -25,7 +25,7 @@ export const CreatedJobsTable = async () => {
   
   
   const { data: jobs } = await readJob();
-  console.log("Read jobs: ", jobs);
+  // console.log("Read jobs: ", jobs);
 
   return (
     <div className="flex-auto w-full">

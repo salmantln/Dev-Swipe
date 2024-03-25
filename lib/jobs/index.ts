@@ -38,13 +38,14 @@ export async function fetchJobById(id: string) {
 }
 export async function deleteJob(id: string) {
   const supabase = await createSupabaseServerClient();
-  supabase.from("job_posts").delete().eq("id", id);
+  await supabase.from("job_posts").delete().eq("id", id);
 
   revalidatePath("/dashboard/jobs");
 }
+
 export async function updateJob(id: string, updated: any) {
   const supabase = await createSupabaseServerClient();
-  supabase.from("job_posts").update({ updated }).eq("id", id);
+  await supabase.from("job_posts").update({ updated }).eq("id", id);
 
   revalidatePath("/dashboard/jobs");
 }
