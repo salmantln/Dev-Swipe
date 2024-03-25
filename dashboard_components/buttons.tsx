@@ -71,15 +71,24 @@ export async function SignOutButton() {
   );
 }
 
-export function DeleteJobButton({ id }: { id: string }) {
-  const deleteJobWithId = deleteJob.bind(null, id);
+// export function DeleteJobButton({ id }: { id: string }) {
+//   // const deleteJobWithId = deleteJob.bind(null, id);
 
+//   return (
+//     // <form action={deleteJobWithId}>
+//       <button className="rounded-md border p-2 hover:bg-gray-100">
+//         <span className="sr-only">Delete</span>
+//         <TrashIcon className="w-5" />
+//       </button>
+//     // </form>
+//   );
+// }
+
+export function DeleteJobButton({ id, onOpenModal }: { id: string; onOpenModal: () => void }) {
   return (
-    <form action={deleteJobWithId}>
-      <button className="rounded-md border p-2 hover:bg-gray-100">
-        <span className="sr-only">Delete</span>
-        <TrashIcon className="w-5" />
-      </button>
-    </form>
+    <button onClick={onOpenModal} className="rounded-md border p-2 hover:bg-gray-100">
+      <span className="sr-only">Delete</span>
+      <TrashIcon className="w-5" />
+    </button>
   );
 }

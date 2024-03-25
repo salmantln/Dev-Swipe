@@ -17,9 +17,13 @@ import Link from "next/link";
 import { UpdateJob } from "./EditButton";
 import { UpdateButton } from "./UpdateButton";
 import { DeleteJobButton } from "./buttons";
+import MyModal from "./modals";
 
 export const CreatedJobsTable = async () => {
   // export const CreatedJobsTable = async ({hasJobs}:{hasJobs: boolean}) => {
+
+  
+  
   const { data: jobs } = await readJob();
   console.log("Read jobs: ", jobs);
 
@@ -56,13 +60,22 @@ export const CreatedJobsTable = async () => {
                 <TableCell>
                   <div className="flex gap-3">
                     <UpdateButton id={job.id} />
-                    <DeleteJobButton id={job.id} />
+                    {/* <DeleteJobButton id={job.id} /> */}
+                    <MyModal />
                   </div>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        {/* {isModalOpen && (
+        <DeleteConfirmationModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          jobId={currentJobId}
+          // onConfirm={handleDelete} // Define your deletion logic here or within the modal
+        />
+      )} */}
       </Card>
     </div>
   );
