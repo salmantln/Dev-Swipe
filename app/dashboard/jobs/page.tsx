@@ -17,13 +17,13 @@ export default async function JobPostPage() {
       }),
     []
   );
-  const session = supabase.auth.getSession();
+  // const session = supabase.auth.getSession();
 
-  if (session) {
-    console.log("User is authenticated", session);
-  } else {
-    console.log("User is not authenticated");
-  }
+  // if (session) {
+  //   console.log("User is authenticated", session);
+  // } else {
+  //   console.log("User is not authenticated");
+  // }
 
   const { data } = await readUserSession();
   const { data: jobs } = await readJob();

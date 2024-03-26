@@ -2,6 +2,7 @@ import {readUserSession} from "@/lib/actions";
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 import { useMemo } from "react";
+import { MultiSelect, MultiSelectItem } from "@tremor/react";
 export default async function CreateJob() {
 
 

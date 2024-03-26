@@ -1,10 +1,12 @@
 "use client";
 
-import { Card } from "@tremor/react";
+import { Card, MultiSelect, MultiSelectItem } from "@tremor/react";
 import React, { useState } from "react";
 import { MyQuillEditor } from "./editor/editor";
 import { createJob } from "@/lib/jobs";
 import { toast } from "react-hot-toast";
+import { usePlacesWidget as plc } from "react-google-autocomplete";
+import ClientSideAutocomplete from "./ClientSideAutocomplete";
 
 interface Skill {
   name: string;
@@ -84,16 +86,93 @@ const ClientComponent = () => {
 
   const [loading, setLoading] = useState(false); // Loading state
   const [jobTitle, setJobTitle] = useState("");
-  const [glassdoorLink, setGlassdoorLink] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [content, setContent] = useState("");
   const [job_type, setjob_type] = useState("");
-  const [workExperience, setWorkExperience] = useState("");
-  const [workPlace, setWorkPlace] = useState("");
   const [skills, setSkills] = useState<Skill[]>(allSkills);
 
   const [minPay, setMinPay] = useState(0);
   const [maxPay, setMaxPay] = useState(0);
+
+  const [errorMessage, setErrorMessage] = useState("");
+  const [selectedSkillOptions, setSelectedSkillOptions] = useState<string[]>(
+    []
+  );
+
+  const { ref } = plc({
+    apiKey: "AIzaSyAhXagaJR_wLrKxhlCa9j8VqzS3idPT3fg",
+    onPlaceSelected: (place: any) => console.log(place),
+  });
+
+  const options = [
+    "AWS",
+    "Firebase",
+    "Innovative",
+    "Google Cloud",
+    "Heroku",
+    "Microsoft Azure",
+    "Share Point",
+    "Angular",
+    "Django",
+    "Flutter",
+    "Laravel",
+    "Magento",
+    "Next.js",
+    "Node.js",
+    "React",
+    "Vue.js",
+    "Wordpress",
+    "jQuery",
+    "C#",
+    "C/C++",
+    "Dart",
+    "Go",
+    "HTML/CSS",
+    "Java",
+    "JavaScript",
+    "Kotlin",
+    "PHP",
+    "Perl",
+    "Python",
+    "R",
+    "Ruby",
+    "Rust",
+    "SQL",
+    "Swift",
+    "TypeScript",
+    "Agile/Scrum",
+    "Backend",
+    "Consultancy",
+    "Data Science",
+    "ETL",
+    "Front-end",
+    "Machine Learning",
+    "Security",
+    "Mobile",
+    "Product Management",
+    "CRM",
+    "Docker",
+    "ERP",
+    "Linux",
+    "No-SQL Databases",
+    "Office 365",
+    "Power BI",
+    "SQL Databases",
+    "Tableau",
+  ];
+
+  const handleValueChange = (value: string[]) => {
+    if (value.length > 5) {
+      // If more than 5 options are selected, show an error and do not update selected options
+      setErrorMessage("You can only select up to 5 options");
+    } else {
+      // Update selected options and clear any error message
+
+      console.log(selectedOptions);
+      setSelectedOptions(value);
+      setErrorMessage("");
+    }
+  };
 
   const handleCheckboxChange = (event: any) => {
     setIsRemote(event.target.checked);
@@ -211,7 +290,7 @@ const ClientComponent = () => {
       active: true,
       min_pay: minPay,
       max_pay: maxPay,
-      skills: skills,
+      skills: selectedOptions,
     };
 
     // Your form submission logic here
@@ -531,12 +610,16 @@ const ClientComponent = () => {
                   <span className="text-sm text-red-500 font-black">●</span>
                 </label>{" "}
                 <div className="mt-1 flex rounded-md shadow-sm">
+                {/* <input ref={ref} style={{ width: "90%" }} defaultValue="Amsterdam" /> */}
+                {/* <ClientSideAutocomplete/> */}
                   <input
-                    value={jobLocation}
+                    // value={jobLocation}
                     onChange={handleLocationChange}
-                    type="text"
+                    defaultValue="Amsterdam"
+                    // type="text"
+                    ref={ref}
                     placeholder="City or region"
-                    autoComplete="off"
+                    // autoComplete="off"
                     className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300 pac-target-input"
                   />
                 </div>{" "}
@@ -844,14 +927,13 @@ const ClientComponent = () => {
                 </div>
               </div>
             </div>
-            <label
+            {/* <label
               htmlFor="company-name"
               className="block text-sm font-medium text-gray-700"
             >
               Job description
               <span className="text-sm text-red-500 font-black">●</span>
             </label>{" "}
-            {/* Skills */}
             <div className="flex flex-col justify-start gap-4">
               {skills.map((skill, index) => (
                 <label
@@ -867,6 +949,30 @@ const ClientComponent = () => {
                   <span className="ml-2 text-gray-700">{skill.name}</span>
                 </label>
               ))}
+            </div> */}
+
+            <div className="sm:col-span-4">
+              <label
+                htmlFor="region"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Skills (Select max of 5)
+              </label>
+              <div className="mt-2">
+                <MultiSelect
+                  // disabled
+
+                  errorMessage={errorMessage}
+                  onValueChange={handleValueChange}
+                  value={selectedOptions}
+                >
+                  {options.sort().map((option, index) => (
+                    <MultiSelectItem key={index} value={option}>
+                      {option}
+                    </MultiSelectItem>
+                  ))}
+                </MultiSelect>
+              </div>
             </div>
             <MyQuillEditor description1={content} />
             <div className="px-4 py-3  text-right sm:px-6">
@@ -895,3 +1001,9 @@ const ClientComponent = () => {
   );
 };
 export default ClientComponent;
+function usePlacesWidget(arg0: {
+  apiKey: string;
+  onPlaceSelected: (place: any) => void;
+}): { ref: any } {
+  throw new Error("Function not implemented.");
+}
