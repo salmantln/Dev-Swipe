@@ -1,12 +1,11 @@
 "use client";
 
-import { Card, MultiSelect, MultiSelectItem } from "@tremor/react";
-import React, { useState } from "react";
-import { MyQuillEditor } from "./editor/editor";
 import { createJob } from "@/lib/jobs";
+import { Card, MultiSelect, MultiSelectItem } from "@tremor/react";
+import React, { useRef, useState } from "react";
+import AutoComplete from "react-google-autocomplete";
 import { toast } from "react-hot-toast";
-import { usePlacesWidget as plc } from "react-google-autocomplete";
-import ClientSideAutocomplete from "./ClientSideAutocomplete";
+import { MyQuillEditor } from "./editor/editor";
 
 interface Skill {
   name: string;
@@ -88,21 +87,14 @@ const ClientComponent = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [jobLocation, setJobLocation] = useState("");
   const [content, setContent] = useState("");
-  const [job_type, setjob_type] = useState("");
   const [skills, setSkills] = useState<Skill[]>(allSkills);
 
   const [minPay, setMinPay] = useState(0);
   const [maxPay, setMaxPay] = useState(0);
 
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedSkillOptions, setSelectedSkillOptions] = useState<string[]>(
-    []
-  );
 
-  const { ref } = plc({
-    apiKey: "AIzaSyAhXagaJR_wLrKxhlCa9j8VqzS3idPT3fg",
-    onPlaceSelected: (place: any) => console.log(place),
-  });
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE || "";
 
   const options = [
     "AWS",
@@ -610,17 +602,30 @@ const ClientComponent = () => {
                   <span className="text-sm text-red-500 font-black">●</span>
                 </label>{" "}
                 <div className="mt-1 flex rounded-md shadow-sm">
-                {/* <input ref={ref} style={{ width: "90%" }} defaultValue="Amsterdam" /> */}
-                {/* <ClientSideAutocomplete/> */}
-                  <input
+                  {/* <input ref={ref} style={{ width: "90%" }} defaultValue="Amsterdam" /> */}
+                  {/* <ClientSideAutocomplete/> */}
+                  {/* <input
                     // value={jobLocation}
                     onChange={handleLocationChange}
                     defaultValue="Amsterdam"
-                    // type="text"
                     ref={ref}
+                    // type="text"
+                    onClick={() => {
+                      // setVisible(!visible);
+                      // This fixes the issue
+                      inputRef.current = null;
+                    }}
                     placeholder="City or region"
                     // autoComplete="off"
                     className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300 pac-target-input"
+                  /> */}
+                  <AutoComplete
+                    className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300 pac-target-input"
+                    apiKey={apiKey}
+                    onPlaceSelected={(place) => {
+                      setJobLocation(place.formatted_address);
+                      console.log(place.formatted_address);
+                    }}
                   />
                 </div>{" "}
                 <div className="mt-1 flex">
