@@ -45,7 +45,22 @@ export async function deleteJob(id: string) {
 
 export async function updateJob(id: string, updated: any) {
   const supabase = await createSupabaseServerClient();
-  await supabase.from("job_posts").update({ updated }).eq("id", id);
 
-  revalidatePath("/dashboard/jobs");
+  // Use the spread operator to directly pass all key-value pairs from `updated`
+  const { data, error } = await supabase
+    .from('job_posts')
+    .update([updated] )
+    .eq('id', id);
+
+  if (error) {
+    console.error("Update error:", error);
+    return { error };
+  }
+
+  console.log("Updated successfully:", [updated]);
+  // Optionally, perform further actions like navigation or state updates
+  revalidatePath(`/dashboard/jobs/${id}/edit`);
+  return { data };
 }
+
+

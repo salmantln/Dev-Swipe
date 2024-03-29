@@ -1,12 +1,10 @@
 "use client";
-import { Button } from "@tremor/react";
-import React from "react";
-import { RiArrowRightLine, RiArrowLeftLine } from "@remixicon/react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { LogoutIcon, PencilIcon, TrashIcon } from "@heroicons/react/outline";
+import { RiArrowLeftLine } from "@remixicon/react";
+import { Button } from "@tremor/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { signOut } from "./signout";
-import { deleteJob } from "@/lib/jobs";
 
 export const BackButton = () => {
   const router = useRouter();

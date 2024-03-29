@@ -13,7 +13,7 @@ export default async function Page({
   if (!job) {
     notFound();
   }
-  console.log("JOB: ", job);
+  // console.log("JOB: ", job);
   return (
     <>
       <EditForm job={job} />

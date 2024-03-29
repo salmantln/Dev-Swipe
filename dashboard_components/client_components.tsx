@@ -971,9 +971,3 @@ const ClientComponent = () => {
   );
 };
 export default ClientComponent;
-function usePlacesWidget(arg0: {
-  apiKey: string;
-  onPlaceSelected: (place: any) => void;
-}): { ref: any } {
-  throw new Error("Function not implemented.");
-}
