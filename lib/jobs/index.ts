@@ -43,14 +43,33 @@ export async function deleteJob(id: string) {
   revalidatePath("/dashboard/jobs");
 }
 
+export async function updateActiveJob(id: any, isActive: boolean) {
+  // Ensure createSupabaseServerClient correctly initializes and returns a Supabase client instance.
+  const supabase = await createSupabaseServerClient();
+  
+  const { data, error } = await supabase
+    .from("job_posts")
+    .update({ active: isActive }) // Correctly pass isActive as a boolean
+    .eq("id", id);
+
+  // Logging the response for debugging purposes
+  console.log("Update response:", data);
+  if (error) {
+    console.error("Update error:", error);
+  }
+
+  // Assuming revalidatePath is a function you've defined to refresh or navigate after update
+  revalidatePath("/dashboard/jobs");
+}
+
 export async function updateJob(id: string, updated: any) {
   const supabase = await createSupabaseServerClient();
 
   // Use the spread operator to directly pass all key-value pairs from `updated`
   const { data, error } = await supabase
-    .from('job_posts')
-    .update([updated] )
-    .eq('id', id);
+    .from("job_posts")
+    .update([updated])
+    .eq("id", id);
 
   if (error) {
     console.error("Update error:", error);
@@ -62,5 +81,3 @@ export async function updateJob(id: string, updated: any) {
   revalidatePath(`/dashboard/jobs/${id}/edit`);
   return { data };
 }
-
-
