@@ -568,30 +568,11 @@ const ClientComponent = () => {
                   value={jobTitle}
                   onChange={handleJobTitleChange}
                   type="text"
+                  name="title"
                   className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                 />
               </div>{" "}
             </div>
-            {/* <div>
-              <label
-                htmlFor="about"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Glassdoor link
-                <span className="text-sm text-red-500 font-black">●</span>{" "}
-                <span className="text-xs font-light text-amber-600">
-                  Be aware we only accept <i>software engineering</i> related
-                  jobs
-                </span>
-              </label>{" "}
-              <div className="mt-1 flex rounded-md shadow-sm">
-                <input
-                  value={glassdoorLink}
-                  type="text"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
-                />
-              </div>{" "}
-            </div> */}
             <div className="grid grid-cols-3 gap-6">
               <div className="col-span-1 sm:col-span-1">
                 <label
@@ -602,23 +583,7 @@ const ClientComponent = () => {
                   <span className="text-sm text-red-500 font-black">●</span>
                 </label>{" "}
                 <div className="mt-1 flex rounded-md shadow-sm">
-                  {/* <input ref={ref} style={{ width: "90%" }} defaultValue="Amsterdam" /> */}
-                  {/* <ClientSideAutocomplete/> */}
-                  {/* <input
-                    // value={jobLocation}
-                    onChange={handleLocationChange}
-                    defaultValue="Amsterdam"
-                    ref={ref}
-                    // type="text"
-                    onClick={() => {
-                      // setVisible(!visible);
-                      // This fixes the issue
-                      inputRef.current = null;
-                    }}
-                    placeholder="City or region"
-                    // autoComplete="off"
-                    className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300 pac-target-input"
-                  /> */}
+               
                   <AutoComplete
                     className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300 pac-target-input"
                     apiKey={apiKey}

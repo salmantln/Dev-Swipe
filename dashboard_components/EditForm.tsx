@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MultiSelect, MultiSelectItem } from "@tremor/react";
 import AutoComplete from "react-google-autocomplete";
+import { Select, SelectItem } from "@tremor/react";
 
 export const EditForm = ({ job }: { job: any }) => {
   const [selectedSkillOptions, setSelectedSkillOptions] = useState<string[]>(
@@ -12,6 +13,27 @@ export const EditForm = ({ job }: { job: any }) => {
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE || "";
 
+  const [formData, setFormData] = useState({
+    title: job.title || "",
+    description: job.description || "",
+    location: job.location || "",
+    work_experience: job.work_experience || "",
+    job_type: job.job_type || "",
+    work_place: job.work_place || "",
+    min_pay: job.min_pay || "",
+    max_pay: job.max_pay || "",
+    skills: job.skills || [],
+    active: job.active || "",
+  });
+
+  const handleInputChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
   const handleValueChange = (value: string[]) => {
     if (value.length > 5) {
       // If more than 5 options are selected, show an error and do not update selected options
@@ -21,6 +43,19 @@ export const EditForm = ({ job }: { job: any }) => {
       setSelectedSkillOptions(value);
       setErrorMessage("");
     }
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    // Here you would compile form data, including selectedJob and otherField
+    const formData = {
+      // selectedJob,
+      // otherField,
+      // Include other fields as needed
+    };
+
+    console.log("Submitting form with data:", formData);
+    // Submit formData to a server or handle as needed
   };
 
   const options = [
@@ -83,78 +118,28 @@ export const EditForm = ({ job }: { job: any }) => {
   return (
     <>
       <h1 className=" mb-4 text-xl md:text-2xl text-cyan-600">Update job</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-4">
                 <label
-                  htmlFor="username"
+                  htmlFor="title"
                   className="block text-m font-medium leading-6 text-gray-900"
                 >
                   Job title
                 </label>
                 <div className="mt-2">
-                  {/* <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-sky-600 sm:max-w-md">
-                  <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">
-                    workcation.com/
-                  </span>
                   <input
                     type="text"
-                    name="username"
-                    id="username"
-                    autoComplete="username"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                    placeholder="janesmith"
-                  />
-                </div> */}
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    value={job.title}
+                    name="title"
+                    value={formData.title}
+                    onChange={handleInputChange}
                     autoComplete="given-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-              {/* <div className="col-span-1 sm:col-span-1">
-                <label
-                  htmlFor="location"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Location
-                  <span className="text-sm text-red-500 font-black">●</span>
-                </label>{" "}
-                <div className="mt-1 flex rounded-md shadow-sm">
-                  <input
-                    // value={jobLocation}
-                    // onChange={handleLocationChange}
-                    type="text"
-                    placeholder="City or region"
-                    autoComplete="off"
-                    className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300 pac-target-input"
-                  />
-                </div>{" "}
-                <div className="mt-1 flex">
-                  <div className="flex items-center h-5">
-                    <input
-                      type="checkbox"
-                      className="h-4 w-4 text-cyan-600 border-gray-300 rounded"
-                      // onChange={handleCheckboxChange}
-                      // checked={isRemote}
-                    />
-                  </div>
-                  <div className="ml-2 text-xs my-auto">
-                    <label
-                      htmlFor="remote"
-                      className="font-medium text-gray-700"
-                    >
-                      This is a remote position
-                    </label>
-                  </div>
-                </div>
-              </div> */}
 
               <div className="sm:col-span-2 sm:col-start-1">
                 <label
@@ -165,6 +150,7 @@ export const EditForm = ({ job }: { job: any }) => {
                 </label>
                 <div className="mt-2">
                   <AutoComplete
+                    defaultValue={formData.location}
                     className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300 pac-target-input"
                     apiKey={apiKey}
                     onPlaceSelected={(place) => {
@@ -172,13 +158,6 @@ export const EditForm = ({ job }: { job: any }) => {
                       console.log(place.formatted_address);
                     }}
                   />
-                  {/* <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    autoComplete="address-level2"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  /> */}
                 </div>
               </div>
 
@@ -190,31 +169,70 @@ export const EditForm = ({ job }: { job: any }) => {
                   Estimated work experience
                 </label>
                 <div className="mt-2">
-                  <input
+                  {/* <input
                     type="text"
                     name="region"
                     id="region"
                     autoComplete="address-level1"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  />
+                  /> */}
+                  <Select
+                    // id="work_experience"
+                    name="work_experience"
+                    value={formData.work_experience}
+                    // value={value}
+                    // onValueChange={setValue}
+                    // onChange={handleInputChange}
+                    onChange={(e) => {
+                      console.log(e);
+                      setFormData({ ...formData, work_experience: e });
+                    }}
+                    className="mt-2"
+                  >
+                    <SelectItem value="< 1">Less than 1 year</SelectItem>
+                    <SelectItem value="1 - 2">1 - 2 years</SelectItem>
+                    <SelectItem value="2 - 4">2 - 4 years</SelectItem>
+                    <SelectItem value="4 - 7">4 - 7 years</SelectItem>
+                    <SelectItem value="7 - 10">7 - 10 years</SelectItem>
+                    <SelectItem value="10 - 15">10 - 15 years</SelectItem>
+                    <SelectItem value="15+">15+ years</SelectItem>
+                  </Select>
                 </div>
               </div>
 
               <div className="sm:col-span-2 sm:col-start-1">
                 <label
-                  htmlFor="city"
+                  htmlFor="job_type"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Type of job
                 </label>
                 <div className="mt-2">
-                  <input
+                  {/* <input
                     type="text"
                     name="city"
                     id="city"
+                    onChange={handleInputChange}
                     autoComplete="address-level2"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  />
+                  /> */}
+                  <Select
+                    name="job_type"
+                    value={formData.job_type}
+                    // value={value}
+                    // onValueChange={handleInputChange}
+                    // onChange={handleInputChange}
+                    onChange={(e) => {
+                      console.log(e);
+                      setFormData({ ...formData, job_type: e });
+                    }}
+                    className="mt-2"
+                  >
+                    <SelectItem value="Fulltime">Fulltime</SelectItem>
+                    <SelectItem value="Parttime">Parttime</SelectItem>
+                    <SelectItem value="Internship">Internship</SelectItem>
+                    <SelectItem value="Temporary">Temporary</SelectItem>
+                  </Select>
                 </div>
               </div>
 
@@ -226,31 +244,104 @@ export const EditForm = ({ job }: { job: any }) => {
                   Type of workplace
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    name="region"
-                    id="region"
-                    autoComplete="address-level1"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  />
+                  {/* <Select
+                    id="work_place"
+                    name="work_place"
+                    value={formData.work_place}
+                    // value={value}
+                    // onValueChange={setValue}
+                    onChange={handleInputChange}
+                    className="mt-2"
+                  >
+                    <SelectItem value="On Site">On Site</SelectItem>
+                    <SelectItem value="Remote">Remote</SelectItem>
+                    <SelectItem value="Hybrid">Hybrid</SelectItem>
+                  </Select> */}
+                  <Select
+                    name="work_place"
+                    value={formData.work_place}
+                    // onChange={handleInputChange}
+                    // onValueChange={handleInputChange}
+                    onChange={(e) => {
+                      console.log(e);
+                      setFormData({ ...formData, work_place: e });
+                    }}
+                    className="mt-2"
+                  >
+                    <SelectItem value="On Site">On Site</SelectItem>
+                    <SelectItem value="Remote">Remote</SelectItem>
+                    <SelectItem value="Hybrid">Hybrid</SelectItem>
+                  </Select>
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-6"></div>
               <div className="sm:col-span-2 sm:col-start-1">
                 <label
-                  htmlFor="city"
+                  // htmlFor="city"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Min Salary
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    autoComplete="address-level2"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  />
+                  <Select
+                    // id="min_pay"
+                    name="min_pay"
+                    value={formData.min_pay}
+                    // value={value}
+                    // onValueChange={setValue}
+                    // onChange={handleInputChange}
+                    onChange={(e) => {
+                      console.log(e);
+                      setFormData({ ...formData, min_pay: e });
+                    }}
+                    className="mt-2"
+                  >
+                    <SelectItem value="10">USD 10k per year</SelectItem>
+                    <SelectItem value="20">USD 20k per year</SelectItem>
+                    <SelectItem value="30">USD 30k per year</SelectItem>
+                    <SelectItem value="40">USD 40k per year</SelectItem>
+                    <SelectItem value="50">USD 50k per year</SelectItem>
+                    <SelectItem value="60">USD 60k per year</SelectItem>
+                    <SelectItem value="70">USD 70k per year</SelectItem>
+                    <SelectItem value="80">USD 80k per year</SelectItem>
+                    <SelectItem value="90">USD 90k per year</SelectItem>
+                    <SelectItem value="100">USD 100k per year</SelectItem>
+                    <SelectItem value="110">USD 110k per year</SelectItem>
+                    <SelectItem value="120">USD 120k per year</SelectItem>
+                    <SelectItem value="130">USD 130k per year</SelectItem>
+                    <SelectItem value="140">USD 140k per year</SelectItem>
+                    <SelectItem value="150">USD 150k per year</SelectItem>
+                    <SelectItem value="160">USD 160k per year</SelectItem>
+                    <SelectItem value="170">USD 170k per year</SelectItem>
+                    <SelectItem value="180">USD 180k per year</SelectItem>
+                    <SelectItem value="190">USD 190k per year</SelectItem>
+                    <SelectItem value="200">USD 200k per year</SelectItem>
+                    <SelectItem value="210">USD 210k per year</SelectItem>
+                    <SelectItem value="220">USD 220k per year</SelectItem>
+                    <SelectItem value="230">USD 230k per year</SelectItem>
+                    <SelectItem value="240">USD 240k per year</SelectItem>
+                    <SelectItem value="250">USD 250k per year</SelectItem>
+                    <SelectItem value="260">USD 260k per year</SelectItem>
+                    <SelectItem value="270">USD 270k per year</SelectItem>
+                    <SelectItem value="280">USD 280k per year</SelectItem>
+                    <SelectItem value="290">USD 290k per year</SelectItem>
+                    <SelectItem value="300">USD 300k per year</SelectItem>
+                    <SelectItem value="310">USD 310k per year</SelectItem>
+                    <SelectItem value="320">USD 320k per year</SelectItem>
+                    <SelectItem value="330">USD 330k per year</SelectItem>
+                    <SelectItem value="340">USD 340k per year</SelectItem>
+                    <SelectItem value="350">USD 350k per year</SelectItem>
+                    <SelectItem value="360">USD 360k per year</SelectItem>
+                    <SelectItem value="370">USD 370k per year</SelectItem>
+                    <SelectItem value="380">USD 380k per year</SelectItem>
+                    <SelectItem value="390">USD 390k per year</SelectItem>
+                    <SelectItem value="400">USD 400k per year</SelectItem>
+                    <SelectItem value="500">USD 500k per year</SelectItem>
+                    <SelectItem value="600">USD 600k per year</SelectItem>
+                    <SelectItem value="700">USD 700k per year</SelectItem>
+                    <SelectItem value="800">USD 800k per year</SelectItem>
+                    <SelectItem value="900">USD 900k per year</SelectItem>
+                  </Select>
                 </div>
               </div>
 
@@ -262,13 +353,65 @@ export const EditForm = ({ job }: { job: any }) => {
                   Max Salary
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    name="region"
-                    id="region"
-                    autoComplete="address-level1"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  />
+                  <Select
+                    // id="min_pay"
+                    name="max_pay"
+                    value={formData.max_pay}
+                    // value={value}
+                    // onValueChange={setValue}
+                    // onChange={handleInputChange}
+                    onChange={(e) => {
+                      console.log(e);
+                      setFormData({ ...formData, max_pay: e });
+                    }}
+                    className="mt-2"
+                  >
+                    <SelectItem value="10">USD 10k per year</SelectItem>
+                    <SelectItem value="20">USD 20k per year</SelectItem>
+                    <SelectItem value="30">USD 30k per year</SelectItem>
+                    <SelectItem value="40">USD 40k per year</SelectItem>
+                    <SelectItem value="50">USD 50k per year</SelectItem>
+                    <SelectItem value="60">USD 60k per year</SelectItem>
+                    <SelectItem value="70">USD 70k per year</SelectItem>
+                    <SelectItem value="80">USD 80k per year</SelectItem>
+                    <SelectItem value="90">USD 90k per year</SelectItem>
+                    <SelectItem value="100">USD 100k per year</SelectItem>
+                    <SelectItem value="110">USD 110k per year</SelectItem>
+                    <SelectItem value="120">USD 120k per year</SelectItem>
+                    <SelectItem value="130">USD 130k per year</SelectItem>
+                    <SelectItem value="140">USD 140k per year</SelectItem>
+                    <SelectItem value="150">USD 150k per year</SelectItem>
+                    <SelectItem value="160">USD 160k per year</SelectItem>
+                    <SelectItem value="170">USD 170k per year</SelectItem>
+                    <SelectItem value="180">USD 180k per year</SelectItem>
+                    <SelectItem value="190">USD 190k per year</SelectItem>
+                    <SelectItem value="200">USD 200k per year</SelectItem>
+                    <SelectItem value="210">USD 210k per year</SelectItem>
+                    <SelectItem value="220">USD 220k per year</SelectItem>
+                    <SelectItem value="230">USD 230k per year</SelectItem>
+                    <SelectItem value="240">USD 240k per year</SelectItem>
+                    <SelectItem value="250">USD 250k per year</SelectItem>
+                    <SelectItem value="260">USD 260k per year</SelectItem>
+                    <SelectItem value="270">USD 270k per year</SelectItem>
+                    <SelectItem value="280">USD 280k per year</SelectItem>
+                    <SelectItem value="290">USD 290k per year</SelectItem>
+                    <SelectItem value="300">USD 300k per year</SelectItem>
+                    <SelectItem value="310">USD 310k per year</SelectItem>
+                    <SelectItem value="320">USD 320k per year</SelectItem>
+                    <SelectItem value="330">USD 330k per year</SelectItem>
+                    <SelectItem value="340">USD 340k per year</SelectItem>
+                    <SelectItem value="350">USD 350k per year</SelectItem>
+                    <SelectItem value="360">USD 360k per year</SelectItem>
+                    <SelectItem value="370">USD 370k per year</SelectItem>
+                    <SelectItem value="380">USD 380k per year</SelectItem>
+                    <SelectItem value="390">USD 390k per year</SelectItem>
+                    <SelectItem value="400">USD 400k per year</SelectItem>
+                    <SelectItem value="500">USD 500k per year</SelectItem>
+                    <SelectItem value="600">USD 600k per year</SelectItem>
+                    <SelectItem value="700">USD 700k per year</SelectItem>
+                    <SelectItem value="800">USD 800k per year</SelectItem>
+                    <SelectItem value="900">USD 900k per year</SelectItem>
+                  </Select>
                 </div>
               </div>
               <div className="sm:col-span-4">
@@ -280,11 +423,16 @@ export const EditForm = ({ job }: { job: any }) => {
                 </label>
                 <div className="mt-2">
                   <MultiSelect
-                    // disabled
-
                     errorMessage={errorMessage}
-                    onValueChange={handleValueChange}
-                    value={selectedSkillOptions}
+                    onValueChange={(e) => {
+                      console.log(e);
+                      setFormData({ ...formData, skills: e });
+                    }}
+                    onChange={(e) => {
+                      console.log(e);
+                      setFormData({ ...formData, skills: e });
+                    }}
+                    value={formData.skills}
                   >
                     {options.sort().map((option, index) => (
                       <MultiSelectItem key={index} value={option}>
@@ -304,10 +452,11 @@ export const EditForm = ({ job }: { job: any }) => {
                 </label>
                 <div className="mt-2">
                   <textarea
-                    id="about"
-                    name="about"
+                    // id="about"
+                    name="description"
                     rows={5}
-                    value={job.description}
+                    onChange={handleInputChange}
+                    value={formData.description}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                   ></textarea>
                 </div>
@@ -315,78 +464,6 @@ export const EditForm = ({ job }: { job: any }) => {
                   Write a few sentences about yourself.
                 </p>
               </div>
-
-              {/* <div className="col-span-full">
-                <label
-                  htmlFor="photo"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Photo
-                </label>
-                <div className="mt-2 flex items-center gap-x-3">
-                  <svg
-                    className="h-12 w-12 text-gray-300"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                  <button
-                    type="button"
-                    className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                  >
-                    Change
-                  </button>
-                </div>
-              </div> */}
-              {/* 
-              <div className="col-span-full">
-                <label
-                  htmlFor="cover-photo"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  Cover photo
-                </label>
-                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                  <div className="text-center">
-                    <svg
-                      className="mx-auto h-12 w-12 text-gray-300"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                      <label
-                        htmlFor="file-upload"
-                        className="relative cursor-pointer rounded-md bg-white font-semibold text-sky-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-600 focus-within:ring-offset-2 hover:text-sky-500"
-                      >
-                        <span>Upload a file</span>
-                        <input
-                          id="file-upload"
-                          name="file-upload"
-                          type="file"
-                          className="sr-only"
-                        />
-                      </label>
-                      <p className="pl-1">or drag and drop</p>
-                    </div>
-                    <p className="text-xs leading-5 text-gray-600">
-                      PNG, JPG, GIF up to 10MB
-                    </p>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
